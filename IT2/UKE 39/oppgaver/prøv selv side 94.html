@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+        #gangetabell{
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+        }
+
+        #tabell{
+            background-color: #2196F3;
+            padding: 10px;
+            border: 0.5px solid;
+            text-align: center;
+            height: 10px;
+            width: 80px;
+        }
+    </style>
+
+</head>
+<body>
+
+
+
+
+
+
+
+
+<script>
+
+
+    var talla = 0;
+
+    document.write("<h2>"+ "oppgave 1: while-løkke" + "</h2>");
+
+    while (talla <= 100){
+
+
+        document.write(talla + " ");
+        talla+=1;
+    }
+
+
+    document.write("<h2>" + "oppgave 2: for-løkke" + "</h2>");
+
+    for (var l = 1;  l <= 100; l++) {
+        document.write(l + " ");
+    }
+
+
+
+
+
+
+    document.write("<h1>" + "prøv selv" + "</h1>");
+
+    document.write("<h3>" + "Tall fra 10 til 1 i synkende rekkefølge" + "</h3>");
+
+    for (var i = 10; i>=1; i--){
+
+        document.write(i + " ");
+
+    }
+
+
+    document.write("<h3>" + "50 partall i stigende rekkefølge" + "</h3>")
+    
+    for (var partall = 2; partall <= 100; partall += 2 ){
+
+        document.write(" " + partall);
+
+    }
+
+    document.write("<h3>" + "summen av tallene fra 1 til og med 1000" + "</h3>");
+
+    var sum = 0;
+
+    for (var tall = 1; tall <= 1000; tall++){
+
+       sum = sum + tall;
+    }
+
+        document.write(sum);
+
+    document.write("<h3>" + "fibonacci- tallene" + "</h3>");
+
+
+    var tall1 = 0;
+    var tall2 = 1;
+    var tallF = tall1 + tall2;
+    document.write(tall1 + " " + tall2 + " ");
+
+    for (var j = 0; j<=10; j++ ) {
+
+        tall1 = tall2;
+        tall2 = tallF;
+        tallF = tall1 + tall2;
+
+        document.write(tallF + " ")
+
+    }
+
+
+
+    document.write("<h3>" + "Canvas" + "</h3>");
+
+    document.write("<canvas width='400' height='200' id='canvas'></canvas>");
+
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    var yposisjon = 0;
+
+
+    for (var linje = 1; linje <= 10; linje ++) {
+
+        yposisjon = yposisjon + 10;
+        ctx.strokeStyle = "blue";
+        ctx.moveTo(0, yposisjon);
+        ctx.lineTo(400,yposisjon);
+        ctx.stroke();
+
+    }
+
+
+
+    document.write("<h3>" + "nytt canvas" + "</h3>");
+
+
+    document.write("<canvas width='400' height='400' id='canvas2'></canvas>");
+
+    var canvas2 = document.getElementById("canvas2");
+    var ctx2 = canvas2.getContext("2d");
+
+    var x = 110;
+    var y = 170;
+    var side = 100;
+
+    for (var kvadrat = 1; kvadrat <= 10; kvadrat++) {
+
+
+        x = x - 10;
+        y = y - 10;
+        side = side + 20;
+        ctx2.strokeRect(x,y,side,side);
+    }
+
+
+
+document.write("<div id='gangetabell'>");
+
+    for(var m=1; m<=10; m++){
+        document.write("<div>");
+        for(var n =1; n<=10; n++){
+            document.write(`<div id="tabell"> ${ m + "*" + n + "=" + (m*n)} </div>`);
+        }
+
+        document.write("</div>");
+    }
+
+
+document.write("</div>");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+</script>
+
+</body>
+</html>
