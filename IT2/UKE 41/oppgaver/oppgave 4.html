@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oppgave 4</title>
+</head>
+<body>
+
+
+
+
+
+
+<script>
+
+
+
+
+
+    function løs(a,b,c) {
+        if ((b*b)-(4*a*c) < 0){
+
+            document.write(`<p>Ingen løsning!</p>`);
+
+        } else{
+            document.write("<p>" + ((-b + Math.sqrt((b*b)-(4*a*c)))/(2*a)).toFixed(3) + "</p>");
+            document.write("<p>" + ((-b - Math.sqrt((b*b)-(4*a*c)))/(2*a)).toFixed(3) + "</p>");
+        }
+    }
+
+    løs(2,2,-7);
+
+
+</script>
+
+
+
+
+</body>
+</html>
