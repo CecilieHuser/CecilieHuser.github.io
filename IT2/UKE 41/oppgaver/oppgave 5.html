@@ -2,9 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>oppgave 5</title>
 </head>
 <body>
+
+
+
+
+
+<script>
+
+
+
+
+
+
+    song(100, "courier new", "black", "white");
+
+
+    function song(antVers, font, bakgrunnsFarge, skriftFarge){
+
+
+        for (var i = 0 ; i<=antVers; i++){
+
+            document.write("<p id='tekst'>Around the world, around the world </p>");
+            var tekst = document.getElementById("tekst");
+            tekst.style.fontFamily = font;
+            tekst.style.backgroundColor = bakgrunnsFarge;
+            tekst.style.color = skriftFarge;
+
+        }
+
+
+
+    }
+
+
+</script>
+
+
 
 </body>
 </html>
