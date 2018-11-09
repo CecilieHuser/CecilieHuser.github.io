@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prosjekt</title>
+    <style>
+
+        #overskrift{
+            font-family: "American Typewriter";
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 50px;
+            background-color: blanchedalmond;
+            color: slategray;
+
+        }
+
+
+
+
+
+
+    </style>
+
+
+
+
+
+</head>
+<body>
+
+
+
+<div id="overskrift">
+<h1>Det finnes ikke dårlig vær, bare dårlige klær</h1>
+
+
+<p>Dette er en nettside der du legger inn temperatur, vær og vindstyrke. Vi vil da finne hvilket jakkevalg som er best for deg</p>
+
+</div>
+
+
+
+
+<input type="number" id="temperatur" placeholder="skriv inn temperatur">
+<button id="tempKnapp">legg til</button>
+
+
+
+
+
+<div id="værKnapper">
+<p>vær:</p>
+
+<button id="sol"><img src="sol.gif" height="100" ></button>
+<button id="regn"><img src="regn.gif" height="100" ></button>
+<button id="sno"><img src="sno.gif" height="100" ></button>
+
+</div>
+
+
+<p><input type="time"><button>legg til</button></p>
+
+
+
+<div>
+
+    <button id="resultatKnapp">resultat</button>
+
+</div>
+
+
+
+
+<div id="resultat">
+<h1>resultat</h1>
+
+
+<img id="jakke" height="200">
+<p id="tekst"></p>
+</div>
+
+
+
+
+
+
+<script>
+
+    let jakkeArray = ["tShirt.jpeg" ,"jeans.jpeg", "regnjakke.jpeg", "parka.jpg", "varmjakke.jpg" ]
+    let tempKnapp = document.getElementById("tempKnapp");
+
+
+    let tekst = document.getElementById("tekst");
+    let jakke = document.getElementById("jakke");
+    let temperatur = document.getElementById("temperatur");
+
+    let n = 0;
+    let sol = document.getElementById("sol");
+    let regn = document.getElementById("regn");
+    let sno = document.getElementById("sno");
+    let værArray = [sol, regn, sno];
+
+
+    let resultatKnapp = document.getElementById("resultatKnapp");
+
+
+    sol.onclick = function (){
+        n = 1
+    }
+
+    regn.onclick = function(){
+        n = 2
+    }
+
+    sno.onclick = function(){
+        n = 3
+    }
+
+
+
+
+
+
+    resultatKnapp.onclick = function () {
+
+        if (Number(temperatur.value) > 20 )
+
+            if (n=1){
+                resultat(0, "tskjorte");
+
+            }
+
+
+    }
+
+
+
+
+
+
+
+    function resultat(tall, type) {
+
+        jakke.src = jakkeArray[tall];
+        tekst.innerHTML = `du bør bruke en ${type} i dag`;
+
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
