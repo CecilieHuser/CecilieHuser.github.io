@@ -5,19 +5,57 @@
     <title>prosjekt</title>
     <style>
 
+
+
         #overskrift{
-            font-family: "American Typewriter";
+            font-family: "Courier New";
             text-align: center;
             font-size: 20px;
             margin-bottom: 50px;
-            background-color: blanchedalmond;
-            color: slategray;
+            background-color: transparent;
+            color: black;
 
         }
 
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            overflow: hidden;
+            z-index: -100;
+        }
 
+        body{
+            font-family: "Courier New";
+        }
 
+        .container {
+            text-align: center;
+            font-family: "Courier New";
+        }
 
+        #resultatKnapp {
+            display: block;
+            margin: auto;
+            font-size: 18px;
+            padding: 10px;
+            color: mediumvioletred;
+            cursor: pointer;
+            background: black;
+            font-family: "Courier New";
+
+        }
+
+        #værKnapper {
+            padding: 30px;
+        }
+
+        #tekst{
+            font-family: "Courier New";
+            text;
+        }
 
 
     </style>
@@ -29,56 +67,60 @@
 </head>
 <body>
 
-
+<video autoplay muted loop id="myVideo">
+    <source src="Rain.mp4" type="video/mp4">
+</video>
 
 <div id="overskrift">
 <h1>Det finnes ikke dårlig vær, bare dårlige klær</h1>
 
 
-<p>Dette er en nettside der du legger inn temperatur, vær og vindstyrke. Vi vil da finne hvilket jakkevalg som er best for deg</p>
+<p>legg inn temperatur og vær. Så bestemmer vi klær</p>
 
 </div>
 
 
 
+<div class="container">
 
 <input type="number" id="temperatur" placeholder="skriv inn temperatur">
-<button id="tempKnapp">legg til</button>
-
-
 
 
 
 <div id="værKnapper">
-<p>vær:</p>
+    <br>
 
-<button id="sol"><img src="sol.gif" height="100" ></button>
-<button id="regn"><img src="regn.gif" height="100" ></button>
-<button id="sno"><img src="sno.gif" height="100" ></button>
+<button id="sol"><img src="sol.gif" height="200" ></button>
+<button id="regn"><img src="regn.gif" height="200" ></button>
+<button id="sno"><img src="sno.gif" height="200" ></button>
 
 </div>
 
 
-<p><input type="time"><button>legg til</button></p>
+
 
 
 
 <div>
-
-    <button id="resultatKnapp">resultat</button>
-
+    <button id="resultatKnapp">Resultat</button>
 </div>
 
 
 
 
 <div id="resultat">
-<h1>resultat</h1>
 
 
 <img id="jakke" height="200">
+<img id="ekstrajakke" height="200">
 <p id="tekst"></p>
 </div>
+
+    </div>
+
+
+
+
 
 
 
@@ -87,12 +129,13 @@
 
 <script>
 
-    let jakkeArray = ["tShirt.jpeg" ,"jeans.jpeg", "regnjakke.jpeg", "parka.jpg", "varmjakke.jpg" ]
+    let jakkeArray = ["tShirt.jpeg" ,"jeans.jpeg", "regnjakke.jpeg", "parka.jpg", "varmjakke.jpg", "tynndunjakke.jpeg" ];
     let tempKnapp = document.getElementById("tempKnapp");
 
 
     let tekst = document.getElementById("tekst");
     let jakke = document.getElementById("jakke");
+    let ekstrajakke = document.getElementById("ekstrajakke");
     let temperatur = document.getElementById("temperatur");
 
     let n = 0;
@@ -100,21 +143,25 @@
     let regn = document.getElementById("regn");
     let sno = document.getElementById("sno");
     let værArray = [sol, regn, sno];
+    let i;
 
 
     let resultatKnapp = document.getElementById("resultatKnapp");
 
 
     sol.onclick = function (){
-        n = 1
+        n = 1;
+        return;
     }
 
     regn.onclick = function(){
-        n = 2
+        n = 2;
+        return;
     }
 
     sno.onclick = function(){
-        n = 3
+        n = 3;
+        return;
     }
 
 
@@ -123,14 +170,79 @@
 
 
     resultatKnapp.onclick = function () {
+console.log(temperatur.value);
+console.log(n);
+        if (Number(temperatur.value) >= 15 ) {
 
-        if (Number(temperatur.value) > 20 )
+            if (n === 1) {
+                resultat(0, 0, "tskjorte", i);
 
-            if (n=1){
-                resultat(0, "tskjorte");
+            }
+            else if (n === 2) {
+                resultat(2, 0, "regnjakke", i);
+                console.log("hei");
+            }
+            else if (n === 3){
+                resultat(0, 0, 0, "nosno")
+            }
+
+        }
+
+
+        else if (Number(temperatur.value) < 15 && Number(temperatur.value) >= 10){
+            if (n === 1) {
+                resultat(1, 0, "jeansjakke", i);
+            }
+            else if (n === 2){
+                resultat(2, 0, "regnjakke", i);
+            }
+            else if (n === 3){
+
+                resultat(0, 0, 0, "nosno");
 
             }
 
+        }
+        else if (Number(temperatur.value) < 10 && Number(temperatur.value) >= 5){
+            if (n === 1){
+                resultat(5, 0, "tynn dunjakke", i)
+            }
+            else if (n === 2){
+                resultat(5, 2, "tynn dunjakke og regnjakke", "tojakker");
+            }
+            else if (n === 3){
+                resultat(5, 0, "tynn dunjakke", "nosno")
+            }
+        }
+
+
+
+        else if (Number(temperatur.value) < 5 && Number(temperatur.value) >= 0){
+            if (n === 1){
+                resultat(3, 0, "parka", i);
+            }
+            else if (n === 2){
+                resultat(3, 0, "vanntett parka", i);
+            }
+            else if (n === 3){
+                resultat(3, 0, "parka", i );
+            }
+        }
+        else if (Number(temperatur.value) < 0) {
+            if (n === 1) {
+                resultat(4, 0, "tykk dunjakke og solbriller", i);
+            }
+            else if (n === 2) {
+                resultat(0,0,0, "norain");
+            }
+            else if (n === 3){
+                resultat(4, 0, "tykkdunjakke", i);
+            }
+        }
+
+
+
+
 
     }
 
@@ -140,12 +252,38 @@
 
 
 
-    function resultat(tall, type) {
 
-        jakke.src = jakkeArray[tall];
-        tekst.innerHTML = `du bør bruke en ${type} i dag`;
+    function resultat(tall1, tall2, type, i) {
+
+        if (i === "nosno"){
+            jakke.src = "";
+            ekstrajakke.src = "";
+            tekst.innerHTML = `det pleier da ikke snø når det er ${temperatur.value} grader?`
+        }
+
+        else if (i === "norain"){
+            tekst.innerHTML = `det pleier da ikke regne når det er ${temperatur.value} grader?`
+            jakke.src = "";
+            ekstrajakke.src = "";
+        }
+
+        else if (i === "tojakker"){
+            jakke.src = jakkeArray[tall1];
+            ekstrajakke.src = jakkeArray[tall2];
+            tekst.innerHTML = `du bør bruke en ${type} i dag`;
+
+        }
+
+        else {
+
+            ekstrajakke.src = "";
+            jakke.src = jakkeArray[tall1];
+            tekst.innerHTML = `du bør bruke en ${type} i dag`;
+        }
 
     }
+
+
 </script>
 
 
