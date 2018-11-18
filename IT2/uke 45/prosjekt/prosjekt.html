@@ -10,10 +10,12 @@
         #overskrift{
             font-family: "Courier New";
             text-align: center;
-            font-size: 20px;
-            margin-bottom: 50px;
+            font-size: 50px;
+            margin-bottom: 0px;
             background-color: transparent;
             color: black;
+            margin-top: 0px;
+            padding: 20px;
 
         }
 
@@ -27,34 +29,52 @@
             z-index: -100;
         }
 
-        body{
-            font-family: "Courier New";
-        }
 
         .container {
             text-align: center;
-            font-family: "Courier New";
         }
 
+        #temperatur{
+            padding: 15px;
+            font-size: 25px;
+            font-family: "Courier New";
+            width: 320px;
+            text-align: center;
+
+
+        }
+
+
+
+        #værKnapper {
+            padding: 30px;
+        }
         #resultatKnapp {
             display: block;
             margin: auto;
             font-size: 18px;
             padding: 10px;
-            color: mediumvioletred;
+            color: blanchedalmond;
             cursor: pointer;
             background: black;
             font-family: "Courier New";
 
         }
-
-        #værKnapper {
-            padding: 30px;
-        }
-
         #tekst{
             font-family: "Courier New";
             text;
+        }
+
+        #resultat{
+            position: fixed;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            color: blanchedalmond;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            font-size: 30px;
+
         }
 
 
@@ -68,14 +88,13 @@
 <body>
 
 <video autoplay muted loop id="myVideo">
-    <source src="Rain.mp4" type="video/mp4">
+    <source src="værprosjekt.mp4" type="video/mp4">
 </video>
 
 <div id="overskrift">
-<h1>Det finnes ikke dårlig vær, bare dårlige klær</h1>
+    <img src="værlogo3.svg" height="100">
 
 
-<p>legg inn temperatur og vær. Så bestemmer vi klær</p>
 
 </div>
 
@@ -83,19 +102,18 @@
 
 <div class="container">
 
-<input type="number" id="temperatur" placeholder="skriv inn temperatur">
+<input type="number" id="temperatur" placeholder="skriv inn temperatur" >
 
 
 
 <div id="værKnapper">
-    <br>
 
-<button id="sol"><img src="sol.gif" height="200" ></button>
-<button id="regn"><img src="regn.gif" height="200" ></button>
-<button id="sno"><img src="sno.gif" height="200" ></button>
+
+<button id="sol"><img src="sun.png" height="100" ></button>
+<button id="regn"><img src="rain.png" height="100" ></button>
+<button id="sno"><img src="snow.png" height="100" ></button>
 
 </div>
-
 
 
 
@@ -110,13 +128,12 @@
 
 <div id="resultat">
 
-
 <img id="jakke" height="200">
 <img id="ekstrajakke" height="200">
 <p id="tekst"></p>
 </div>
 
-    </div>
+
 
 
 
@@ -217,7 +234,7 @@ console.log(n);
 
 
 
-        else if (Number(temperatur.value) < 5 && Number(temperatur.value) >= 0){
+        else if (Number(temperatur.value) < 5 && Number(temperatur.value) > 0){
             if (n === 1){
                 resultat(3, 0, "parka", i);
             }
@@ -228,7 +245,7 @@ console.log(n);
                 resultat(3, 0, "parka", i );
             }
         }
-        else if (Number(temperatur.value) < 0) {
+        else if (Number(temperatur.value) <= 0) {
             if (n === 1) {
                 resultat(4, 0, "tykk dunjakke og solbriller", i);
             }
@@ -245,9 +262,6 @@ console.log(n);
 
 
     }
-
-
-
 
 
 
