@@ -7,6 +7,12 @@
 
 
 
+        #lydKnapp{
+            margin-top: 0px;
+        }
+
+
+
         #overskrift{
             font-family: "Courier New";
             text-align: center;
@@ -14,7 +20,7 @@
             margin-bottom: 0px;
             background-color: transparent;
             color: black;
-            margin-top: 0px;
+            margin-top: -50px;
             padding: 20px;
 
         }
@@ -72,7 +78,7 @@
             color: blanchedalmond;
             width: 100%;
             padding: 20px;
-            text-align: center;
+            text-align: centerx;
             font-size: 30px;
 
         }
@@ -87,10 +93,18 @@
 </head>
 <body>
 
+
 <video autoplay muted loop id="myVideo">
     <source src="værprosjekt.mp4" type="video/mp4">
 </video>
 
+
+
+<audio autoplay muted loop id="lyd">
+    <source src="værprosjektlyd.mp3" type="audio/mp3">
+</audio>
+
+<button id="lydKnapp"><img id="lydBilde" src="mute.png"></button>
 <div id="overskrift">
     <img src="værlogo3.svg" height="100">
 
@@ -159,26 +173,41 @@
     let sol = document.getElementById("sol");
     let regn = document.getElementById("regn");
     let sno = document.getElementById("sno");
-    let værArray = [sol, regn, sno];
     let i;
+    let lyd = document.getElementById("lyd");
+    let lydbilde = document.getElementById("lydBilde");
+    let lydKnapp = document.getElementById("lydKnapp")
 
+
+
+    lydKnapp.onclick = function(){
+
+
+        if (myVideo.muted === true){
+            myVideo.muted = false;
+            lydbilde.src = "sound.png"
+
+        }
+        else if (myVideo.muted === false){
+            myVideo.muted = true;
+            lydbilde.src = "mute.png";
+        }
+    }
 
     let resultatKnapp = document.getElementById("resultatKnapp");
 
 
     sol.onclick = function (){
         n = 1;
-        return;
+
     }
 
     regn.onclick = function(){
         n = 2;
-        return;
     }
 
     sno.onclick = function(){
         n = 3;
-        return;
     }
 
 
@@ -189,7 +218,11 @@
     resultatKnapp.onclick = function () {
 console.log(temperatur.value);
 console.log(n);
-        if (Number(temperatur.value) >= 15 ) {
+        if (temperatur.value === ""){
+
+        }
+
+        else if(Number(temperatur.value) >= 15 && Number(temperatur.value) <= 50 ) {
 
             if (n === 1) {
                 resultat(0, 0, "tskjorte", i);
@@ -245,7 +278,7 @@ console.log(n);
                 resultat(3, 0, "parka", i );
             }
         }
-        else if (Number(temperatur.value) <= 0) {
+        else if (Number(temperatur.value) <= 0 && Number(temperatur.value) >= -60) {
             if (n === 1) {
                 resultat(4, 0, "tykk dunjakke og solbriller", i);
             }
@@ -253,9 +286,18 @@ console.log(n);
                 resultat(0,0,0, "norain");
             }
             else if (n === 3){
-                resultat(4, 0, "tykkdunjakke", i);
+                resultat(4, 0, "tykk dunjakke", i);
             }
         }
+
+        else if(Number(temperatur.value) > 50) {
+            jakke.src = "";
+            ekstrajakke.src = "";
+            tekst.innerHTML = `feilmelding: urealistisk temperatur`;
+        }
+
+
+
 
 
 
@@ -296,6 +338,7 @@ console.log(n);
         }
 
     }
+
 
 
 </script>
