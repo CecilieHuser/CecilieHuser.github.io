@@ -8,7 +8,21 @@
 
 
         #lydKnapp{
+            margin-top: 15px;
+        }
+
+        nav{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            font-family: "Courier New";
+            background-color: black;
             margin-top: 0px;
+            text-align: center;
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
         }
 
 
@@ -20,10 +34,13 @@
             margin-bottom: 0px;
             background-color: transparent;
             color: black;
-            margin-top: -50px;
+            margin-top: -10px;
             padding: 20px;
 
         }
+
+
+
 
         #myVideo {
             position: fixed;
@@ -51,10 +68,37 @@
         }
 
 
-
         #værKnapper {
             padding: 30px;
         }
+
+
+        #værKnapper button:hover{
+
+            background-color: #ddd;
+        }
+
+        #værKnapper button {
+
+
+            background-color: inherit;
+            float: center;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+
+
+        }
+
+        #værKnapper button.active {
+            background-color: #ccc;
+        }
+
+
+
+
         #resultatKnapp {
             display: block;
             margin: auto;
@@ -84,6 +128,9 @@
         }
 
 
+
+
+
     </style>
 
 
@@ -104,11 +151,22 @@
     <source src="værprosjektlyd.mp3" type="audio/mp3">
 </audio>
 
-<button id="lydKnapp"><img id="lydBilde" src="mute.png"></button>
+
+
+<nav >
+    <a><button id="lydKnapp"><img id="lydBilde" src="mute.png"></button></a>
+    <a href="prosjekt.html"><h1>klærmaskinen</h1></a>
+    <a href="værsang.html"><h1>vær setning</h1></a>
+
+</nav>
+
+
+
+
+
+
 <div id="overskrift">
     <img src="værlogo3.svg" height="100">
-
-
 
 </div>
 
@@ -133,6 +191,8 @@
 
 
 
+
+
 <div>
     <button id="resultatKnapp">Resultat</button>
 </div>
@@ -142,8 +202,8 @@
 
 <div id="resultat">
 
-<img id="jakke" height="200">
-<img id="ekstrajakke" height="200">
+<img id="jakke" height="100">
+<img id="ekstrajakke" height="100">
 <p id="tekst"></p>
 </div>
 
@@ -155,10 +215,7 @@
 
 
 
-
-
-
-<script>
+    <script>
 
     let jakkeArray = ["tShirt.jpeg" ,"jeans.jpeg", "regnjakke.jpeg", "parka.jpg", "varmjakke.jpg", "tynndunjakke.jpeg" ];
     let tempKnapp = document.getElementById("tempKnapp");
@@ -176,7 +233,7 @@
     let i;
     let lyd = document.getElementById("lyd");
     let lydbilde = document.getElementById("lydBilde");
-    let lydKnapp = document.getElementById("lydKnapp")
+    let lydKnapp = document.getElementById("lydKnapp");
 
 
 
@@ -218,6 +275,8 @@
     resultatKnapp.onclick = function () {
 console.log(temperatur.value);
 console.log(n);
+
+
         if (temperatur.value === ""){
 
         }
@@ -297,13 +356,9 @@ console.log(n);
         }
 
 
-
-
-
-
-
-
     }
+
+
 
 
 
@@ -341,7 +396,33 @@ console.log(n);
 
 
 
-</script>
+
+    var sitater = ["det finnes ikke dårlig vær bare dårlig klær", "ho ho", "når er det jul", "party"];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
 
 
 
