@@ -147,9 +147,6 @@
 
 
 
-<audio autoplay muted loop id="lyd">
-    <source src="værprosjektlyd.mp3" type="audio/mp3">
-</audio>
 
 
 
@@ -353,6 +350,13 @@ console.log(n);
             jakke.src = "";
             ekstrajakke.src = "";
             tekst.innerHTML = `feilmelding: urealistisk temperatur`;
+        }
+        else if (Number(temperatur.value) < -50){
+            jakke.src = "";
+            ekstrajakke.src = "";
+            tekst.innerHTML = `feilmelding: urealistisk temperatur`;
+
+
         }
 
 
