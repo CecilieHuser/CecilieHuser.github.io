@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<ul id="filmListe">
+
+</ul>
+
+
+
+
+<script>
+
+    let filmListe = document.querySelector("#filmListe");//queryselector kan hente ut tag ved å skrive "ul", id ved "#" og class ved "."
+    //gjør det samme som document.getElementById(filmliste)
+
+    let filmer = ["Ben Hur", "Shawshank Redemption", "Hunger games"];
+
+
+
+    /*
+
+    for (let film of filmer){
+        let nyttElement = document.createElement("li");
+        nyttElement.innerHTML = film;
+        filmListe.appendChild(nyttElement);
+
+    }
+
+*/
+
+
+
+
+
+
+
+//metoder til array
+
+    filmer.push("Fosters"); //legger til elementet bakerst i arrayen
+    filmer.unshift("spiderman");//legger til element først i arrayen
+    filmer.pop();//fjerne siste elementet
+    filmer.shift();//fjerne det første elementet
+    filmer.splice(1,1)//det første man skriver i parantesen er nummeret man ønsker å starte å fjerne på
+    filmer.splice(2,2, "blade runner", "blade runner 2"); // erstatte de du fjerner med nye filmer
+    filmer.splice(2,0, "nyFilm");//legg til ny film uten å fjerne noe
+
+
+    for (let film of filmer){//brukes hvis man skal skrive alt i et array f.eks, teller for løkke brukes hvis du må ha et spesifikt tall
+        filmListe.innerHTML += `<li> ${film}</li>`
+    }
+
+
+
+</script>
+
+</body>
+</html>
