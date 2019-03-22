@@ -12,13 +12,17 @@
         #snake{
             display: grid;
             text-align: center;
+            color: #4CAF50;
 
         }
 
         #meny{
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr ;
+            grid-template-columns: 1fr 1fr;
             text-align: center;
+            padding: 20px;
+
+
         }
         #gameOn{
             position: absolute;
@@ -30,25 +34,43 @@
             font-size: 50px;
         }
 
+        #play{
+            font-family: "American Typewriter";
+            padding: 20px;
+            font-size: 40px;
+            background-color: white;
+        }
+        #remove{
+            font-family: "American Typewriter";
+            padding: 5px;
+            color: white;
+            background-color: black;
+        }
+
 
 
     </style>
 </head>
 <body>
 
-<h1 id="snake">snake</h1>
+<h1 id="snake">SNAKE</h1>
 
 <div id="meny">
-    <button id="play">play</button>
-    <h3 id="points">poeng</h3>
-    <h3 id="highscore">highscore:</h3>
+    <a id="points">points</a>
+    <div>
+        <a id="highscore"> highscore: </a>
+        <button id="remove">remove</button>
+    </div>
+
+
+
 </div>
 
 <canvas id="canvas" height="600" width="1420"></canvas>
 
 <div id="gameOn">
     <h3>GAME OVER!</h3>
-    <p>press play!</p>
+    <button id="play">PLAY</button>
 
 </div>
 
@@ -64,6 +86,7 @@
     let highscore = document.querySelector("#highscore");
     let gameOn = document.querySelector("#gameOn");
     let play = document.querySelector("#play");
+    let remove = document.querySelector("#remove");
 
     //globale variabler
 
@@ -242,8 +265,8 @@
             }
 
             //når en ny slangeboks er lagt til flytter matboksen seg til et nytt tifeldig sted
-            mat.xpos = Math.floor(Math.random()*bane.bredde);
-            mat.ypos = Math.floor(Math.random()*bane.hoyde);
+            mat.xpos = Math.floor(Math.random()*(bane.bredde-mat.side));
+            mat.ypos = Math.floor(Math.random()*(bane.hoyde-mat.side));
 
         }
 
@@ -281,7 +304,7 @@
     //funksjon som legger til poengene i html elementet "poeng"
     function leggTilPoeng(){
 
-        points.innerHTML = `poeng: ${poeng}`
+        points.innerHTML = `points: ${poeng}`
 
     }
 
@@ -371,6 +394,9 @@
             location.reload();
         }
     }
+
+
+
 
 
 
