@@ -5,47 +5,75 @@
     <title>Title</title>
     <style>
 
-
-        div{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        body{
+            font-family: "American Typewriter";
         }
+
+        #snake{
+            display: grid;
+            text-align: center;
+
+        }
+
+        #meny{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr ;
+            text-align: center;
+        }
+        #gameOn{
+            position: absolute;
+            top: 40%;
+            left: 35%;
+            opacity: 0;
+            color: red;
+            text-align: center;
+            font-size: 50px;
+        }
+
 
 
     </style>
 </head>
 <body>
 
+<h1 id="snake">snake</h1>
 
-
-<div>
-    <h1>poeng</h1>
-    <button>start</button>
+<div id="meny">
+    <button id="play">play</button>
+    <h3 id="points">poeng</h3>
+    <h3 id="highscore">highscore:</h3>
 </div>
 
-<canvas id="canvas" height="600" width="1200"></canvas>
+<canvas id="canvas" height="600" width="1420"></canvas>
 
+<div id="gameOn">
+    <h3>GAME OVER!</h3>
+    <p>press play!</p>
 
+</div>
 
 
 
 
 <script>
-
-
     //referer til html elementer
     const canvas = document.querySelector("#canvas");
     const ctx = canvas.getContext("2d");
     let theGameIsOn = true;
+    let points = document.querySelector("#points");
+    let highscore = document.querySelector("#highscore");
+    let gameOn = document.querySelector("#gameOn");
+    let play = document.querySelector("#play");
 
     //globale variabler
 
     let fart = 2;
-    let boksHoyde = 20;
-    let boksBredde = 20;
+    let boksSide = 40;
     let farge = "green";
-    //poeng teller
+
+    //teller
     let poeng = 0;
+
 
     let bane = {
         bredde: canvas.width,
@@ -54,14 +82,34 @@
     };
 
     let mat = {
-        bredde: 20,
-        hoyde: 20,
+        side: 40,
         farge: "red",
         xpos: Math.floor(Math.random()*(bane.bredde - 40)),
         ypos: Math.floor(Math.random()*(bane.hoyde - 40))
     };
 
     let slange = [];
+
+    //bilder:
+
+    //eple bildet
+    let epleBilde = new Image();
+    epleBilde.src = "apple.png";
+
+    //slangeskinnet bildet
+    let slangeSkinn = new Image();
+    slangeSkinn.src = "snakeskin.jpg";
+
+    //bakgrunnsbilde
+    let bakgrunn = new Image();
+    bakgrunn.src = "bakgrunn.jpg";
+
+
+    //setter highscoren til 0 helt i starten
+    if (localStorage.rekord === undefined){
+        localStorage.rekord = 0;
+    }
+    highscore.innerHTML = "Highscore: " + localStorage.rekord;
 
 
 
@@ -78,10 +126,9 @@
         tegnBane();
         tegnMat();
         sjekkMat();
+        leggTilPoeng();
         tegnSlange();
-        sjekkTreffSegSelv();
-        sjekkUtenfor();
-
+        sjekkGameOver();
         if (theGameIsOn){
             requestAnimationFrame(gameLoop);
         }
@@ -94,15 +141,13 @@
     //tegner bane
     function tegnBane() {
         ctx.fillStyle = bane.farge;
-        ctx.fillRect(0,0,bane.bredde, bane.hoyde);
+        ctx.drawImage(bakgrunn,0,0,bane.bredde, bane.hoyde);
     }
 
 
     //tegner mat
     function tegnMat(){
-        ctx.fillStyle = mat.farge;
-        ctx.fillRect(mat.xpos, mat.ypos, mat.bredde, mat.hoyde)
-
+        ctx.drawImage(epleBilde, mat.xpos, mat.ypos, mat.side, mat.side)
     }
 
     //looper gjennom slangen sine bokser og endrer x og y posisjonen deres slik at de flytter på seg
@@ -120,7 +165,7 @@
 
         for (let boks of slange) {
             ctx.fillStyle = farge;
-            ctx.fillRect(boks.xpos, boks.ypos, boksBredde, boksHoyde);
+            ctx.drawImage(slangeSkinn,boks.xpos, boks.ypos, boksSide, boksSide);
         }
 
         //får boksen til å endre retning slik som den første boksen gjør
@@ -165,31 +210,35 @@
     //sjekker om den første boksen er innenfor matboksen og hvis den er det lager den en boks bakerst i rekken.
     // hvis den siste boksen beveger seg loddrett
     function sjekkMat(){
-        if ((slange[0].xpos > mat.xpos - 20 && slange[0].xpos < mat.xpos + 20) && (slange[0].ypos > mat.ypos - 20 && slange[0].ypos < mat.ypos+20)) {
+        if ((slange[0].xpos > mat.xpos - boksSide && slange[0].xpos < mat.xpos + mat.side) && (slange[0].ypos > mat.ypos - boksSide && slange[0].ypos < mat.ypos + mat.side)) {
 
             //legger til et poeng i poeng telleren for hver gang man treffer en matbit
             poeng += 1;
+            if (poeng > localStorage.rekord){
+                localStorage.rekord = poeng;
+                highscore.innerHTML = "highscore:" + poeng;
+            }
 
             //hvis bakerste beveger seg oppover
             if (slange[slange.length-1].yretning === -1) {
                 //lages en boks som plasseres under med lik xpos som boksen over og ypos 20 unna ypos til boksen foran avhengig av retningen til boksen foran, med retning oppover
-                lagBoks(slange[slange.length-1].xpos, slange[slange.length-1].ypos+20,0,-1)
+                lagBoks(slange[slange.length-1].xpos, slange[slange.length-1].ypos+boksSide,0,-1)
 
             }
             //hvis bakerste beveger seg nedover
             else if(slange[slange.length-1].yretning === 1){
                 //lages en boks som plasseres over bakerste boks med retning nedover
-                lagBoks(slange[slange.length-1].xpos , slange[slange.length-1].ypos-20,0,1)
+                lagBoks(slange[slange.length-1].xpos , slange[slange.length-1].ypos-boksSide,0,1)
             }
             //hvis bakerste beveger seg left
             else if(slange[slange.length-1].xretning === -1){
                 //lages en boks som plasseres til høyre med retning mot venstre
-                lagBoks(slange[slange.length-1].xpos+20, slange[slange.length-1].ypos,-1,0)
+                lagBoks(slange[slange.length-1].xpos+boksSide, slange[slange.length-1].ypos,-1,0)
             }
             //hvis bakerste beveger seg right
             else if(slange[slange.length-1].xretning === 1){
                 //lages en boks som plasseres til venstre med retning mot høyre
-                lagBoks(slange[slange.length-1].xpos-20, slange[slange.length-1].ypos,1,0)
+                lagBoks(slange[slange.length-1].xpos-boksSide, slange[slange.length-1].ypos,1,0)
             }
 
             //når en ny slangeboks er lagt til flytter matboksen seg til et nytt tifeldig sted
@@ -201,28 +250,42 @@
     }
 
     //sjekker om slangen treffer sin egen kropp
-    function sjekkTreffSegSelv() {
+    function sjekkGameOver() {
 
         //looper gjennom alle boksene i slangen og sjekker om den første boksen treffer noen av de andre boksene. dersom den gjør det blir gameIsOn lik false
         for (let i = 2; i < slange.length; i++){
-            if ((slange[0].xpos > slange[i].xpos - 20 && slange[0].xpos < slange[i].xpos + 20) && (slange[0].ypos > slange[i].ypos - 20 && slange[0].ypos < slange[i].ypos+20)){
-                theGameIsOn = false
+            if ((slange[0].xpos > slange[i].xpos - boksSide && slange[0].xpos < slange[i].xpos + boksSide) && (slange[0].ypos > slange[i].ypos - boksSide && slange[0].ypos < slange[i].ypos+boksSide)){
+                gameOver()
             }
 
         }
-
-    }
-
-    function sjekkUtenfor() {
-
-        if (slange[0].xpos < 0 || slange[0].xpos > bane.bredde - 20 || slange[0].ypos < 0 || slange[0].ypos > bane.hoyde-20){
-            theGameIsOn = false
+        if (slange[0].xpos < 0 || slange[0].xpos > bane.bredde - boksSide || slange[0].ypos < 0 || slange[0].ypos > bane.hoyde-boksSide){
+            gameOver()
         }
-    }
-
-    if (theGameIsOn === false) {
 
     }
+
+
+    //alt som skjer når game over
+    function gameOver() {
+        theGameIsOn = false;
+        gameOn.style.opacity = 1;
+
+
+    }
+
+
+
+
+
+    //funksjon som legger til poengene i html elementet "poeng"
+    function leggTilPoeng(){
+
+        points.innerHTML = `poeng: ${poeng}`
+
+    }
+
+
 
 
 
@@ -238,7 +301,7 @@
             if (event.code === "ArrowUp") {
 
                 //hvis første boks er innenfor boksen bak sine xpos endres IKKE retningen
-                if (slange[0].xpos > slange[1].xpos-20 && slange[0].xpos < slange[1].xpos+20) {
+                if (slange[0].xpos > slange[1].xpos-boksSide && slange[0].xpos < slange[1].xpos+boksSide) {
 
                 }
 
@@ -255,7 +318,7 @@
             else if (event.code === "ArrowDown") {
 
                 //hvis første boks er innenfor boksen bak sine xpos endres IKKE retningen
-                if (slange[0].xpos > slange[1].xpos-20 && slange[0].xpos < slange[1].xpos+20) {
+                if (slange[0].xpos > slange[1].xpos-boksSide && slange[0].xpos < slange[1].xpos+boksSide) {
                 }
 
                 //hvis første boksen beveger seg i motsatt retning av pilen du trykker på endres IKKE retningen
@@ -271,7 +334,7 @@
             }
             else if (event.code === `ArrowRight`) {
                 //hvis første boks er innenfor boksen bak sine ypos endres IKKE retningen
-                if (slange[0].ypos > slange[1].ypos-20 && slange[0].ypos < slange[1].ypos+20) {
+                if (slange[0].ypos > slange[1].ypos-boksSide && slange[0].ypos < slange[1].ypos+boksSide) {
                 }
                 //hvis første boksen beveger seg i motsatt retning av pilen du trykker på endres IKKE retningen
                 else if (slange[0].xretning === -1){
@@ -285,10 +348,10 @@
             }
             else if (event.code === `ArrowLeft`) {
                 //hvis første boks er innenfor boksen bak sine ypos endres IKKE retningen
-                if (slange[0].ypos > slange[1].ypos-20 && slange[0].ypos < slange[1].ypos+20) {
+                if (slange[0].ypos > slange[1].ypos-boksSide && slange[0].ypos < slange[1].ypos+boksSide) {
                 }
                 //hvis første boksen beveger seg i motsatt retning av pilen du trykker på endres IKKE retningen
-                else if (slange[0].xretning === 1 || (slange[0].ypos > slange[1].ypos -20 && slange[0].ypos < slange[1].ypos + 20)){
+                else if (slange[0].xretning === 1 || (slange[0].ypos > slange[1].ypos -boksSide && slange[0].ypos < slange[1].ypos + boksSide)){
                     slange[0].xretning = 1;
                 }
                 //ellers endres retningen til den første boksen til retningen av pilen du trykker på
@@ -299,6 +362,18 @@
 
             }
     }
+
+
+
+
+    play.onclick = function() {
+        if (!theGameIsOn) {
+            location.reload();
+        }
+    }
+
+
+
 
 
 

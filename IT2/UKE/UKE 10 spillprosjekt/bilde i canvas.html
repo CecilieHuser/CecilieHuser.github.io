@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+
+
+
+
+<body>
+
+
+<canvas id="canvas" width="1000" height="1000"></canvas>
+
+
+<script>
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+
+    let bilde = new Image;
+    bilde.src = "https://www.bohus.no/mediabank/store/3/33020/BH_Frilegging_19517013_l.jpg";
+
+    //ctx.fillrect(10,10,50,60)
+    ctx.drawImage(bilde,20,20,200,200);
+
+
+
+    //tiden
+
+    let startTid = new Date; //global variabel som henter datoen når siden lastes
+    let startSekund = starTid.getTime(); //henter ut tiden i sekunder
+    console.log(startSekund);
+
+    function gameloop() {
+
+        let frameDato = new Date; //lokal variabel som henter datoen i det framen kjører
+        let frameSekund = frameDato.getTime(); //henter ut tiden i sekunder
+
+        let tidPassert = (frameSekund-startSekund/1000); //tid som
+        console.log(tidpassert.toFixed(0)); //
+        requestAnimationFrame(gameloop)
+    }
+</script>
+
+</body>
+</html>
