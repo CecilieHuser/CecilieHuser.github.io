@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tilfeldig person i berg og dalbanen</title>
+</head>
+<body>
+
+
+
+
+
+
+
+
+<button id="knapp">Ny tilfeldig person</button>
+
+<p id="resultat"></p>
+
+<img id="bilde">
+
+
+
+
+
+
+<script>
+    let knapp = document.getElementById("knapp");
+    let resultat = document.getElementById("resultat");
+    let bilde = document.getElementById("bilde");
+
+
+
+    knapp.onclick = function () {
+
+        let alder = Math.floor(Math.random()*70+1);
+        
+        if (alder < 15){
+
+            resultat.innerHTML = "Ikke for smårollinger, minst 15 år!";
+            bilde.src = "bilder/ung.jpg";
+            
+        }
+        else if (alder > 60){
+
+            resultat.innerHTML = "Ikke for gamlinger, maks 60 år!"
+            bilde.src = "bilder/gammel.jpg"
+
+        }
+
+        else {
+
+            resultat.innerHTML = alder + "år! Gratulerer, du er akkurat passe gammel!"
+            bilde.src = "bilder/passe.jpg"
+        }
+        
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

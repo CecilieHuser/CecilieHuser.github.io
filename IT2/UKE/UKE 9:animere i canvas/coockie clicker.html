@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie</title>
+    <style>
+
+
+
+
+        img{
+
+            position: absolute;
+        }
+
+
+
+    </style>
+
+
+
+</head>
+<body>
+
+
+
+<img src="cookie.png" id="cookie" height="200">
+
+<h1 id="tall"></h1>
+
+
+
+<script>
+
+    //referanser til HTML-elementer
+    let cookie = document.querySelector("#cookie");
+    let tall = document.querySelector("#tall");
+
+    //globale variabler
+    let poeng = 0;
+
+    //
+    tall.innerHTML = Number(poeng);
+
+    //Setup
+    gameLoop();
+
+
+    //hendelseslyttere
+    //cookie.onclick = gameLoop;
+
+
+    //funksjonsdefinisjoner
+    function gameLoop() {
+        merPoeng();
+        flyttKjeks();
+
+        //rekursivt funksjonskall med delay
+        if (poeng <= 100) {
+            requestAnimationFrame(gameLoop);
+        }
+    }
+
+
+    function merPoeng() {
+        poeng += 1;
+        tall.innerHTML = poeng;
+    }
+
+    function flyttKjeks() {
+        let x = Math.random()*(window.innerWidth-150);
+        let y = Math.random()*(window.innerHeight-150);
+        cookie.style.left = x + "px";
+        cookie.style.top = y + "px";
+    }
+
+
+
+
+</script>
+
+
+</body>
+</html>

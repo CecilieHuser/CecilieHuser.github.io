@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hjelpe app</title>
+</head>
+
+<style>
+    body{
+        text-align: center;
+        font-family: Avenir;
+    }
+
+
+    h1{
+        font-size: 50px;
+        color: #0d99a5;
+    }
+
+    .inpFelt, #sendInn{
+        font-size: 30px;
+        padding: 20px;
+        text-align: center;
+
+    }
+
+
+
+    table{
+        margin: auto;
+        margin-top: 100px;
+        text-align: center;
+    }
+
+    th {
+        width: 300px;
+        background-color: #0d99a5;
+    }
+
+    #fjern{
+        background-color: white;
+        color: #0d99a5;
+        border: none;
+        font-size: 30px;
+        font-family: Avenir;
+    }
+
+
+
+
+
+
+
+
+</style>
+
+
+
+
+<body>
+
+<h1>Trenger du Hjelp?</h1>
+
+<input class="inpFelt" placeholder="navn" id="hvem">
+<input class="inpFelt" placeholder="beskjed" id="hva">
+<button id="sendInn">send inn</button>
+
+
+
+<table id="tabell">
+
+</table>
+
+
+<script>
+
+    let hjelpArray = [];
+    let sendInn = document.querySelector("#sendInn");
+    let hvem = document.querySelector("#hvem");
+    let hva = document.querySelector("#hva");
+    let tabell = document.querySelector("#tabell");
+
+    sendInn.onclick = function() {
+        
+        if (hvem.value === ""){
+
+        }
+        else if (hva.value === ""){
+
+        }
+
+
+        else {
+
+            hjelpArray.push({
+                navn: hvem.value,
+                beskjed: hva.value,
+                fjern: "<button>" + "x" + "</button>"});
+
+
+            console.log(hjelpArray);
+            tabell.innerHTML =
+                `<tr>
+                <th>navn:</th>
+                <th>trenger hjelp med:</th>
+            </tr>`;
+
+            for (let i = 0; i < hjelpArray.length; i++) {
+
+                tabell.innerHTML += `
+            <tr>
+                <td>${hjelpArray[i].navn}</td>
+                <td>${hjelpArray[i].beskjed}</td>
+                <td>${hjelpArray[i].fjern}</td>
+            </tr>`;
+
+
+
+            }
+            hvem.value = "";
+            hva.value = "";
+
+        }
+
+    }
+
+    for (let m = 0; m<hjelpArray.length; m++){
+
+
+
+
+
+
+    }
+
+    function slett(linje) {
+
+        hjelpArray.splice(linje,1)
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

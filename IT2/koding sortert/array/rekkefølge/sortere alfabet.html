@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="liste"></ul>
+
+
+
+
+<script>
+
+    let array = ["Anna", "dina", "Bianca", "caroline"];
+    let liste = document.querySelector("#liste");
+
+
+
+
+
+    function sortere(string1, string2) {
+
+        string1 = string1.toLowerCase();
+        string2 = string2.toLowerCase();
+        if (string1 <= string2) {
+        return -1
+        }
+    }
+
+    array.sort(sortere);
+
+
+
+    for (let navn of array){
+        let nyttElement = document.createElement("li");
+        nyttElement.innerHTML = navn;
+        liste.appendChild(nyttElement);
+    }
+
+
+
+
+</script>
+
+</body>
+</html>

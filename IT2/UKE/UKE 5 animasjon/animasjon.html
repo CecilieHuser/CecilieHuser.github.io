@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animasjon</title>
+    <style>
+
+        .container{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-30%);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 700px;
+            grid-gap: 25px;
+        }
+        .container>.city>img{
+            width: 100%;
+        }
+
+        .container>.city{
+            transition: 0.2s 0.3s;/*0.2 overgang, og 0.3s delay!*/
+            position: relative;
+
+        }
+        .container>.city:hover{
+            transform: scale(1.2); /*klassen city blir 40% større så stor når man hovrer over den!*/
+        }
+        .container>.city>p{
+            position: absolute;/* !*/
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            font-size: 30px;
+            color: black;
+            background-color: white;
+            font-family: unset;
+
+        }
+        .container>.city:hover>p{
+            opacity: 1;
+        }
+        .container>.city>p{
+            transition: 0.2s 0.3s;
+        }
+        .container>.city:hover>img{
+        }
+
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="city">
+        <img src="nyc.jpeg" alt="bilde av en New York">
+        <p>NYC</p>
+    </div>
+
+    <div class="city">
+        <img  src="tokyo.jpeg" alt="bilde av en tokyo">
+        <p>Tokyo</p>
+    </div>
+
+    <div class="city">
+        <img src="city3.jpeg" alt="bilde av paris">
+        <p>Paris</p>
+    </div>
+
+</div>
+
+</body>
+</html>

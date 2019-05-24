@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+
+
+    <style>
+
+        #main{
+            text-align: center;
+            bottom: 50px;
+            font-family: AppleGothic;
+        }
+
+        #knapper{
+            position: absolute;
+            grid-template-columns: 1fr 1fr;
+            display: grid;
+            grid-gap: 315px;
+            top: 250px;
+        }
+        .knapp{
+            padding: 15px;
+            font-size: 20px;
+            font-family: Serif;
+            background: none;
+            border: none;
+            color: darkred;
+
+        }
+        #boks{
+            font-family: AppleGothic;
+            position: absolute;
+            left: 500px;
+            width: 400px;
+
+        }
+        #tekstboks{
+            height: 150px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+
+<div id="main">
+<h1>Om tilløp i et spydkast</h1>
+<B>Et spydkast i en konkurranse gjennom føres i 4 faser, der hver fase er en forberedelse til selve kastet når spydet flyr gjennom luften.</B>
+</div>
+
+
+<div id="boks">
+    <br>
+    <br>
+    <br>
+    <img id="slide" src="Vedlegg_heldagsMaiFredag/1_vanlig_lop_400.jpg">
+    <div id="tekstboks">
+        <p id="tekst"></p>
+    </div>
+    <div id="knapper">
+        <button class="knapp" id="tilbake"><</button>
+
+        <button class="knapp" id="neste">></button>
+    </div>
+</div>
+
+<script>
+    //referanser til HTML elementer
+    let slide = document.querySelector("#slide");
+    let neste = document.querySelector("#neste");
+    let tilbake = document.querySelector("#tilbake");
+    let tekst = document.querySelector("#tekst");
+
+
+    //globale variabler
+    let i = 0;
+
+    //arrayer
+    //bildearray
+    let bildeArray = ["Vedlegg_heldagsMaiFredag/1_vanlig_lop_400.jpg", "Vedlegg_heldagsMaiFredag/2_tilbakeforing_400.jpg", "Vedlegg_heldagsMaiFredag/3_kryssteg_400.jpg", "Vedlegg_heldagsMaiFredag/4_utkast_400.jpg" ]
+
+    //tekstarray
+    let tekstArray = [
+        `<B>Fase 1: Løp</B><p>Først har spydkasteren vanligvis spydet i hvileposisjon før han setter i gang med å løpe. Her er målet å skape energi i form av bevegelse.</p>`,
+        `<B>Fase 2: Tilbakeføring</B><p>Spydkasteren fører spydet bak kroppen for å gjøre spydet klart til kast. Målet er å gjøre spydet klart for avgang i siste fase.</p>`,
+        `<B>Fase 3: Krysstegfasen</B><p>Spydkasteren løper i kryssteg for å få riktig rytme i kastet og komme i posisjon med det som kalles stembeinet (beinet han står på når han kaster i fase 4).</p>`,
+        `<B>Fase 4: Utkast</B><p>Spydkasteren setter stembeinet i bakken og lar spydet fly gjennom lufta ved å overføre energien fra de foregående bevegelsene til spydet. I denne fasen kan spydet akselerere fra 25 km/t til 110 km/t i løpet av 12/100 sekund hos de beste kasterne i verden. Trykket på stambeinet er ca. ti ganger kroppsvekten.</p>`
+    ]
+
+
+    //starter
+    tekst.innerHTML = tekstArray[i];
+
+
+
+
+
+
+
+//hendelsesfunksjoner
+
+    //slideshow, tekst og bilde
+    neste.onclick = function () {
+        i++;
+
+        if (i === bildeArray.length){
+            i = 0
+        }
+        slide.src = bildeArray[i];
+
+        tekst.innerHTML = tekstArray[i]
+
+    };
+
+    tilbake.onclick = function () {
+        i--;
+        if (i < 0){
+            i=bildeArray.length-1
+        }
+        slide.src = bildeArray[i];
+
+        tekst.innerHTML = tekstArray[i]
+
+    }
+
+
+</script>
+
+
+
+
+</body>
+</html>

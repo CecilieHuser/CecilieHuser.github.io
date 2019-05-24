@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<input type="text" id="inputFelt">
+
+
+<script>
+
+
+    const inputfelt = document.getElementById("inputFelt"); //global variabel, kan brukes inni funksjoner
+
+
+    let hei = "denne er global"; // denne variabelen er global
+
+    function eksempel() {
+
+        let hei = "hallo der"; //lokal variabel
+        document.write(hei)
+    }
+
+    //eksempel(); //funkjsonskall
+
+
+
+    document.write(hei); // feilmelding fordi variabelen hei er lokal inne i funksjonen
+
+    minFarge.oninput = function () {
+        document.body.style.backgroundColor = minFarge.value; //anonym funksjon
+    }
+
+
+</script>
+
+
+
+</body>
+</html>

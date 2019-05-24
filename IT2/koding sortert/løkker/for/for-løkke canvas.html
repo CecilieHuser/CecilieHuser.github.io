@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for-løkke</title>
+
+
+    <style>
+
+        canvas{
+
+            border-style: solid;
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+<canvas id="canvas" width="400" height="400"></canvas>
+
+<script>
+
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    ctx.beginPath();
+    ctx.arc(50,50, 25, 0, Math.PI * 2); // lager (x-koordinat, y-koordinat, radius, startvinkelen)
+    ctx.fill();
+
+
+    for (var i = 0; i < 10; i++){
+
+
+        var x = Math.random()*innerHeight;
+        var y = Math.random()*innerWidth;
+
+        ctx.fillStyle = getRandomColor();
+        ctx.beginPath();
+        ctx.arc(x,y, 25, 0, Math.PI * 2); // lager (x-koordinat, y-koordinat, radius, startvinkelen)
+        ctx.fill();
+
+    }
+
+
+    function getRandomColor() {
+
+        let letters = "0123456789ABCDEF"; //alle tegn i HEX fargekode
+        let color = "#";
+        for (let i=0; i<6;){
+
+
+        }
+
+    }
+
+</script>
+
+
+
+
+</body>
+</html>

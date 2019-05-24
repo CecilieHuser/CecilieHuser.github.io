@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+        @keyframes slide {
+            0%{left: 500px}
+            3%{left: 0px}
+            33%{left: 0px}
+            36%{left: -500px}
+            66%{left: -500px}
+            69%{left: -1000px}
+            100%{left: -1000px}
+        }
+
+
+        #ramme{
+            position: absolute;
+            display: grid;
+            height: 647px;
+            width: 500px;
+            overflow: hidden;
+        }
+        #bilde{
+            grid-template-columns: 1fr 1fr 1fr;
+            display: grid;
+            position: absolute;
+            animation: slide 10s infinite;
+            transition: 2s;
+        }
+
+
+    </style>
+
+
+
+</head>
+<body>
+
+
+
+
+
+
+<div id="ramme">
+    <div id="bilde">
+        <div>
+            <img src="NY.jpeg">
+
+        </div>
+        <div>
+            <img src="japan.jpeg">
+        </div>
+        <div>
+            <img src="london.jpeg">
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

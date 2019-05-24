@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>albumoftheyear2</title>
+
+
+    <style>
+
+
+
+        body{
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+
+<img class="artist" src="vedlegg/artister/brunomars.jpg" width="200" class="artist">
+<img class="artist" src="vedlegg/artister/gambino.jpg" width="200">
+<img class="artist" src="vedlegg/artister/jayz.jpg" width="200">
+<img class="artist" src="vedlegg/artister/kendrick.jpg" width="200">
+<img class="artist" src="vedlegg/artister/lorde.jpg" width="200">
+
+<p id="albuminfo"></p>
+
+
+
+<img id="karusell">
+<br>
+<button id="tilbake"><</button>
+<button id="fram">></button>
+
+
+
+<script>
+
+    const artistarray = document.querySelectorAll(".artist");
+
+    console.log(artistarray);
+    let albuminfo = document.getElementById("albuminfo");
+    let albumtekst = ["Bruno Mars", "Gambino", "JayZ", "Kendrick", "Lorde"];
+    let album = ["24KMagic", "444", "awaken", "Damn", "Melodrama"];
+
+    for (let i = 0; i < 5; i++){
+
+        artistarray[i].onclick = function () {
+
+            albuminfo.innerHTML = albumtekst[i] + " har laget albumet: " + album[i];
+
+
+        }
+
+
+    }
+
+    let albumCover = ["vedlegg/albumcover/24KMagic.jpg", "vedlegg/albumcover/444.jpg", "vedlegg/albumcover/awaken.jpg", "vedlegg/albumcover/damn.jpg", "vedlegg/albumcover/melodrama.jpg"]
+    let fram = document.getElementById("fram");
+    let tilbake =document.getElementById("tilbake");
+    let karusell = document.getElementById("karusell");
+    let n = 0;
+    karusell.src = albumCover[n];
+
+    fram.onclick = function () {
+
+        n++;
+        if (n === 5){
+            n = 0
+        }
+        karusell.src = albumCover[n]
+
+
+    };
+    tilbake.onclick = function () {
+        n--;
+        if (n === -1){
+            n = 4
+        }
+        karusell.src = albumCover[n];
+
+    }
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

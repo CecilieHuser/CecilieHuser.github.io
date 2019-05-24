@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<img id="bilde" > <!--oppretter en tom bilde tag-->
+
+
+
+
+<script>
+
+
+    var imgBilde = document.getElementById("bilde");//oppretter en variabel som referer til den tomme bilde taggem
+
+
+    var bildeArray = ["pexels-photo-968396.jpeg", "pexels-photo-730896", "pexels-photo-1366178.jpeg"];
+
+    imgBilde.src = bildeArray[Math.round(Math.random()*2)];
+
+</script>
+
+
+</body>
+</html>

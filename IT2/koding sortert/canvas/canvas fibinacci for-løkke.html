@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fibonacci</title>
+</head>
+<body>
+
+
+
+
+<script>
+
+
+
+    document.write("<canvas width='1000' height='1000' id='canvas'></canvas>");
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+
+    var tall1 = 0;
+    var tall2 = 1;
+    var fibonacci = tall1 + tall2;
+
+
+
+
+
+
+    for (var i = 0; i <= 10; i++){
+        tall1 = tall2;
+        tall2 = fibonacci;
+        fibonacci = tall1 + tall2;
+        ctx.beginPath();
+        ctx.strokeRect(10, 10, 10 + fibonacci, 10 + fibonacci );
+        ctx.fill();
+    }
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

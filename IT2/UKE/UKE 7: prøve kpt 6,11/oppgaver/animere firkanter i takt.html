@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+
+
+
+        .boks{
+            background-color: goldenrod;
+            height: 20px;
+            width: 30px;
+            float: left;
+            margin-left: 10px;
+        }
+
+        .container{
+            grid-template-columns: 1fr 1fr;
+            display: grid;
+        }
+
+        body{
+            background-color: #333333;
+        }
+
+
+
+
+    </style>
+</head>
+
+
+
+
+
+<div class="container">
+
+
+   <div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+       <div class="boks"></div>
+   </div>
+
+   <div>
+       <input type="range" min="0" max="5" id="inpFart">
+   </div>
+
+</div>
+
+
+
+
+
+<script>
+
+
+    const divArray = document.querySelectorAll(".boks");
+    let inpFart = document.querySelector("#inpFart");
+
+
+
+
+
+    let divCSS = [
+        {
+            transform: "translateY(0px) rotate(-360deg)",
+            opacity: 1
+        },
+        {
+            transform: "translateY(500px) rotate(-50deg)",
+            opacity: 0.2
+        }
+    ];
+
+    let divEgenskaper = {
+        duration: 5000,
+        iterations: "Infinity",
+        easing: "ease-in-out",
+        direction: "alternate"
+    };
+
+
+    let animasjonsArray = [];
+
+
+    /*
+
+    for (div of divArray){
+
+        divEgenskaper.delay = Math.random()*1000;
+        animasjonsArray.push(div.animate(divCSS, divEgenskaper))
+    }
+    */
+
+    for (let i = 0; i < divArray.length; i++){
+
+        let anidelay = i*700;
+        divEgenskaper.delay = anidelay;
+        animasjonsArray.push(divArray[i].animate(divCSS, divEgenskaper))
+    }
+
+
+
+
+    inpFart.onchange = function () {
+        for (animasjon of animasjonsArray){
+
+            animasjon.playbackRate = inpFart.value
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+<body>
+
+</body>
+</html>

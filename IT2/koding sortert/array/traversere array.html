@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<ul id="filmListe">
+
+</ul>
+
+
+
+
+<script>
+
+    let filmListe = document.querySelector("#filmListe");//queryselector kan hente ut tag ved å skrive "ul", id ved "#" og class ved "."
+    //gjør det samme som document.getElementById(filmliste)
+
+    let filmer = ["Ben Hur", "Shawshank Redemption", "Hunger games"];
+
+
+
+    /*
+
+    for (let film of filmer){
+        let nyttElement = document.createElement("li");
+        nyttElement.innerHTML = film;
+        filmListe.appendChild(nyttElement);
+
+    }
+
+*/
+
+
+    for (let film of filmer){//brukes hvis man skal skrive alt i et array f.eks, teller for løkke brukes hvis du må ha et spesifikt tall
+        filmListe.innerHTML += `<li> ${film}</li>`
+    }
+
+</script>
+
+</body>
+</html>

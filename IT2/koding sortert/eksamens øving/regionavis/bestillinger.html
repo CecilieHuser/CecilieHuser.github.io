@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<select id="selectBy">
+    <option class="by" id="ny">New York</option>
+    <option class="by" id="italia">Italia</option>
+</select>
+
+<br>
+<label><input name="radioAarstid" type="radio" class="aarstid" id="sommer">sommer</label>
+<label><input name="radioAarstid" type="radio" class="aarstid" id="vinter">vinter</label>
+
+<br>
+<input id="enkeltrom" placeholder="enkeltrom" type="number">
+<input id="dobbeltrom" placeholder="dobbeltrom" type="number">
+
+<br>
+
+<table id="tabell">
+
+</table>
+
+<label><input id="kulturpass" type="checkbox">kulturpass for kulturelle aktiviteter á 700 kr</label>
+
+<br>
+<button id="sjekkPris">sjekk pris</button>
+
+<br>
+<p id="pris"></p>
+
+
+
+
+<script>
+    //refererer til HTML elementer
+    let selectBy = document.querySelector("#selectBy");
+    let sommer = document.querySelector("#sommer");
+    let vinter = document.querySelector("#vinter");
+    let enkeltrom = document.querySelector("#enkeltrom")
+    let dobbeltrom = document.querySelector("#dobbeltrom")
+    let tabell = document.querySelector("#tabell");
+    let kulturpass = document.querySelector("#kulturpass")
+    let sjekkPris = document.querySelector("#sjekkPris")
+    let pris = document.querySelector("#pris");
+
+    //nodelister fra HTML documentet
+    let byer = document.querySelectorAll(".by");
+
+
+
+    //hoteller
+    let hotellNY = [
+        {
+            navn: "Aurora",
+            smrPris: 590,
+            vntPris: 690
+        },
+        {
+            navn: "Downtown",
+            smrPris: 660,
+            vntPris: 750
+        },
+        {
+            navn: "City Hall",
+            smrPris: 450,
+            vntPris: 530
+        },
+        {
+            navn: "Wilmont",
+            smrPris: 660,
+            vntPris: 880
+        },
+        {
+            navn: "Chelsea inn",
+            smrPris: 450,
+            vntPris: 560
+        },
+        {
+            navn: "Fairfly house",
+            smrPris: 670,
+            vntPris: 770
+        },
+        {
+            navn: "Baskers' street",
+            smrPris: 500,
+            vntPris: 610
+        },
+        {
+            navn: "Browns' quarter",
+            smrPris: 450,
+            vntPris: 560
+        },
+        {
+            navn: "The Box House",
+            smrPris: 430,
+            vntPris: 560
+        },
+        {
+            navn: "Queens hotel",
+            smrPris: 510,
+            vntPris: 630
+        },
+        {
+            navn: "Palace",
+            smrPris: 800,
+            vntPris: 970
+        },
+        {
+            navn: "The new street hotel",
+            smrPris: 450,
+            vntPris: 670
+        },
+        {
+            navn: "Gerald’s B&B",
+            smrPris: 890,
+            vntPris: 990
+        },
+        {
+            navn: "Imperial",
+            smrPris: 1200,
+            vntPris: 1450
+        },
+        {
+            navn: "Marriot",
+            smrPris: 1100,
+            vntPris: 1300
+        },
+        {
+            navn: "The London",
+            smrPris: 780,
+            vntPris: 890
+        },
+        {
+            navn: "Wharf’s Hotel",
+            smrPris: 350,
+            vntPris: 550
+        },
+        {
+            navn: "Locker inn",
+            smrPris: 560,
+            vntPris: 710
+        }
+    ]
+
+    let hotellITALIA = [
+        {
+            navn: "ty",
+            smrPris: 590,
+            vntPris: 690
+        },
+        {
+            navn: "Downtown",
+            smrPris: 660,
+            vntPris: 750
+        }
+        ]
+
+
+    let hoteller = [hotellNY, hotellITALIA];
+
+
+
+    //globale variabler
+    let by;
+    let prisen = 0;
+
+
+    //legger til tabellen av hotellene når hotellet er valgt
+    selectBy.onchange = function () {
+
+        tabell.innerHTML = `<tr>
+        <th>velg</th>
+        <th>hotell</th>
+        <th>sommerpris</th>
+        <th>vinterpris</th>
+    </tr>`
+        //sjekker hvilken by som er valgt
+        for (let i = 0; i<byer.length; i++){
+            if (byer[i].selected){
+
+                //looper gjennom hotellene og skriver de ut til tabellen
+                for (let j = 0; j< hoteller[i].length;j++){
+                    tabell.innerHTML +=`
+                <tr>
+                    <td><input type="radio" name="radioHotell"></td>
+                    <td>${hoteller[i][j].navn}</td>
+                    <td>${hoteller[i][j].smrPris}</td>
+                    <td>${hoteller[i][j].vntPris}</td>
+                </tr>
+                `
+                }
+
+                by = `${i}`;
+
+            }
+        }
+
+
+    }
+
+
+
+    sjekkPris.onclick = function () {
+
+        prisen = 0
+
+        let hotellValg = document.querySelectorAll(`input[name="radioHotell"]`)
+        console.log(hotellValg)
+
+            console.log(sommer)
+
+
+       //looper gjennom hvilken by som er valgt
+        for (let k = 0; k<byer.length;k++){
+            if (byer[k].selected){
+                //looper gjennom hvilket hotell som er valgt
+                for (let l = 0; l < hotellValg.length; l++){
+                    if (hotellValg[l].checked){
+                        if (sommer.checked) {
+                            prisen += Number(hoteller[k][l].smrPris*dobbeltrom.value+(hoteller[k][l].smrPris*enkeltrom.value+300*enkeltrom.value))
+
+                            console.log(prisen)
+                            if (kulturpass.checked){
+                                prisen += 700
+                            }
+                        }
+
+
+                        else if (vinter.checked){
+                            prisen += Number(hoteller[k][l].vntPris*dobbeltrom.value+(hoteller[k][l].vntPris*enkeltrom.value+300*enkeltrom.value))
+                            if (kulturpass.checked){
+                                prisen += 700
+                            }
+                            console.log(prisen)
+
+                        }
+
+                    }
+                }
+            }
+        }
+
+        pris.innerHTML = `${prisen}`
+
+
+
+    }
+
+
+
+
+
+</script>
+
+</body>
+</html>

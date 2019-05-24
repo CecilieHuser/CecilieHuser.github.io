@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>set</title>
+</head>
+<body>
+
+
+<script>
+    //oppgave 1 s 214
+    let landene = new Set();
+    landene.add("Norge");
+    landene.add("Kenya");
+    landene.add("Sverige");
+    landene.add("spania");
+    landene.add("Armenia");
+
+    landene.delete("Norge");
+
+    for (let land of landene){
+        document.write(`<p>${land}</p>`);
+    }
+
+    document.write(landene.has("Norge"));
+
+
+    let landArray = Array.from(landene); //konverterer settet til array
+
+console.log(landArray);
+
+    landArray.sort(alfabet);
+
+    document.write(landArray);
+
+
+    function alfabet(string1, string2) {
+        string1 = string1.toLowerCase();
+        string2 = string2.toLowerCase();
+        if (string1 <= string2) {
+            return -1
+        }
+
+
+
+    }
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+       /* body{
+            transition: 0.2s;
+        }
+    !*/
+
+
+    </style>
+</head>
+<body>
+<input id="inputFelt" type="text">
+
+
+
+<script>
+    let inputFelt = document.querySelector("#inputFelt");
+
+    document.body.style.transition = "0.2s"
+
+    inputFelt.onchange = function () {
+
+        document.body.style.backgroundColor = inputFelt.value;
+
+    }
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>importkalkulator</title>
+</head>
+<body>
+
+
+
+
+<input id="pris" placeholder="skriv inn prisen på varen">
+<button id="enter">enter</button>
+
+<p id="resultat"></p>
+
+
+<script>
+
+    let pris = document.getElementById("pris");
+    let resultat = document.getElementById("resultat");
+    let enter = document.getElementById("enter");
+    
+
+
+    enter.onclick = function () {
+
+        let momspris = pris.value*1.25;
+
+
+
+        if (pris.value < 350){
+            resultat.innerHTML = pris.value;
+        }
+
+
+       
+
+       else if (pris.value > 349){
+
+           let momsOgToll = momspris+158;
+
+            resultat.innerHTML = "med 25% moms og 158kr i toll blir prisen: " + momsOgToll;
+       }
+
+
+    }
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

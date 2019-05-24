@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sikkerhetsapp</title>
+
+
+
+
+    <style>
+        *{
+            text-align: center;
+        }
+        button{
+            background-color: black;
+            font-family: "Courier New";
+            font-size: 100px;
+            color: beige;
+        }
+        div{
+            font-family: "Courier New";
+            font-size: 30px;
+        }
+        main{
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        h4{
+            border: solid 1px black;
+        }
+
+
+
+    </style>
+
+
+</head>
+<body>
+
+
+<main>
+
+    <div>
+        <h5 id="advarsel"></h5>
+
+
+        <button id="pluss"> + </button>
+        <button id="minus"> - </button>
+
+
+        <div>
+        <h4 id="tall"></h4>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+</main>
+
+
+<script>
+
+
+    //oppretter variabler som referer til html-elementene
+
+    const pluss = document.getElementById("pluss");
+    const minus = document.getElementById("minus");
+    let tall = document.getElementById("tall");
+
+
+
+
+
+    let antPers = 0; //definerer en global variabel som holder styr på antallet
+
+
+
+
+
+    pluss.onclick = leggTil;
+    minus.onclick = trekkFra;
+
+
+    window.onkeydown = function (event) {
+
+        if(event.code === "ArrowUp"){
+            leggTil();
+        }
+        else if(event.code === "ArrowDown"){
+            trekkFra();
+        }
+    }
+
+
+
+
+
+
+    function leggTil() {
+        antPers += 1;
+        tall.innerHTML = antPers;
+
+        if (antPers > 20){
+            advarsel.innerHTML = "advarsel: nå er det fullt"
+            pluss.onclick =
+
+        }
+        else if (antPers > 10){
+            advarsel.innerHTML = `advarsel: kun ${20-antPers} plasser igjen`;
+        }
+    }
+
+
+
+
+
+
+    function trekkFra() {
+        antPers -= 1;
+        tall.innerHTML = antPers;
+
+        if (antPers < 10) {
+            advarsel.innerHTML = " ";
+
+        }
+        else if (antPers < 20) {
+            advarsel.innerHTML = `advarsel: kun ${20-antPers} plasser igjen`;
+        }
+
+
+        function stopp(){
+
+            antPers
+
+        }
+
+
+
+    }
+
+
+
+
+</script>
+
+
+
+
+
+
+</body>
+</html>

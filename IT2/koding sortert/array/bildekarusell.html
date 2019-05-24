@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>feriebilder</title>
+</head>
+<body>
+
+
+<img id="bilde" width="300" >
+<button id="tilbake"><</button>
+<button id="fram">></button>
+
+
+
+<ul id="bildeListe">
+
+</ul>
+
+
+
+<script>
+
+
+
+
+//oppgave 3
+    let bildeArray = ["ferieBilde1.jpeg", "FerieBilde2.jpeg", "ferieBilde3.jpeg", "ferieBilde4.jpeg", "ferieBilde5.jpeg"]
+    let bildeListe = document.querySelector("#bildeListe");
+    let tilbake = document.querySelector("#tilbake");
+    let fram = document.querySelector("#fram");
+    let bilde = document.querySelector("#bilde");
+    let n = 0;
+
+
+
+    for (let bilde of bildeArray){
+        let nyttElement = document.createElement("li");
+        nyttElement.innerHTML = bilde;
+        bildeListe.appendChild(nyttElement);
+    }
+
+    slideShow();
+
+
+
+    function slideShow() {
+
+        bilde.src = bildeArray[0];
+
+        fram.onclick = function(){
+
+            n++;
+
+            if (n === bildeArray.length){
+
+                n = 0;
+
+            }
+
+            bilde.src = bildeArray[n];
+
+
+
+            }
+
+        tilbake.onclick = function () {
+
+            n--;
+
+            if (n === -1){
+                n = bildeArray.length - 1;
+
+        }
+
+        bilde.src = bildeArray[n];
+
+        }
+
+
+    }
+
+
+    //oppgave 4
+
+    function sortere(string1, string2) {
+
+        string1 = string1.toLowerCase();
+        string2 = string2.toLowerCase();
+        if (string1 <= string2) {
+            return -1
+        }
+    }
+
+
+    bildeListe.sort(sortere);
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

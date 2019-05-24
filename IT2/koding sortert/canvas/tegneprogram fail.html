@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tegneprogram</title>
+</head>
+<body>
+
+
+
+
+
+<script>
+
+    document.write("<canvas id='canvas' width='1000' height='1000'></canvas>");
+
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+
+
+    document.onclick = function () {
+
+
+
+
+        document.onmousemove;
+
+
+        var x = event.clientX; //på eventet - når det skjer, musen sin x-verdi
+        var y = event.clientY;
+
+        ctx.beginPath();
+        ctx.arc(x, y, 10, 0, 2 * Math.PI );
+        ctx.fill();
+
+    }
+
+
+
+
+</script>
+
+</body>
+</html>

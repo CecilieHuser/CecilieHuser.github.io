@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nodelist</title>
+</head>
+<body>
+<div class="oransj">hei</div>
+<div>på</div>
+<div class="oransj">deg</div>
+
+
+<script>
+    let divBokser = document.querySelectorAll(".oransj");
+
+    for (let boks of divBokser){
+        boks.style.backgroundColor = "orange";
+        boks.style.marginRight = "5px";
+        boks.style.float = "left";
+        boks.style.textAlign = "center";
+        boks.style.width = "200px";
+        boks.style.height = "120px"
+    }
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

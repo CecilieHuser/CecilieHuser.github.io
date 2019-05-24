@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 150px;
+            position: absolute; /* relative så dytter bilde vekk alt annet på nettsiden
+        }
+
+
+    </style>
+
+
+
+
+</head>
+<body>
+
+
+
+
+<img src="Bill%20Clinton.jpg" id="bill">
+
+
+<script>
+   const bill = document.querySelector("#bill");
+
+   // bill.animate([{left: "0px", opacity: "1", top: "0px"}, {left: "400px", opacity: "0", top: }], 2000)//animerer bill bildet. array i parantesen og objekt inni arrayet som sier hvor den sal starte også hvor den skal slutte. 2000ms skal animasjonen ta
+
+
+    //alternativt:
+
+    let billCSS = [
+        {
+            left: "0px",
+            opacity: "1",
+            top: "0px"
+
+        },
+        {
+            left: "400px",
+            opacity: "0",
+            top: "400px"
+
+        }
+    ];
+
+    let billEgenskaper = {
+        duration: 2000,
+        easing: "ease-in-out",
+        iterations: 4, // kan skirve Infinity også gå den evig
+        direction: "alternate",
+        fill: "forwards"
+    };
+
+    bill.animate(billCSS, billEgenskaper);
+
+
+
+</script>
+
+</body>
+</html>

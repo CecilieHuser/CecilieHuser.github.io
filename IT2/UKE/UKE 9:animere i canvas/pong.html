@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>poeng: 0</h1>
+<canvas width="900" height="600" id="canvas"></canvas>
+
+
+
+
+
+<script>
+
+    //referer til html elementer
+    const canvas = document.querySelector("#canvas");
+    const ctx = canvas.getContext("2d");
+
+    //om denne er sann vil spillet fortsette
+    let gameOn = true;
+
+    //variabler som viser verdiene til bane, ball og racket
+    let bane = {
+        xstart: 20,
+        ystart: 20,
+        hoyde: canvas.height,
+        bredde: canvas.width,
+        banefarge: "green",
+        linjefarge: "white",
+        linjetykkelse: 4
+    };
+
+    let ball = {
+        radius: 7,
+        xpos: 100,
+        ypos: 100,
+        farge: "yellow",
+        xretning: -1,
+        yretning: 1,
+        xfart: 4,
+        yfart: 4
+    }
+
+    let racket = {
+        xpos: bane.bredde-10,
+        ypos: bane.hoyde/2,
+        farge: "black",
+        bredde: 10,
+        hoyde: 100,
+        yretning: 0,
+        yfart: 5
+    };
+
+
+
+    //funksjonsdefinisjoner
+    function tegnBane() {
+        ctx.fillStyle = bane.banefarge;
+        ctx.fillRect(bane.xstart,bane.ystart,bane.bredde,bane.hoyde);
+    }
+
+    function flyttBall() {
+        ctx.beginPath();
+        ctx.arc(ball.xpos, ball.ypos, ball.radius,0,Math.PI*2);
+        ctx.closePath();
+        ctx.fillStyle = ball.farge;
+        ctx.fill();
+        ball.xpos = ball.xpos + ball.xfart*ball.xretning;
+        ball.ypos = ball.ypos + ball.yfart*ball.yretning;
+    }
+
+    function flyttRacket() {
+        ctx.fillStyle = racket.farge;
+        ctx.fillRect(racket.xpos,racket.ypos,racket.bredde,racket.hoyde);
+        racket.ypos = racket.ypos + racket.yfart*racket.yretning
+
+    }
+
+    function sjekkTreffVegg() {
+        if (ball.xpos === bane.xstart){
+            ball.xretning = ball.xretning*(-1)
+        }
+        else if(ball.ypos === bane.ystart || ball.ypos === bane.hoyde+bane.ystart){
+            ball.yretning = ball.yretning*(-1)
+        }
+
+    }
+
+    function sjekkTreffRacket() {
+
+    }
+    function sjekkUtenfor() {
+
+    }
+
+    function gameLoop() {
+        tegnBane();
+        flyttBall();
+        flyttRacket();
+        sjekkTreffVegg();
+        sjekkTreffRacket();
+        sjekkUtenfor();
+
+        if (gameOn){
+            requestAnimationFrame(gameLoop);
+        }
+
+    }
+    gameLoop();
+
+
+
+
+
+</script>
+
+</body>
+</html>

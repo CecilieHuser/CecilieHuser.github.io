@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+
+
+<ol id="bokListe">
+
+</ol>
+
+
+
+
+
+
+
+
+
+<script>
+
+    let boker = ["Hunger Games", "Vildanden", "The fault in our Stars", "bienes hemmelige liv"];
+    let bokListe = document.querySelector("#bokListe");
+
+    bokListe.sort(alfabetisk);
+
+
+    for (let bok of boker){
+
+        let nyttElement = document.createElement("li");
+        nyttElement.innerHTML = bok;
+        bokListe.appendChild(nyttElement)
+
+    }
+
+
+
+    function alfabetisk(string1, string2) {
+
+        string1 = string1.toLowerCase();
+        string2 = string2.toLowerCase();
+
+        if (string1 <= string2){
+            return -1
+        }
+
+
+    }
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

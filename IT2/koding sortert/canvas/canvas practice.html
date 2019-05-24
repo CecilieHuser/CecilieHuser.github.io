@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+
+<canvas id="myCanvas" width="500" height="500"></canvas>
+
+
+
+
+
+
+<script>
+
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+
+    document.onclick = function () {
+
+        let x = event.clientX;
+        let y = event.clientY;
+
+
+        ctx.beginPath();
+        ctx.arc(x,y,40,0,2*Math.PI);
+        ctx.fill();
+
+    }
+
+
+
+
+</script>
+</body>
+</html>

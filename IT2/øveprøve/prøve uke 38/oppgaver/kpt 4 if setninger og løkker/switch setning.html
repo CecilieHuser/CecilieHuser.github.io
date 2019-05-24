@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<img  id="bilde" width="500">
+
+
+
+
+<script>
+
+    var rovdyr = prompt("hvilket rovdyr liker du best?");
+
+    rovdyr = rovdyr.toLowerCase();
+
+    var bilde = document.getElementById("bilde");
+
+    switch (rovdyr) {
+
+
+        case "ulv":
+            document.write("det finnes 33 Ulver i Norge");
+            bilde.src = "https://images.pexels.com/photos/416118/pexels-photo-416118.jpeg?auto=compress&cs=tinysrgb&h=350";
+            document.body.style.background = "blue"
+            break;
+        case "bjørn":
+            document.write("det finnes 137 bjørner i Norge");
+            bilde.src = "https://images.pexels.com/photos/158109/kodiak-brown-bear-adult-portrait-wildlife-158109.jpeg?auto=compress&cs=tinysrgb&h=350";
+            break;
+        default:
+            document.write("rovdyr er kule");
+
+    }
+
+
+
+
+
+</script>
+
+</body>
+</html>

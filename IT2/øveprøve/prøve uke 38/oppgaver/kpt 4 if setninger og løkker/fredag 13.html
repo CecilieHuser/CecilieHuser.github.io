@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<img src="https://images.pexels.com/photos/1103967/pexels-photo-1103967.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" id="dagBilde" >
+
+
+
+<script>
+
+
+    var dato = prompt("skriv inn dagens dato, kun dagen");
+    var dag = prompt("skriv inn hvilken ukedag det er");
+    var dagBilde = document.getElementById("dagBilde");
+
+
+    if (dato == 13 && dag === "fredag"){
+        document.write("idag er det fredag den 13, pass på!");
+        dagBilde.src = "https://images.pexels.com/photos/709732/pexels-photo-709732.jpeg?auto=compress&cs=tinysrgb&h=350";
+        dagBilde.width = "400";
+
+
+
+
+    }
+    else {
+        document.write("ha en fin dag idag" + ", " + dag + " " + "den" + " " + dato + ".");
+    }
+
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

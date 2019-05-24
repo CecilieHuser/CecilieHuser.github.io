@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input id="farge" placeholder="farge">
+<button id="fargeKnapp"></button>
+
+
+
+<ul id="fargeListe">
+
+
+
+
+</ul>
+
+
+
+<script>
+
+    let fargeKnapp = document.querySelector("#fargeKnapp");
+    let farge = document.querySelector("#farge");
+    let farger = new Set();
+    let fargeListe = document.querySelector("#fargeListe");
+
+    fargeKnapp.onclick = function () {
+
+        farger.add(farge.value);
+
+        fargeListe.innerHTML = "";
+
+        for (farg of farger){
+            fargeListe.innerHTML += `<li>${farg}</li>`;
+
+        }
+
+    }
+
+    console.log(farger);
+
+
+
+
+
+</script>
+
+</body>
+</html>

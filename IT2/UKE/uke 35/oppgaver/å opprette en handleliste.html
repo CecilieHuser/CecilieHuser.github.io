@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<h1>min handleliste</h1>
+<ul id="handleliste"></ul>
+
+
+
+<script>
+
+    var handleliste = document.getElementById("handleliste");
+    var grønnsaker = prompt("hva slags grønnsaker vil du kjøpe");
+    var frukt = prompt("hva slags frukt skal du kjøpe" );
+    var kjøtt = prompt("hva slags kjøtt vil du ha?")
+
+
+    handleliste.innerHTML = (`<li> grønnsaker: <b> ${grønnsaker}</b></li>`);
+
+
+    handleliste.innerHTML += (`<li>frukt:<b>${frukt}</b></li>`);
+
+    handleliste.innerHTML += (`<li>kjøtt: <b> ${kjøtt}</b></li>`);
+
+</script>
+
+
+
+</body>
+</html>

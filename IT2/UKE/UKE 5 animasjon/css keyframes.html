@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>keyframes</title>
+    <style>
+
+        body{
+            background-image: url("galaxy.jpg");
+            background-size: cover;
+        }
+
+
+        @keyframes lette {
+
+
+            0%{
+                left: 10%;
+                bottom: 0%;
+            }
+            99%{
+                left: 89%;
+                bottom: 0%;
+            }
+
+            100%{
+                left: 90%;
+                bottom: 100%;
+            }
+        }
+
+        @keyframes lande{
+            0%{
+                left: 10%;
+                bottom: 100%;
+            }
+            100%{
+                left: 10%;
+                bottom: 0%;
+            }
+
+
+        }
+
+
+        #spacex {
+            position: absolute; /**/
+            width: 100px;
+            bottom: -20%;
+            left: -20%;
+        }
+
+
+
+
+
+
+
+
+    </style>
+
+
+
+
+</head>
+<body>
+
+
+<img id="spacex" src="rocket.png" alt="">
+<button id="btnLande">lande</button>
+<button id="btnLette">lette</button>
+
+
+</body>
+
+<script>
+
+    let btnLande = document.querySelector("#btnLande");
+    let btnLette = document.querySelector("#btnLette");
+    let spacex = document.querySelector("#spacex");
+
+
+    btnLande.onclick = function () {
+        spacex.style.animation = "lande 5s forwards";
+    }
+
+    btnLette.onclick = function () {
+        spacex.style.animation = "lette 5s forwards";
+    }
+
+
+
+</script>
+
+</html>

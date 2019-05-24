@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #video{
+            position: absolute;
+
+            width: 700px;
+            left: 200px;
+        }
+        #teksten{
+            position: absolute;
+            top: 600px;
+            text-align: center;
+            left: 200px;
+            font-family: Baskerville;
+        }
+        input{
+            padding: 20px;
+            text-align: center;
+            font-size: x-large;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div>
+    <video id="video" src="Vedlegg_heldagsMaiFredag/thorkildsen.mp4" style="width: 1000px" controls></video>
+</div>
+
+<div id="teksten">
+    <h1>tipp lengden av spydkastet til Andreas Thorkildsen under OL-finalen i 2008.</h1>
+
+    <input id="gjett" placeholder="lengde i meter">
+
+    <p id="tekst"></p>
+</div>
+
+
+<script>
+    //referanser til HTML elementer
+    let tekst = document.querySelector("#tekst");
+    let gjett = document.querySelector("#gjett");
+
+    //hendelsesfunksjoner
+    gjett.onchange = function () {
+        if (Number(gjett.value) === 90.57){
+            tekst.innerHTML = "Helt rett!Dette kan du!"
+        } 
+        else if (gjett.value >= 85.75 && gjett.value < 90.57 || gjett.value <= 95.57 && gjett.value > 90.57) {
+            tekst.innerHTML = "Meget godt tippet!"
+        }
+        else if (gjett.value < 85.75 || gjett.value > 95.75) {
+            tekst.innerHTML = "prøv på nytt"
+        }
+
+    }
+
+
+
+
+
+</script>
+
+</body>
+
+
+</html>

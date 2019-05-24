@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DVD logo</title>
+</head>
+<body>
+
+
+<canvas id="dvdcanvas" height="600px" width="600px">
+
+</canvas>
+
+
+
+<script>
+
+    //referanser til HTML-elementer
+    const dvdcanvas = document.querySelector("#dvdcanvas");
+    const ctx = dvdcanvas.getContext("2d");
+
+    // Globale variabler
+    let figur1 = {
+        bredde: 10,
+        hoyde: 30,
+        xpos: 60,
+        ypos: 70,
+        farge: "green",
+        xfart: 10,
+        xretning: 1,
+        yfart: 10,
+        yretning: -1
+    };
+
+
+
+    //Setup
+    gameLoop();
+
+
+
+    //funksjonsdefinisjoner
+    function gameLoop() {
+        clearCanvas();
+        flyttFirkant(figur1);
+        tegnFirkant(figur1);
+
+        requestAnimationFrame(gameLoop);
+    }
+
+
+
+
+
+    function tegnFirkant(firkant) {
+
+        ctx.fillStyle = firkant.farge;
+        ctx.fillRect(firkant.xpos, firkant.ypos, firkant.bredde, firkant.hoyde)
+
+    }
+
+    function flyttFirkant(firkant) {
+
+        firkant.xpos = firkant.xpos + (firkant.xretning * firkant.xfart);
+        firkant.ypos = firkant.ypos + (firkant.yretning * firkant.yfart);
+        if (firkant.ypos === 0 || firkant.ypos === dvdcanvas.height - firkant.hoyde){
+            firkant.yretning = firkant.yretning*(-1)
+        }
+        else if (firkant.xpos === 0 || firkant.xpos === dvdcanvas.height - firkant.bredde){
+            firkant.xretning = firkant.xretning*(-1)
+        }
+    }
+
+    function clearCanvas() {
+        ctx.fillStyle = "white";
+        ctx.fillRect(0,0,dvdcanvas.width,dvdcanvas.height);
+    }
+
+
+</script>
+
+
+
+</body>
+</html>

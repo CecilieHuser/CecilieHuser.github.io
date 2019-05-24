@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bildekarusell</title>
+
+
+    <style>
+
+
+
+    body{
+        text-align: center;
+        background-color: black;
+    }
+    button {
+        color: white;
+        font-family: "Courier New";
+        font-size: 20px;
+        background-color: black;
+
+    }
+
+
+
+
+
+    h1 {
+        font-family: "Courier New";
+        font-size: 50px;
+        color: beige;
+    }
+
+
+
+    </style>
+
+
+
+
+
+
+</head>
+<body>
+
+
+
+
+
+<h1>Bildekarusellen</h1>
+
+<img src="bilder/avocado.jpeg" id="bilde" width="800" height="550">
+<br>
+<button id="tilbake"> < </button>
+<button id="random"> random </button>
+<button id="frem"> > </button>
+
+<script>
+
+    const tilbake = document.getElementById("tilbake");
+    const frem = document.getElementById("frem");
+    let bilde = document.getElementById("bilde");
+    let bildeArray = ["bilder/avocado.jpeg", "bilder/lighthouse.jpeg", "bilder/road.jpeg", "bilder/roadfog.jpeg", "bilder/skifjell.jpeg"];
+    let n = 0;
+    const random = document.getElementById("random");
+
+
+    tilbake.onclick = function () {
+        n--;
+        if (n < 0){
+            n=4;
+            bilde.src = bildeArray[n];
+        }
+        else {
+            bilde.src = bildeArray[n];
+        }
+
+    }
+
+    random.onclick = function () {
+
+        n = Math.floor(Math.random()*4+0);
+        bilde.src = bildeArray[n];
+
+
+
+    }
+
+
+    frem.onclick = function () {
+
+        n++;
+        if (n <= 4){
+            bilde.src = bildeArray[n];
+
+        }
+        else {
+            n = 0;
+            bilde.src = bildeArray[n];
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

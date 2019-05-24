@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>stjernehimmel</title>
+</head>
+<style>
+    body{
+        height: 100%;
+        background-color: black;
+    }
+    .stjerne{
+        position: absolute;
+        background-color: white;
+        border-radius: 50%;
+        transition: 1s;
+    }
+    
+    
+</style>
+<body>
+
+
+
+<script>
+
+
+
+    /*
+    for (let i = 0; i < 2000; i++){
+        let stjerne = document.createElement("div"); //oppretter div element til stjerne
+        stjerne.className = "stjerne";
+        stjerne.style.left = Math.random()*innerWidth + "px";
+        stjerne.style.top = Math.random()*innerHeight + "px";
+        stjerne.style.width = Math.random()*3 + "px";
+        stjerne.style.height = stjerne.style.width;//bredden lik høyden
+        document.body.appendChild(stjerne); //legger til stjernen
+    }
+
+    */
+
+
+    for (let i = 0; i<2000; i++){
+        let stjerne = document.createElement("div");
+        stjerne.className = "stjerne";
+        document.body.appendChild(stjerne);
+    }
+
+    let stjerner = document.querySelectorAll(".stjerne");
+
+
+    function scramble() {
+
+        for (let stjerne of stjerner) {
+            stjerne.style.width = Math.random()*3 + "px";
+            stjerne.style.height = stjerne.style.width;
+            stjerne.style.left = Math.random()*innerWidth + "px";
+            stjerne.style.top = Math.random()*innerHeight + "px";
+        }
+
+    }
+    scramble();
+    setInterval(scramble,1500);
+
+    
+    
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

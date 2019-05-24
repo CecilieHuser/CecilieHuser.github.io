@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="spraakMeny">
+    <label><input type="radio" name="spraakRadio" class="spraakOpt" ></label>
+    <label><input type="radio" name="spraakRadio" class="spraakOpt" ></label>
+    <label><input type="radio" name="spraakRadio" class="spraakOpt" ></label>
+
+</div>
+
+
+<div>
+    <p id="spm1" class="spm"></p>
+    <p><input class="one" id="riktig1" type="radio"></p>
+    <p><input class="one" type="radio"></p>
+    <p><input class="one" type="radio"></p>
+    <p><input class="one" type="radio"></p>
+
+</div>
+
+<div>
+    <p id="spm2" class="spm"></p>
+    <p><input class="two" id="riktig21" type="checkbox"></p>
+    <p><input class="two" type="checkbox"></p>
+    <p><input class="two" id="riktig22" type="checkbox"></p>
+    <p><input class="two" type="checkbox"></p>
+    <p><input class="two" type="checkbox"></p>
+
+</div>
+
+<div>
+    <p id="spm3" class="spm"></p>
+    <audio controls id="lydTest"></audio>
+    <p><input class="three" type="radio"></p>
+    <p><input class="three" type="radio"></p>
+    <p><input class="three" id="riktig3" type="radio"></p>
+    <p><input class="three" type="radio"></p>
+
+</div>
+
+<script>
+    let spraakMeny = document.querySelector("#spraakMeny")
+    let lydTest = document.querySelector("#lydTest");
+    let spm = document.querySelectorAll(".smp")
+
+
+
+
+    let one  = document.querySelectorAll(".one")
+    let two = document.querySelectorAll(".two")
+    let three = document.querySelectorAll(".three")
+
+    let amerikansk = [ "amerikansk",
+        {
+            spm:"Hva betyr ordet Where?",
+            svar: ["Hvor", "vi er", "var", "hvorfor"],
+
+        },
+        {
+            spm:"Hvilke(t) ord kan legges til her? How are...",
+            svar: ["you", "John doing?", "things","the house", "the wife"],
+
+        },
+        {
+            spm:"Spill av lydfilen «Oversetting.mp3» og velg riktig oversettelse: ",
+            svar: ["Hei, mitt navn er Tom", "Jeg er Tom", "Kjenner du Tom?","Når kommer Tom?"],
+
+        },
+    ]
+
+    let spraakTester = [amerikansk]
+
+
+    //legger til språkene i selectmeny
+    for (let i = 0; i<spraakTester.length;i++){
+        spraakMeny.innerHTML += `<input type="radio" name="spraakRadio" class="spraakOpt">${spraakTester[i][0]}</input>`
+
+    }
+
+    let spraakValg = document.querySelectorAll(".spraakOpt")
+
+
+    //hendelsesfunksjoner
+
+    for (let l = 0; l<spraakMeny.length; l++) {
+        spraakValg[l].onclick = function () {
+            console.log(hi)
+
+            //sjekker hvilken spraaktest vi er på
+            for (let j = 0; j<spraakTester.length;j++) {
+                if (spraakValg[j].selected){
+                    //skrive ut spm
+                    for (let k = 0; k<spraakTester[j].length-1;k++ ){
+                        spm[k].innerHTML = `${spraakTester[j][k+1].spm}`
+                    }
+
+                    //skrive ut svaralt
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+
+</script>
+
+</body>
+</html>

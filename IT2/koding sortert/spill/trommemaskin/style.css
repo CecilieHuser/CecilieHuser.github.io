@@ -1,0 +1,26 @@
+body{
+    background-color: aquamarine;
+}
+
+main{
+    display: flex;
+    margin: auto;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-gap: 5px;
+
+}
+.trommer{
+    border: solid 1px black;
+    border-radius: 5px;
+}
+ .bokstav, .tekst {
+     text-align: center;
+ }
+ .spiller{
+     border: solid 7px yellow;
+     transition: 1.5s;
+ }

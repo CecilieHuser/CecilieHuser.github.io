@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #bill{
+        width: 200px;
+        position: absolute;
+    }
+
+</style>
+<body>
+
+
+
+
+<h1 id="overskrift">overskrift</h1>
+
+
+<div id="btns">
+    <button class="btn" id="play">play</button>
+    <button class="btn" id="pause">pause</button>
+    <button class="btn" id="reverse">reverse</button>
+</div>
+<input type="range" id="slider" min="0.1" max="3">
+
+<br>
+
+<img src="Bill%20Clinton.jpg" id="bill" >
+
+
+
+
+
+<script>
+
+    //oppgave 1
+    const overskrift = document.querySelector("#overskrift");
+
+
+    let overskriftCSS = [
+        {
+            opacity: 0
+        },
+        {
+            opacity: 1
+        }
+    ];
+
+
+
+    overskrift.animate(overskriftCSS, 2000);
+
+    //oppgave 2
+
+    const bill = document.querySelector("#bill");
+
+
+    let billCSS = [
+        {
+            left: "0px",
+            transform: "rotate(0deg)"
+        },
+        {
+            left: "500px",
+            transform: "rotate(360deg)"
+        }
+    ];
+
+    let billEgenskaper = {
+        interations: "Infinity",
+        duration: 2000,
+        fill: "forwards",
+        easing: "ease-in-out"
+    };
+
+    let billAni = bill.animate(billCSS, billEgenskaper);
+
+    let play = document.querySelector("#play");
+    let pause = document.querySelector("#pause");
+    let reverse = document.querySelector("#reverse");
+
+    play.onclick = function(){
+        billAni.play();
+
+    };
+
+    pause.onclick = function(){
+        billAni.pause();
+
+    };
+
+    reverse.onclick = function () {
+        billAni.reverse();
+    }
+
+
+    //oppg d slider
+
+    const slider = document.querySelector("#slider");
+
+
+    slider.onchange = function () {
+
+        billAni.playbackRate = slider.value;
+
+    }
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+
+
+<script>
+
+
+
+
+    var antallFrukt = "3";
+
+    var antallGronnsaker = "2";
+
+    var antallVarer = antallFrukt + antallGronnsaker;
+    var antVarerTall = Number(antallFrukt) + Number(antallGronnsaker);
+
+    document.write(antallVarer);
+    document.write(`antVarerTall`);
+
+    var prisUtenMoms = prompt("pris uten moms");
+
+    Number(prisUtenMoms);
+
+    var prisMedMoms = (prisUtenMoms * 1.25);
+
+    document.write(`
+    <p> varen koster ${prisMedMoms.toFixed(2)} med moms</p>`
+    );
+
+
+    var dataMengde = Number(prompt("skriv inn hvor mange MG data du bruker i måneden"));
+
+    var antSamtaler = Number(prompt("skriv inn antall telefonsamtaler du har i måneden"));
+
+    var ringeTid = Number(prompt("skriv inn ringetiden i måneden"));
+
+    var antSms = Number(prompt("skriv inn antall SMSer i måneden"));
+
+    var antMms = Number(prompt("skriv inn antall MMSer i måneden"));
+
+    var abonnementPris = (dataMengde * 10 + antSamtaler * 0.89 + ringeTid * 0.39 + antSms * 0.69 + antMms * 1.99);
+
+
+    document.write(`
+    <p>
+    prisen for abonnementet ligger på ${abonnementPris.toFixed(2)},- kr per måned
+</p>`);
+
+
+    var ordListe =["potet", "katt", "lyn", "tre"]; //array liste over elementer
+
+    document.write(`<p>siste verdi i arrayet er ${ordListe[3]}</p>`); //skrive siste element i arrayet teller fra 0,1,2,3 osv...
+
+    var frukt1 = {
+        navn : "appelsin",
+        pris : 6
+    };
+
+    var frukt2 = {
+        navn : "banan",
+        pris : 4
+    };
+
+    var frukt3 = {
+        navn : "eple",
+        pris : 3
+    }; //objekter
+
+
+    document.write(`
+    <p>
+    ${frukt1.navn} koster ${frukt1.pris} kr
+</p>
+<p>
+${frukt2.navn} koster ${frukt2.pris} kr
+</p>
+
+<p>
+
+${frukt3.navn} koster ${frukt3.pris} kr
+</p>
+
+    `); // skriver objektene slik
+
+
+
+
+</script>
+
+</body>
+</html>

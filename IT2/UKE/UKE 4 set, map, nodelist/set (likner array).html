@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+
+    let presidentArray = ["george Washington", "Abraham Lincoln"];
+
+    //lager et sett, og legger til UNIKE verdier i settet, det skiller set fra array, kun en av hver verdi.
+    let presidenter = new Set(presidentArray); //legger til presidentarrayet i settet
+    presidenter.add("Barack Obama");
+    presidenter.add("Donald Trump");
+    presidenter.add("Ronald Reagen");
+
+    //sjekker om det er i settet, fordelen med set istedet for array
+    console.log(presidenter.has("Barack Obama"));
+
+
+    for (let president of presidenter) {
+        if (president === "Barack Obama"){
+            alert(true)
+        }
+    }
+
+    for (let president of presidenter){
+        document.write(president)
+    }
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

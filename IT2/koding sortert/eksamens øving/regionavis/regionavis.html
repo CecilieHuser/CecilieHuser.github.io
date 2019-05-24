@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+        #pic{
+            margin: auto;
+            width: 750px;
+        }
+
+        #stpeter{
+            position: relative;
+            transition: 2s;
+        }
+
+        #romafilm{
+            position: absolute;
+            top: 10px;
+            width: 750px;
+            left: 345px;
+            height: auto;
+            opacity: 0;
+        }
+        #myVideo{
+            transition: 1s;
+        }
+
+        #lukkKnapp{
+            opacity: 1;
+            position: absolute;
+            left: 1075px;
+            top:10px;
+            padding: 5px;
+            color: orange;
+            background-color: #333333;
+            border: none;
+        }
+
+        #nyTekst{
+            width: 300px;
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            opacity: 0;
+        }
+
+
+        #sjekkSvar{
+            opacity: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+
+
+<div id="pic">
+    <img id="stpeter" src="FilerV2016%20/stpetersburgklipp.jpg" width="750px">
+    <img id="roma" src="FilerV2016%20/Romaklipp.jpg" width="750">
+    <img id="ny" src="FilerV2016%20/nyklipp.jpg" width="750">
+</div>
+
+<div id="nyTekst">
+    <B>Hvilken bygning er dette?</B>
+    <br>
+    <p><input id="nyRiktigValg" type="radio" name="quiz">World trade center</p><br>
+    <p><input id="feil1" type="radio" name="quiz">kjeve tårnet i piza</p><br>
+    <p><input id="feil2" type="radio" name="quiz">empire state builing</p><br>
+
+    <button id="sjekkSvar">sjekk svar</button>
+    <p id="tilbakeMelding"></p>
+</div>
+
+    <button id="lukkKnapp">X</button>
+
+<div id="romafilm" style="z-index: -1;">
+<video width="500" src="FilerV2016%20/RomaVideo.mp4"  id="myVideo" style="width: 750px" controls>
+</video>
+</div>
+
+
+<script>
+    //referanser til HTML elementer
+    let stpeter= document.querySelector("#stpeter");
+    let roma = document.querySelector("#roma");
+    let ny = document.querySelector("#ny");
+    let myvideo = document.querySelector("#myVideo");
+    let lukkKnapp = document.querySelector("#lukkKnapp");
+    let romaFilm = document.querySelector("#romafilm")
+    let tilbakeMelding = document.querySelector("#tilbakeMelding")
+    let nytekst = document.querySelector("#nyTekst")
+    let nyRiktigValg = document.querySelector("#nyRiktigValg");
+    let feil1 = document.querySelector("#feil1")
+    let feil2 = document.querySelector("#feil2")
+    let sjekkSvar = document.querySelector("#sjekkSvar")
+
+
+
+    //hendelsesfunksjoner
+
+    stpeter.onclick = function () {
+        stpeter.src = "FilerV2016%20/stpetersburg.jpg";
+        roma.src = "";
+        ny.src = "";
+        stpeter.style.transition = "10s"
+    };
+
+    roma.onclick = function () {
+        stpeter.src = "";
+        roma.src = "";
+        ny.src = "";
+        romaFilm.style.opacity = 1;
+        myvideo.style.width = "750px"
+        myvideo.play();
+    }
+
+    ny.onclick = function(){
+        stpeter.src = "";
+        roma.src = "";
+        ny.src = "FilerV2016%20/ny.jpg";
+        ny.style.width = "300px";
+        nytekst.style.opacity = 1;
+        sjekkSvar.style.opacity = 1
+
+
+    }
+
+    sjekkSvar.onclick = function(){
+        if (nyRiktigValg.checked){
+            tilbakeMelding.innerHTML =  "Du veit allereie noko om New York – kva med å lære meir?"
+        }
+        else if (feil1.checked || feil2.checked) {
+            tilbakeMelding.innerHTML =  "Det var ikkje rett – kanskje på tide med ein New York-tur?"
+
+        }
+    }
+
+
+
+    lukkKnapp.onclick = function () {
+        stpeter.src = "FilerV2016%20/stpetersburgklipp.jpg"
+        roma.src = "FilerV2016%20/Romaklipp.jpg"
+        ny.src = "FilerV2016%20/nyklipp.jpg"
+        ny.style.width = "750px";
+
+        romaFilm.style.opacity = 0
+        nytekst.style.opacity = 0
+        myvideo.pause();
+    }
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

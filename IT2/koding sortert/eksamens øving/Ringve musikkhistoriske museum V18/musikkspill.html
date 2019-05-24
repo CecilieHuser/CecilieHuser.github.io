@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+        nav{
+        grid-template-columns: 1fr 1fr 1fr ;
+        text-align: center;
+        grid-gap: 100px;
+        display: grid;
+        color: #333333;
+        background-color: #4CAF50;
+        padding: 40px;
+    }
+        a{
+            text-decoration: none;
+            color: #333333;
+            font-size: 20px;
+        }
+
+
+        #sidenav{
+            width: 150px;
+            position: fixed;
+            top: 110px;
+            left: 33px;
+            overflow: hidden;
+            padding: 8px 0;
+        }
+
+    #sidenavtekst{
+        opacity: 0;
+        text-align: center;
+        transition: 0.2s 0.3s;
+    }
+    .ikon{
+        transition: 0.2s 0s;
+    }
+    .ikon:hover{
+        transform: scale(1.2);
+    }
+
+    h1{
+        margin: auto;
+        text-align: center;
+
+    }
+
+    #instrumentbilder{
+        display: grid;
+        margin: auto;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        width: 700px;
+    }
+
+    #audio{
+          display: grid;
+        margin: auto;
+        width: 50px;
+        padding: 50px;
+    }
+
+
+    </style>
+
+
+</head>
+<body>
+<nav>
+    <a href="åpningsside.html">hjem</a>
+    <a href="Bestill%20Billetter.html">Bestill Billetter</a>
+    <a href="musikkspill.html">instrumentspill</a>
+</nav>
+
+<div id="sidenav">
+    <img class="ikon" src="FilerV2018/aapningstider.jpg">
+    <img class="ikon" src="FilerV2018/priser.jpg">
+    <img class="ikon" src="FilerV2018/informasjon.jpg">
+    <p id="sidenavtekst"></p>
+
+</div>
+<br>
+<br>
+<br>
+
+<h1>instrumentspillet</h1>
+<div id="instrumentbilder">
+
+    <div><img id="fagott" class="instrument" src="FilerV2018/fagott.jpg"><p>fagott</p></div>
+    <div><img id="floyte" class="instrument" src="FilerV2018/floyte.gif"><p>fløyte</p></div>
+    <div><img id="klarinett" class="instrument" src="FilerV2018/klarinett.jpg"><p>klarinett</p></div>
+    <div><img id="obo" class="instrument" src="FilerV2018/obo.jpg"><p>obo</p></div>
+    <div><img id="valthorn" class="instrument" src="FilerV2018/valthorn.jpg"><p>valthorn</p></div>
+</div>
+
+<div id="audio">
+    <audio id="lyd"></audio>
+    <button id="lydKnapp">lyd</button>
+</div>
+
+<audio id="riktigfeil"></audio>
+
+<p id="poeng"> poeng </p>
+
+
+
+
+<script>
+    //referanser til HTML elementer
+    let lyd = document.querySelector("#lyd");
+    let lydKnapp = document.querySelector("#lydKnapp");
+    let tilfeldigTall = Math.floor(Math.random()*5+0);
+    let riktigfeil = document.querySelector("#riktigfeil");
+    let forsok = 0;
+    let poeng = document.querySelector("#poeng");
+
+
+    let fagottbilde = document.querySelector("#fagott");
+    let floytebilde = document.querySelector("#floyte");
+    let klarinettbilde = document.querySelector("#klarinett");
+    let obobilde = document.querySelector("#obo");
+    let valthornbilde = document.querySelector("#valthorn");
+
+    let bilder = [fagottbilde, floytebilde, klarinettbilde, obobilde, valthornbilde];
+
+
+
+
+
+
+
+
+
+    //globale variabler
+    let lydArray = ["FilerV2018/fagott.mp3", "FilerV2018/floyte.mp3", "FilerV2018/klarinett.mp3", "FilerV2018/obo.mp3", "FilerV2018/valthorn.mp3"];
+    let tilfeldigtallarray = []
+    tilfeldigtallarray.push(tilfeldigTall)
+
+    //setter en tilfeldig lyd når nettsiden lastes
+    lyd.src = lydArray[tilfeldigTall];
+
+    lydKnapp.onclick = function () {
+        lyd.play();
+    }
+    
+    for (let i = 0; i<bilder.length; i++){
+        console.log(tilfeldigTall)
+
+        bilder[i].onclick = function () {
+
+            if (bilder[i] === bilder[tilfeldigTall]){
+                riktigfeil.src = "FilerV2018/riktig.mp3";
+                riktigfeil.play();
+                bilder[i].src = "";
+                console.log(bilder);
+                console.log(lydArray);
+                console.log(i);
+                bilder.splice(i,1);
+                lydArray.splice(i,1);
+                tilfeldigTall = Math.floor(Math.random()*bilder.length);
+                tilfeldigtallarray.push(tilfeldigTall);
+                lyd.src = lydArray[tilfeldigTall];
+                console.log(tilfeldigTall)
+
+
+            }
+            else {
+                riktigfeil.src = "FilerV2018/feil.mp3";
+                riktigfeil.play();
+
+            }
+            forsok++;
+            poeng.innerHTML = forsok
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    let sidenavtekst = document.querySelector("#sidenavtekst");
+    let ikonarray = document.querySelectorAll(".ikon");
+
+
+
+
+//sidenav og nav
+
+
+    //ikontekstarray
+
+    let ikontekstarray = [
+        `<B>åpningstider:</B>
+        <p>Tirsdag – søndag 11.00-16.00</p>`,
+        `<B>Billetter:</B>
+        <p>Voksen: 120 kr</p>
+        <p>Student/honnør: 100 kr</p>
+        <p>Barn (0-15 år): Gratis</p>
+        `,
+        `<B>Informasjon:</B>
+        <p>Besøksadresse: Lade allé 60, 7041 Trondheim 73 87 02 80 post@ringve.no</p>
+        <p>Postadresse: Postboks 6289 Torgarden, 7489 Trondheim</p>
+        `
+    ]
+
+    //hendelsesfunksjoner
+
+    for (let j = 0; j < ikonarray.length; j++){
+
+        ikonarray[j].onmouseover = function () {
+            sidenavtekst.innerHTML = ikontekstarray[j];
+            sidenavtekst.style.opacity = 1;
+        }
+
+
+
+    }
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

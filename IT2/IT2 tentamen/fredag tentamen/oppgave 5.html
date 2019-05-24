@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>presentasjon av ulike politiske partier</title>
+
+    <style>
+        nav{
+            grid-template-columns: repeat(2,1fr);
+            display: grid;
+            width: 100%;
+            text-align: center;
+
+        }
+        button{
+            border: none;
+            color: white;
+
+
+        }
+
+        #side{
+            text-align: center;
+            font-family: "American Typewriter";
+
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+<nav>
+    <a><img class="icon" src="bilder/sp.png" width="150" ></a>
+    <a><img class="icon" src="bilder/miljopartiet.png" width="150" ></a>
+
+</nav>
+
+<div id="side">
+<p id="partiInfo"> Velg et parti du ønsker å vite mer om</p>
+
+<img id="slide">
+<br>
+<button id="tilbake"><</button>
+
+<button id="fram">></button>
+
+</div>
+
+
+<script>
+    const iconArray = document.querySelectorAll(".icon");
+    let partiInfo = document.getElementById("partiInfo");
+    let partier = ["Senterpartiet", "Miljøpartiet de grønne"];
+    let antRepresentanter = [19, 1];
+    let slagord = ["Vi tror på hele Norge", "Ta vare på fremtiden"];
+    let SPKarusell = ["bilder/sp01.jpg", "bilder/sp02.jpg", "bilder/sp03.jpg"];
+    let MDGKarusell = ["bilder/mdg01.jpg", "bilder/mdg02.jpg", "bilder/mdg03.jpg"];
+    let slide = document.getElementById("slide");
+    let fram = document.getElementById("fram");
+    let tilbake = document.getElementById("tilbake");
+    let n = 0;
+    let karusell = [SPKarusell, MDGKarusell];
+
+
+
+
+    for (let i = 0; i < 2; i++) {
+
+
+        iconArray[i].onclick = function () {
+
+           knappStil(fram);
+           knappStil(tilbake);
+
+
+
+            partiInfo.innerHTML = "<h1>" + partier[i] + "</h1>" + "<p> antall stortingsrepresentanter: " + antRepresentanter[i] + "</p>" + slagord[i];
+
+            slideShow(karusell[i]);
+
+
+        }
+    }
+
+
+    function slideShow(bildeArray) {
+
+        slide.src = bildeArray[0];
+
+
+        fram.onclick = function () {
+
+            n++;
+            if (n === bildeArray.length){
+                n = 0
+            }
+            slide.src = bildeArray[n]
+
+
+        };
+        tilbake.onclick = function () {
+            n--;
+            if (n === -1){
+                n = bildeArray.length - 1
+            }
+            slide.src = bildeArray[n];
+
+        }
+
+    }
+
+    function knappStil(knapp) {
+
+        knapp.style.color = "black";
+        knapp.style.padding = "20px";
+        knapp.style.fontSize = "20px";
+
+    }
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

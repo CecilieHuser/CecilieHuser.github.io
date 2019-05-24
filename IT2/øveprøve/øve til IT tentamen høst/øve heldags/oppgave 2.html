@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oppgave 2</title>
+</head>
+<body>
+
+
+
+
+
+<script>
+
+oppg("Aa");
+
+let navn = ["Gunhild", "Per", "Jens", "Nina"];
+
+
+document.write(navn[2]);
+
+oppg("Ab");
+//navn[4] = "Karsten";
+navn.push("karsten");
+//navn[navn.length] = "Karsten";
+
+
+document.write(navn);
+
+oppg("Ba");
+
+let bruker1 = {Brukernavn: "bruker1", passord: 1234};
+let bruker2 = {brukernavn: "bruker2", passord: 2345};
+let bruker3 = {brukernavn: "bruker3", passord: 3456};
+
+
+bruker2.brukernavn = "nyttBrukernavn";
+
+document.write(bruker2.brukernavn);
+
+
+
+
+
+
+
+
+
+
+    function oppg(bokstav) {
+
+        document.write(`<p>oppgave ${bokstav})</p>`);
+
+    }
+</script>
+
+</body>
+</html>

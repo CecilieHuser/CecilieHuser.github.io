@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prøv selv side 99</title>
+</head>
+<body>
+
+
+
+
+
+<script>
+
+
+    document.write("<h1>Oppgaver side 99</h1>");
+
+    document.write("<h3> Oppgave 1 </h3>");
+
+    mittNavn();
+    mittNavn();
+    mittNavn();
+
+
+
+    function mittNavn() {
+
+        document.write("<p>Cecilie Huser </p>");
+
+    }
+
+
+    document.write("<h3> Oppgave 2 </h3>");
+
+    document.write("<p id='tekst'> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae pulvinar diam. Phasellus blandit tempor ligula eu facilisis. Aenean viverra ullamcorper felis nec mollis. In mollis lectus ac cursus rhoncus. Nam commodo at lacus sit amet pretium. In fermentum lectus sit amet sodales molestie. Nam pellentesque erat non aliquet ultricies. Fusce ultricies arcu nec erat semper, eget ornare nibh lobortis.\n" +
+        "\n" +
+        "Vestibulum convallis tellus eget tincidunt varius. Pellentesque massa nulla, maximus eu ipsum nec, malesuada mollis libero. Nulla viverra risus quis ullamcorper aliquet. Etiam nec arcu mauris. Nam aliquam, nunc et egestas finibus, dui leo lobortis tortor, eu volutpat leo lacus a felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse facilisis libero sit amet sem rhoncus, at lobortis libero feugiat.\n" +
+        "\n" +
+        "Nullam ultricies vulputate elit ut sagittis. Curabitur ut urna turpis. Aenean nec accumsan dui, eget ornare sapien. Nunc et quam a metus accumsan tincidunt. Nulla tincidunt tincidunt tellus, gravida sollicitudin erat egestas auctor. Aliquam et diam vel lectus pulvinar pharetra aliquam non nisl. Maecenas quis varius dui.\n" +
+        "\n" +
+        "Nullam lobortis velit sit amet orci aliquam iaculis. Nulla metus tellus, egestas eget imperdiet nec, faucibus nec elit. Nunc nec facilisis ex. Fusce vel tincidunt nibh. Morbi molestie tristique lorem nec vulputate. Fusce ornare odio vitae molestie cursus. Fusce placerat urna in neque vestibulum, vel scelerisque lacus maximus. Morbi ultrices ex non orci mollis, vitae imperdiet felis tempus. Proin erat nibh, fringilla quis fermentum ac, laoreet eu felis. Maecenas pellentesque vitae sapien nec euismod. Mauris porta tincidunt odio sit amet porta. Nunc hendrerit nec ipsum nec finibus. </p>" );
+
+    endreStil();
+
+    function endreStil() {
+
+
+        var tekst = document.getElementById("tekst");
+        tekst.style.backgroundColor = "black";
+        tekst.style.fontSize = "150%";
+        tekst.style.fontFamily = "courier new";
+        tekst.style.color = "white";
+
+    }
+
+
+    document.write("<h3> oppgave 4 </h3>");
+
+    document.write("det kan være nyttig å bruke funksjoner når du har en kodesnutt du skal bruke flere ganger i en kode");
+
+    document.write("<h3> oppgave 5</h3>");
+
+    document.write("<p> 1: funksjon mittNavn sin gjør at document sin write settes til Cecilie Huser</p>" + "<p>2: document sin write sin id settes til tekst i paragraf settes til lorem ipsum dolor...</p>" + "<p> funksjonen endreStil settes til variabel tekst settes til document sin getElementById tekst og tekst sin style sin backgroundColor settes til black</p>");
+
+
+
+    document.write("<h3> oppgave 6</h3>");
+    document.write("<h4> a) </h4>");
+
+
+    document.write("<canvas id='canvas' height='400' width='400'></canvas>");
+
+
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var x = 50;
+    var y = 50;
+
+tegnSirkel();
+flyttX();
+flyttY();
+tegnSirkel();
+flyttX();
+flyttY();
+tegnSirkel();
+
+
+    function tegnSirkel() {
+        ctx.beginPath();
+        ctx.arc(x,y,10,0,2*Math.PI);
+        ctx.fill()
+
+    }
+
+    function flyttX() {
+        x = x + 20;
+
+    }
+
+    function flyttY() {
+        y = y + 20;
+
+    }
+
+
+    document.write("<h4>b)</h4>");
+
+    document.write("<canvas id='canvas2' width='400' height='200'></canvas>");
+    var canvas2 = document.getElementById("canvas2");
+    var ctx2 = canvas2.getContext("2d");
+
+    var x2 = 0;
+    var y2 = 50;
+
+
+
+    for (var i = 0; i < 10; i++){
+
+        x2 = x2 + 30;
+        tegnSirkler();
+
+    }
+
+
+        function tegnSirkler() {
+
+        ctx2.beginPath();
+        ctx2.arc(x2, y2, 10, 0, 2 * Math.PI);
+        ctx2.fill();
+
+    }
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

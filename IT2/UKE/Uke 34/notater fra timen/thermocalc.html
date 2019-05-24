@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>termometer kalkulator</title>
+</head>
+<body>
+
+<header>
+    <h1>
+        Termometer-kalkulator
+    </h1>
+</header>
+
+<script>
+
+
+
+
+    var fahrenheit = prompt("skriv inn temperaturen i fahrenheit")
+    var celcius = (fahrenheit - 32)/1.8;
+
+    console.log(celcius); //skrive det ut i inspiser - console, bare for å sjekke
+    document.write(`${fahrenheit} grader fahrenheit er ${celcius.toFixed(2)} grader celsius`)
+
+</script>
+
+</body>
+</html>

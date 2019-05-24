@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+
+<script>
+
+
+
+    var tall = Number(prompt("skriv inn ett tall"));
+
+
+    if (tall % 2 === 0){
+        document.write(tall + " er et partall.");
+    }
+    else {
+        document.write(tall + " er et oddetall.");
+    }
+
+
+
+    document.write("<h3>" + "hva er hovedstaden i Norge?" + "</h3>");
+    document.write(`<input type="text" id="inpSvar" placeholder="skriv ditt svar her" >`);
+    document.write(`<button id="btnSvar">send inn</button> `);
+    document.write(`<div id="divsvar"></div>`);
+
+    var inpSvar = document.getElementById("inpSvar");
+    var btnSvar = document.getElementById("btnSvar");
+    var divSvar = document.getElementById("divsvar");
+
+    inpSvar = inpSvar.toLowerCase();
+
+    btnSvar.onclick = function () {
+
+        if (inpSvar.value === "oslo"){
+            document.write("det er riktig");
+        }
+        else {
+            document.write("feil svar");
+        }
+
+
+    }
+
+
+
+    var navn = input
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

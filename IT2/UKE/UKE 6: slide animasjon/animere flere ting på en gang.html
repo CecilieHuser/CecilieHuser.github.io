@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: black;
+        }
+
+
+
+
+        div{
+            width: 20px;
+            height: 20px;
+            background-color: mediumvioletred;
+            float: left;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+
+
+<script>
+    const divArray = document.querySelectorAll("div");
+
+
+    let divCSS = [
+        {
+            transform: "translateY(0px)", //trenger ikke bruke position: absolute her fordi translateY() eller translateX() funker uten
+            opacity: 1
+        },
+        {
+            transform: "translateY(300px)",
+            opacity: 0
+        }
+    ];
+
+    let divEgenskaper = {
+        duration: 1500,
+        iterations: Infinity,
+        direction: "alternate",
+        easing: "ease-in-out"
+
+    };
+
+    /*
+
+    for (div of divArray) {
+        divEgenskaper.delay = Math.random()*1000;
+        div.animate(divCSS, divEgenskaper)
+
+    }
+
+*/
+
+    divAnimasjoner = [];
+
+
+    for (let i = 0; i<divArray.length; i++){
+
+        let delayAni = i*100;
+        divEgenskaper.delay = delayAni;
+        divArray[i].animate(divCSS,divEgenskaper);
+    }
+
+
+
+</script>
+
+
+
+</body>
+</html>

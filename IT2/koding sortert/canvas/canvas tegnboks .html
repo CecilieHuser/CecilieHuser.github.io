@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+
+
+
+
+<canvas id="canvas" height="600" width="600"></canvas>
+
+<script>
+
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    let x = 200;
+    let y = 40;
+
+    ctx.beginPath();
+    ctx.fillRect(x, y, 20, 20, );
+    ctx.fill();
+
+
+
+    window.onkeydown = function (event) {
+
+        if (event.code === "ArrowRight"){
+
+            x += 5;
+
+
+        }
+
+        else if (event.code === "ArrowLeft"){
+            x -=5
+
+        }
+        else if (event.code === "ArrowUp"){
+            y -= 5;
+        }
+        else if (event.code === "ArrowDown"){
+            y += 5;
+        }
+
+
+        ctx.beginPath();
+        ctx.fillRect(x,y,20,20);
+        ctx.fill();
+        ctx.clearRect();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

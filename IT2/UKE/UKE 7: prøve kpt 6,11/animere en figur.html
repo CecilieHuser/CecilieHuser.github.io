@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+
+        /* lager en ramme med height og width lik en av figurene*/
+        #ramme{
+            position: relative;
+            height: 100px;
+            width: 100px;
+            overflow: hidden;
+
+        }
+
+        #trump{
+            position: absolute; /*så bildet kan flyttes hvor som helst på arket*/
+            top: 0;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+
+
+
+
+<div id="ramme">
+    <img src="trump.png" id="trump">
+</div>
+
+<div>
+
+    <button id="knapp">endre retning</button>
+
+</div>
+
+
+<script>
+    let trump = document.querySelector("#trump");
+
+    //array med objekter som sier hvor animasjonen starter og hvor den slutter
+    let trumpCSS = [
+        {
+            left: "0px"
+        },
+        {
+            left: "-600px"
+        }
+    ];
+
+
+
+    //varighet, steps og at animasjonen skal foregå i evigheten
+    let trumpEgenskaper = {
+        duration: 1000,
+        easing: "steps(6)",
+        iterations: Infinity
+    };
+
+    //animerer bildet
+    trump.animate(trumpCSS, trumpEgenskaper);
+
+    //få knappen til å funke
+    let n = 0;
+    let knapp = document.querySelector("#knapp");
+
+    knapp.onclick = function () {
+
+        n-=100;
+
+        if (n < -300) {
+            n=0
+        }
+
+        trump.style.top = `${n}px`;
+    }
+
+    window.onkeydown = function () {
+        
+        console.log(event.code);
+        
+        if (event.code === "ArrowUp") {
+            trump.style.top = `-200px`
+        }
+        else if (event.code === "ArrowDown"){
+            trump.style.top = `0px`
+        }
+        else if (event.code === `ArrowRight`){
+            trump.style.top = `-100px`
+        }
+        else if(event.code === `ArrowLeft`){
+            trump.style.top = `-300px`
+
+        }
+        
+        
+        
+    }
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

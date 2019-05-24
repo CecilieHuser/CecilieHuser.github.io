@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<main>
+
+    <p id="mittAvsnitt">
+
+        her skal det komme tekst laget av javascript
+
+    </p>
+
+</main>
+
+
+
+<script>
+
+
+    var parMittAvsnitt = document.getElementById("mittAvsnitt"); // lager en variabel i Java som refererer til avsnittet "mittAvsnitt"
+
+    parMittAvsnitt.innerHTML = "<p>denne teksten er laget av Javascript</p>";
+
+    parMittAvsnitt.innerHTML += "hei" // legge til tekst uten å fjerne det forrige
+
+</script>
+
+</body>
+</html>

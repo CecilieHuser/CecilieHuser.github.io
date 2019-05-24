@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<p id="natur">
+
+</p>
+
+<p id="hvordanHarDuDet"> <!--oppretter et tomt paragraf-->
+
+
+</p>
+
+
+<p id="tomtPElement"></p>
+
+<script>
+
+var refNatur = document.getElementById("natur");
+
+    refNatur.innerHTML = "naturen er vakker";
+
+
+    var spørsmål = prompt("hvordan har du det?"); // prompt som lagres i variabelen spørsmål
+
+
+    var refHvordanHarDuDet = document.getElementById("hvordanHarDuDet");
+
+    refHvordanHarDuDet.innerHTML = (`Du har det ${spørsmål}`); //skriver ut svaret i spørsmålet
+
+
+    var favorittFilm = ["sound of music", "harry potter", "hunger games"];
+
+
+    var refTomtPElement = document.getElementById("tomtPElement");
+
+    refTomtPElement.innerHTML = (`Mine favoritt filmer er ${favorittFilm[0]}, ${favorittFilm[1]} og ${favorittFilm[2]}`);
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

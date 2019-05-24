@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>terningkast</title>
+</head>
+<body>
+
+
+
+
+<img id="bilde">
+
+<script>
+
+    let terningKast = Math.floor(Math.random()*6+0);
+    let oyne = ["1.png","2.png","3.png","4.png","5.png", "https://images.pexels.com/photos/37524/cube-six-gambling-play-37524.jpeg?auto=compress&cs=tinysrgb&h=350"];
+    let bilde = document.getElementById("bilde");
+
+    bilde.src = oyne[terningKast];
+
+    document.write(terningKast+1);
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

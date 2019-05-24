@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+        body {
+            font-family: AppleGothic;
+            color: orange;
+
+        }
+        #diven{
+            position: absolute;
+            left: 25%
+        }
+
+        h1{
+
+        }
+
+        button{
+            padding: 10px;
+            width: 100px;
+            background-color: white;
+            color: orange;
+            font-size: medium;
+        }
+        .overskrift{
+            background-color: #333333;
+            width: 640px;
+            padding: 30px;
+            text-align: center;
+        }
+        th{
+            background-color: #333333;
+            width: 137px;
+            padding: 30px;
+            color: orange;
+        }
+        .plass{
+            width: 40px;
+        }
+        #registreringsDiv{
+
+            width: 700px;
+            height: 300px;
+        }
+
+        #registrer{
+            padding: 10px;
+            margin-left: 30px;
+        }
+
+        #radioDeltaker{
+            margin-left: 30px;
+            color: black;
+        }
+
+        #kastDiv{
+
+            width: 700px;
+        }
+
+
+        .kast{
+            padding: 10px;
+            width: 60px;
+        }
+
+
+        #rundeFerdig{
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+
+        table{
+            color: orange;
+        }
+        tr{
+            color: #333333;
+        }
+
+        #finnVinner{
+            opacity: 0;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+<div id="diven">
+    <h1>resultathåndtering: spydkast</h1>
+
+    <div id="narFerdigVinner">
+        <div id="registreringsDiv">
+
+            <div class="overskrift">
+                <B>registrering:</B>
+            </div>
+            <br>
+            <input id="registrer">
+
+            <div id="radioDeltaker"></div>
+
+
+        </div>
+
+        <div id="kastDiv">
+
+            <div class="overskrift">
+                <B id="overskriftKast">runde 1</B>
+            </div>
+            <br>
+            <input class="kast" type="number" placeholder="kast 1">
+            <input class="kast" type="number" placeholder="kast 2">
+            <input class="kast" type="number" placeholder="kast 3">
+            <button id="leggTil">legg til</button>
+            <br>
+            <button id="rundeFerdig">runde 1 ferdig</button>
+        </div>
+    </div>
+
+
+    <div id="resultatTabellDiv">
+
+        <table id="resultatTabell">
+            <tr>
+                <th class="plass"></th>
+                <th>deltaker</th>
+                <th>runde 1</th>
+                <th>runde 2</th>
+            </tr>
+        </table>
+
+        <button id="finnVinner">finn Vinner</button>
+
+    </div>
+</div>
+
+<script>
+
+    //referanser til HTML
+    let registrer  = document.querySelector("#registrer");
+    let radioDeltaker = document.querySelector("#radioDeltaker");
+    let kastene = document.querySelectorAll(".kast");
+    let resultatTabell = document.querySelector("#resultatTabell");
+    let leggTil = document.querySelector("#leggTil");
+    let rundeFerdig = document.querySelector("#rundeFerdig");
+    let overskriftKast = document.querySelector("#overskriftKast");
+    let narFerdigVinner = document.querySelector("#narFerdigVinner");
+    let finnVinner = document.querySelector("#finnVinner");
+
+
+    //arrayer
+    let delt0 = {
+        navn: "",
+        kast1: [],
+        kast2: [],
+        toBesteKast: []
+    }
+    let delt1 = {
+        navn: "",
+        kast1: [],
+        kast2: [],
+        toBesteKast: []
+    }
+    let delt2 = {
+        navn: "",
+        kast1: [],
+        kast2: [],
+        toBesteKast: []
+    }
+    let delt3 = {
+        navn: "",
+        kast1: [],
+        kast2: [],
+        toBesteKast: []
+    }
+    let delt4 = {
+        navn: "",
+        kast1: [],
+        kast2: [],
+        toBesteKast: []
+    }
+    let delt5 = {
+        navn: "",
+        kast1: [],
+        kast2: [],
+        toBesteKast: []
+    }
+    let delt6 = {
+        navn: "",
+        kast1: [],
+        kast2: [],
+        toBesteKast: []
+    }
+    let delt7 = {
+        navn: "",
+        kast1: [],
+        kast2: [],
+        toBesteKast: []
+    }
+
+    let deltakere = [delt0, delt1, delt2, delt3, delt4, delt5, delt6, delt7];
+
+
+    //globale variabler
+    let n = 0;
+    let valg
+
+
+
+
+
+    //hendelsesfunksjoner
+
+    //registrerer deltakere
+    registrer.onchange = function () {
+        //legger til navn i deltaker objektene som ligger i arrayen for deltakerene
+        deltakere[n].navn = registrer.value;
+        radioDeltaker.innerHTML = "";
+
+        resultatTabell.innerHTML = `
+        <tr>
+                <th class="plass"></th>
+                <th>deltaker</th>
+                <th>runde 1</th>
+                <th>runde 2</th>
+            </tr>
+        `
+
+        //looper gjennom deltakerne og skriver de opp med en radio knapp for å kunne velge dem og legge inn lengde på kastene deres
+        for (let p = 0; p<8; p++){
+
+            radioDeltaker.innerHTML += `<B>${p+1}</B><input name="velg" type="radio"><B>${deltakere[p].navn}</B><br>`
+
+            resultatTabell.innerHTML += `
+                    <tr>
+                        <td class="plass"></td>
+                        <td>${deltakere[p].navn}</td>
+                        <td>${deltakere[p].kast1.join(", ")}</td>
+                        <td>${deltakere[p].kast2.join(", ")}</td>
+                    </tr>
+            `
+
+
+        }
+        n++;
+
+        //legger radioknappene til hver deltaker i en nodelist
+        valg = document.querySelectorAll(`input[name="velg"]`)
+
+        //fjerner inputet i registreringsfeltet
+        registrer.value = ""
+
+
+
+    }
+
+    //legg til kast
+    leggTil.onclick = function () {
+        //looper gjennom for å se hvilken deltaker som er valgt
+        for (let i = 0; i<valg.length; i++) {
+            //for en valgt deltaker
+            if (valg[i].checked) {
+                for (let kast of kastene) {
+                   if (kast.value > 0) {
+                       //pushes kastene til kast1 arrayen inni objektet til deltakeren hvis vi er på runde 1.
+                       if (rundeFerdig.innerHTML === "runde 1 ferdig") {
+                           deltakere[i].kast1.push(kast.value)
+                       }
+                       //pushes kastene til kast2 arrayen inni objektet til deltakeren hvis vi er på runde 2.
+                       else if (rundeFerdig.innerHTML === "runde 2 ferdig") {
+                           deltakere[i].kast2.push(kast.value)
+
+
+                       }
+                   }
+
+                }
+                console.log(deltakere)
+
+            }
+
+            //sorterer kastene til hver deltaker i synkende rekkefølge
+            for (let q = 0; q < deltakere.length; q++){
+                deltakere[q].kast1.sort(sortereTall);
+                deltakere[q].kast2.sort(sortereTall);
+                console.log(deltakere[q].kast1);
+            }
+
+            //legger til de to bestekastene i et array til hver deltaker
+            for (let r = 0; r < 4; r++){
+                deltakere[r].toBesteKast.splice(0,2)
+                deltakere[r].toBesteKast.push(deltakere[r].kast1[0])
+                deltakere[r].toBesteKast.push(deltakere[r].kast2[0])
+                deltakere[r].toBesteKast.sort(sortereTall);
+            }
+
+            //sorterer deltakerne i synkende rekkefølge utifra beste kast
+            deltakere.sort(sortereObjekter);
+
+            console.log(deltakere)
+
+
+            //skriver ut resultattabellen etterhvert som kastene legges til
+            resultatTabell.innerHTML = `
+        <tr>
+                <th class="plass">plass</th>
+                <th>deltaker</th>
+                <th>runde 1</th>
+                <th>runde 2</th>
+            </tr>
+        `
+
+
+            for (let m = 0; m<deltakere.length; m++){
+                resultatTabell.innerHTML +=
+                    `<tr>
+                        <td class="plass">${m+1}</td>
+                        <td>${deltakere[m].navn}</td>
+                        <td>${deltakere[m].kast1.join(", ")}</td>
+                        <td>${deltakere[m].kast2.join(", ")}</td>
+                    </tr>`
+
+            }
+
+
+        }
+
+
+        };
+
+
+    
+    
+    //registrere hvem som er videre når runde 1 er ferdig
+    
+    rundeFerdig.onclick = function () {
+
+
+        radioDeltaker.innerHTML = "";
+
+        //skriver ut de deltakerne som er videre
+        for (let r = 0; r < 4; r++){
+            radioDeltaker.innerHTML += `<B>${r+1}</B><input name="velg" type="radio"><B>${deltakere[r].navn}</B><br>`
+        }
+
+        //legger nå til kun de fire rasioknappene i nodelisten valg
+        valg = document.querySelectorAll(`input[name="velg"]`)
+        console.log(valg)
+
+
+        //gjør finnvinner knappen synlig etter kastene fra runde 2 er registrert
+        if (rundeFerdig.innerHTML === "runde 2 ferdig"){
+            finnVinner.style.opacity = 1
+        }
+
+
+        //endrer overskriften til runde 2 og knappen til runde 2 ferdig
+        overskriftKast.innerHTML = "runde 2";
+        rundeFerdig.innerHTML = "runde 2 ferdig"
+
+
+
+        };
+
+    //finne vinneren
+    finnVinner.onclick = function () {
+        if (rundeFerdig.innerHTML === "runde 2 ferdig") {
+            narFerdigVinner.innerHTML = `vinneren er ${deltakere[0].navn}, med det lengste kastet på ${deltakere[0].toBesteKast[0]} meter`
+            narFerdigVinner.style.fontSize = "50px";
+            finnVinner.style.opacity = 0
+        }
+    }
+
+
+
+
+    //brukes til å sortere kastelengdene
+    function sortereTall(tall1, tall2) {
+        return tall2-tall1
+
+    }
+
+    //brukes til å sortere kastelengdene
+    function sortereObjekter(objekt1, objekt2) {
+        if (rundeFerdig.innerHTML === "runde 1 ferdig") {
+            return objekt2.kast1[0]-objekt1.kast1[0]
+        }
+
+        else if(rundeFerdig.innerHTML === "runde 2 ferdig"){
+            return objekt2.toBesteKast[0]-objekt1.toBesteKast[0]
+        }
+
+
+    }
+
+
+
+
+</script>
+
+</body>
+</html>

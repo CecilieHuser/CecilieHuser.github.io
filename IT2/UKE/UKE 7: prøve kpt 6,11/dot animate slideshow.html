@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animate</title>
+
+
+
+    <style>
+
+        #ramme{
+            height: 647px;
+            width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #bilder{
+            grid-template-columns: 1fr 1fr 1fr;
+            display: grid;
+            position: absolute;
+            transition: 5s;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<div id="ramme">
+    <div id="bilder">
+        <div>
+            <img src="london.jpeg">
+        </div>
+        <div>
+            <img src="japan.jpeg">
+        </div>
+        <div>
+            <img src="NY.jpeg">
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    let bilder = document.querySelector("#bilder");
+
+
+
+
+    let bildeCSS = [
+        {
+            transform: "translateX(0px)"
+        },
+        {
+            transform: "translateX(-1500px)"
+        }
+        ];
+
+    let bildeEgenskaper = {
+            duration: 10000,
+            easing: "steps(3)",
+            iterations: "Infinity"
+        };
+
+        bilder.animate(bildeCSS, bildeEgenskaper);
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+</body>
+</html>

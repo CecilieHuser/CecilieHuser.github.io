@@ -1,0 +1,17 @@
+nav{
+
+    text-align: center;
+    grid-template-columns: repeat(4,1fr);
+    display: grid;
+    width: 100%;
+    background-color: burlywood;
+}
+
+
+a{
+    color: black;
+    text-decoration: none;
+    font-family: "American Typewriter";
+    font-size: 20px;
+
+}

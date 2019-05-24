@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<!--oppgave 1-->
+<input id="inpFelt">
+
+
+<!--oppgave 2-->
+<h1 id="overskrift">overskrift</h1>
+
+
+<!--oppgave 3-->
+<div id="boks"></div>
+
+
+
+<!--oppgave 4-->
+<input id="grader" type="text">
+
+<div id="planke"></div>
+
+
+<!--oppgave 5-->
+<div id="divel"></div>
+
+<script>
+
+
+    //oppgave 1
+    let inpFelt = document.querySelector("#inpFelt");
+
+    inpFelt.onchange = function () {
+
+        document.body.style.backgroundColor = inpFelt.value;
+
+
+    }
+
+    document.body.style.transition = "background-color 2s"
+
+
+    //oppgave 2
+
+    let overskrift = document.querySelector("#overskrift");
+    overskrift.style.textAlign = "center";
+
+    overskrift.onmouseover = function () {
+
+        overskrift.style.transform = "scale(3)";
+        overskrift.style.transition = "3s"
+
+    }
+
+    //oppgave 3
+
+    let boks = document.querySelector("#boks");
+
+    boks.style.backgroundColor = "black";
+    boks.style.width = "200px";
+    boks.style.height = "200px";
+    boks.style.position = "absolute";
+
+
+    window.onclick = function () {
+
+        boks.style.left = event.clientX +"px";
+        boks.style.top = event.clientY + "px";
+        boks.style.transition = "0.2s"
+
+    }
+
+
+    //oppgave 4
+
+    let planke = document.querySelector("#planke");
+    let inpGrader = document.querySelector("#grader");
+
+    planke.style.width = "200px";
+    planke.style.height = "50px";
+    planke.style.backgroundColor = "brown";
+    planke.style. marginTop = "100px";
+    planke.style.marginLeft = "auto";
+    planke.style.marginRight = "auto";
+    planke.style.transition = "50s";
+
+
+    inpGrader.oninput = function () {
+
+        planke.style.transform = `rotate(${inpGrader.value}deg)`;
+    }
+
+
+    //oppgave 5
+
+
+    let divel = document.quer
+
+
+
+
+</script>
+
+</body>
+</html>

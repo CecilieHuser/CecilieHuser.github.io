@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>værsang</title>
+
+    <style>
+
+        #lydKnapp{
+            margin-top: 15px;
+        }
+
+        nav{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            font-family: "Courier New";
+            background-color: black;
+            margin-top: 0px;
+            text-align: center;
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            overflow: hidden;
+            z-index: -100;
+        }
+
+
+        #tekst{
+            position: fixed;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            color: blanchedalmond;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            font-size: 30px;
+            font-family: "Courier New";
+
+
+        }
+
+
+
+    </style>
+
+
+
+
+
+</head>
+<body>
+
+
+
+
+<nav>
+    <a><button id="lydKnapp"><img id="lydBilde" src="mute.png"></button></a>
+    <a href="prosjekt.html"><h1>klærmaskinen</h1></a>
+    <a href="værsang.html"><h1>vær setning</h1></a>
+</nav>
+
+
+<video autoplay muted loop id="myVideo">
+    <source src="værprosjekt.mp4" type="video/mp4">
+</video>
+
+
+
+
+
+
+
+<h1 id="tekst"></h1>
+
+
+
+
+
+<script>
+
+    let lydKnapp = document.getElementById("lydKnapp");
+    let lydbilde = document.getElementById("lydBilde");
+
+
+    lydKnapp.onclick = function(){
+
+
+        if (myVideo.muted === true){
+            myVideo.muted = false;
+            lydbilde.src = "sound.png"
+
+        }
+        else if (myVideo.muted === false){
+            myVideo.muted = true;
+            lydbilde.src = "mute.png";
+        }
+    }
+
+
+
+
+
+    let sitater = ["det finnes ikke dårlig vær, bare dårlig klær", " vær klar med riktig klær", "dårlig vær", "godt vær" ]
+
+
+
+
+
+    for (var m = 0; m < 8; m++){
+
+        let tall = Math.floor(Math.random()*4);
+
+
+
+        document.getElementById("tekst").innerHTML += "<p>" + sitater[tall] + "</p>";
+
+
+
+    }
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

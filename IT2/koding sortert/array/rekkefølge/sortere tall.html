@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sortere tall</title>
+</head>
+<body>
+
+
+<ul id="tallListe">
+
+</ul>
+
+
+
+
+<script>
+
+
+    let tallListe = document.querySelector("#tallListe");
+    let liste = [100,40,320,201];
+
+
+
+    liste.sort(sortereTall);
+
+
+
+    for (let tall of liste){
+        let nyttElement = document.createElement("li");
+        nyttElement.innerHTML = tall;
+        tallListe.appendChild(nyttElement);
+    }
+
+
+
+    function sortereTall(tall1, tall2) {
+        return tall2-tall1
+
+    }
+
+
+
+</script>
+
+</body>
+</html>

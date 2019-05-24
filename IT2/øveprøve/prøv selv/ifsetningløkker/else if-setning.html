@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>else if-setning</title>
+</head>
+<body>
+
+
+
+
+
+<img id="img">
+
+
+
+<script>
+
+
+    oppg(1);
+
+    const bildeArray = ["dove.jpeg", "peacock.jpeg", "yellowbird.jpeg"];
+
+
+    const tall = Math.floor(Math.random()*3);
+    let img = document.getElementById("img");
+
+img.src = bildeArray[tall];
+
+
+
+document.write(bildeArray[tall]);
+
+
+
+
+
+    function oppg(tall) {
+
+        document.write(`<h4> oppgave ${tall} </h4>`)
+
+    }
+
+</script>
+
+</body>
+</html>

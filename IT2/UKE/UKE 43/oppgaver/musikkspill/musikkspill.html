@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<div lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+        body{
+            text-align: center;
+        }
+
+        button{
+            font-family: "Courier New";
+            color: white;
+            background-color: black;
+
+        }
+
+
+
+    </style>
+
+
+
+</head>
+<br>
+
+
+<h1>hvilket musikkinstrument hører du?</h1>
+
+
+<button>klarinett<br><img src="../bilder/klarinett.jpeg" id="klarinett" width="100"></br></button>
+<button>tuba<br><img src="../bilder/tuba.jpeg" id="tuba" width="100"></br></button>
+<button>saxofon<br><img src="../bilder/saxofon.jpeg" id="sax" width="100"></br></button>
+<button>trompet<br><img src="../bilder/trompet.jpg" id="trompet" width="100"></br></button>
+
+
+<br>
+ <audio src="sax.mp3" id="lyd" controls></audio>
+
+</br>
+
+
+
+
+<script>
+    var lydArray = ["trumpet.wav", "sax.mp3"];
+    var lyd = document.getElementById("lyd");
+    var sax = document.getElementById("sax");
+    let n = Math.floor(Math.random()*2+0);
+
+
+    lyd.onclick = function(){
+
+        lyd.src = lydArray[n];
+
+    }
+
+
+    sax.onclick = function () {
+
+        if( n === 1 ){
+
+            document.write("riktig");
+            else {
+                document.write("feil");
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+    lyd.play()
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

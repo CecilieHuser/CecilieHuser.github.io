@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<canvas id="myCanvas" width="300" height="400">
+
+
+
+
+
+
+    <script>
+
+
+
+        var myCanvas = document.getElementById("myCanvas");
+
+        var ctx = myCanvas.getContext("2d");
+
+
+        ctx.fillRect(30,20,50,50)
+
+
+
+
+
+
+
+    </script>
+
+</canvas>
+
+
+<canvas id="newCanvas" width="500" height="400">
+
+
+    <script>
+
+
+        var newCanvas = document.getElementById("newCanvas");
+        var ctx1 = newCanvas.getContext("2d");
+
+        ctx1.fillStyle = "red";
+        ctx1.fillRect(100,100,50,50);
+
+
+
+        var newCanvas = document.getElementById("newCanvas");
+        var ctx2 = newCanvas.getContext("2d");
+        ctx2.fillStyle = "pink";
+        ctx2.fillRect(110,110,30,30);
+
+
+        var newCanvas = document.getElementById("newCanvas");
+        var ctx3 = newCanvas.getContext("2d");
+
+        ctx3.fillStyle = "blue";
+        ctx3.moveTo(300,300);
+        ctx3.lineTo(400,300);
+        ctx3.lineTo(350,250);
+        ctx3.lineTo(300,300);
+        ctx3.fill();
+
+        //annenhver moveTo og lineTo hvis man skal ha omrisse, bruker strokestyle for farge og stroke for å tegne, imens moveto først også bare lineto etter hvernadre hvis man skal ha fyll, fillStyle først og fill for å tegne
+
+    </script>
+
+
+
+
+</canvas>
+
+
+
+<canvas id="husCanvas" width="200", height="200">
+
+
+    <script>
+
+        var husCanvas = document.getElementById("husCanvas");
+        var ctx4 = husCanvas.getContext("2d");
+
+        ctx4.fillRect(50,100,50,50);
+        ctx4.fillStyle = "red";
+        ctx4.moveTo(50,100);
+        ctx4.lineTo(75,50);
+        ctx4.lineTo(100,100);
+        ctx4.fill();
+    </script>
+
+
+
+
+
+</canvas>
+</body>
+</html>

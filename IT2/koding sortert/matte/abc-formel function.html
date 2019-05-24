@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+<script>
+
+    function nullPunkter(a, b, c) {
+
+        if (((Math.sqrt(Math.pow(b, 2)-4*a*c)) > 0)) {
+
+
+            var nullP = [((-b+Math.sqrt(Math.pow(b, 2)-4*a*c))/(2*a)), ((-b-Math.sqrt(Math.pow(b, 2)-4*a*c))/(2*a))];
+
+            return nullP;
+
+        }
+        else {
+            return "ingen løsning"
+        }
+
+
+        
+    }
+
+
+    console.log(nullPunkter(5,1,2));
+
+
+
+</script>
+
+</body>
+</html>

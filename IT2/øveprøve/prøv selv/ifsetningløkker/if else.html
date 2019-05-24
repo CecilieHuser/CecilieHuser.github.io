@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>if else</title>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+
+oppgave(1);
+
+
+    var svar = prompt("hva heter hovedstaden i Norge?");
+    var bilde = document.getElementById("bilde")
+
+
+    if (svar === "oslo"){
+        document.write("Oslo er riktig svar");
+    }
+    else {
+        document.write("<br>feil svar</br>");
+        document.write("<img src='https://images.pexels.com/photos/33688/delicate-arch-night-stars-landscape.jpg?auto=compress&cs=tinysrgb&h=350'>");
+
+
+    }
+
+
+
+
+
+oppgave(2);
+
+    document.write("<input placeholder='DD.MM.ÅÅÅÅ'>" + "<button id='svar'>svar</button>");
+
+
+    const sv = document.getElementById("svar");
+
+
+    sv.onclick = function () {
+
+        if (svar = "15.09.2018"){
+            document.write("idag er det bursdagen min");
+        }
+
+    }
+
+
+    function oppgave(tall) {
+
+        document.write("<h3>" + "Oppgave " + tall + "</h3>");
+
+    }
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body{
+            font-family: "Courier New";
+        }
+
+        #header{
+            font-family: "Courier New";
+            background-color: beige;
+            text-decoration: none;
+            text-align: center;
+
+        }
+
+        nav{
+            grid-template-columns: repeat(4,1fr);
+            display: grid;
+        }
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<header id="header">
+
+    <h1>Min nettside</h1>
+
+    <nav>
+
+        <a href="min%20nettside%20med%20javascript.html">
+            hjem
+        </a>
+
+        <a href="tallvariabler.html">
+            kule kalkulator
+        </a>
+
+        <a href="events.html">
+            events
+        </a>
+
+        <a href="reise.html">
+            reise
+        </a>
+
+    </nav>
+</header>
+
+
+<header>
+    <h1>
+        Klassefest
+    </h1>
+</header>
+
+<main>
+    <img src="https://images.pexels.com/photos/724216/pexels-photo-724216.jpeg?auto=compress&cs=tinysrgb&h=350"
+
+</main>
+
+
+<script>
+
+    var navn = prompt("Hei! Hva heter du til fornavn?");
+    var etternavn = prompt("Hva er etternavnet ditt?")
+    var oppgave = prompt("vil du ha ansvar for musikk, brus, kake, eller pynt?")
+
+    document.write(`<p> Velkommen ${navn} ${etternavn} <p>`);
+
+
+    document.write(`<p> Hei, ${navn} og velkommen til klassefest for 8B. Det blir servert pølser og pizza. Er det greit for deg ${navn} at du har ansvar for å fikse ${oppgave}? vi håper du, ${navn} kan komme!`)
+
+</script>
+
+</body>
+</html>

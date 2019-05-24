@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oppgave 3</title>
+</head>
+<body>
+
+
+<h1>oppgave A</h1>
+
+<p id="tallOgSvar"></p>
+
+
+
+<h1>oppgave B</h1>
+
+<input id="alder" type="Number" placeholder="Skriv inn alder">
+<label for="student">student</label>
+<input type="radio" id="student" name="rabatt">
+<label for="pensjonist">pensjonist</label>
+<input type="radio" id="pensjonist" name="rabatt">
+<label for="ingenrabatt">ingen rabatt</label>
+<input type="radio" name="rabatt" id="ingenrabatt">
+
+<button id="enter">enter</button>
+
+
+<h3>Pris</h3>
+
+<p id="pris"></p>
+
+
+
+<h1>oppgave C</h1>
+
+<h3>a)</h3>
+
+<p id="tiTall"></p>
+
+<h3>b)</h3>
+
+<p id="fireGangen"></p>
+
+
+
+
+
+
+
+
+<script>
+
+
+
+
+    let tOS = document.getElementById("tallOgSvar");
+    let tall = Math.floor(Math.random()*10);
+
+    console.log(tall);
+
+    if (tall < 5){
+        tOS.innerHTML = tall + ": " + "tallet er mindre enn 5";
+    }
+    else if (tall === 5){
+        tOS.innerHTML = tall + ": " + "tallet er lik 5";
+    }
+    else{
+        tOS.innerHTML = tall + ": " + "tallet er større enn 5";
+    }
+
+
+
+
+
+
+    let pris =  document.getElementById("pris");
+    let enter = document.getElementById("enter");
+    let alder = document.getElementById("alder");
+
+    enter.onclick = function () {
+        if (Number(alder.value) >= 1 && Number(alder.value) < 5){
+           pris.innerHTML = "gratis"
+        }
+        else if (pensjonist.checked && Number(alder.value) >= 65) {
+            pris.innerHTML = "pensjonistbillett:" + 70*0.4 + "kr";
+        }
+        else if (student.checked && Number(alder.value) >= 18 && Number(alder.value) <= 65){
+                pris.innerHTML = "studentbillett:" + 70*0.8 + "kr";
+            }
+        else if (Number(alder.value) >= 5 && Number(alder.value) < 18){
+            pris.innerHTML = "barnebillet: 30kr";
+        }
+        else if(Number(alder.value) <= 140 && Number(alder.value) >= 18){
+           pris.innerHTML = "voksenbillett: 70kr";
+        }
+
+
+    };
+
+
+
+
+    let tiTall = document.getElementById("tiTall");
+
+
+    for (let i = 0; i <= 10; i++ ){
+
+        tiTall.innerHTML +=  + i + ", ";
+
+    }
+
+    let fireGangen = document.getElementById("fireGangen")
+
+    for (let j = 1; j <= 30; j++){
+
+        fireGangen.innerHTML += j*4 + ", ";
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

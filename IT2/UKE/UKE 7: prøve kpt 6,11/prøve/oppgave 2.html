@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oppgave 2</title>
+</head>
+<body>
+
+
+
+<h1>watt produksjon pr. time</h1>
+<p>legg in vindstyrke på vindmøllen: </p>
+<input placeholder="vindstyrke i m/s" id="inpStyrke">
+<button id="knapp">enter</button>
+<h1 id="watt"></h1>
+
+
+<script>
+    let inpStyrke = document.querySelector("#inpStyrke");
+    let knapp = document.querySelector("#knapp");
+    let watt = document.querySelector("#watt");
+
+
+
+
+    knapp.onclick = function () {
+
+
+        if (inpStyrke.value < 10 && inpStyrke.value >= 2.5){
+            watt.innerHTML = `${inpStyrke.value*8}w/t`
+        }
+        else if (inpStyrke.value >= 10 && inpStyrke.value <= 15){
+            watt.innerHTML = `${inpStyrke.value*14}w/t`
+        }
+        else if (inpStyrke.value < 2.5 && inpStyrke.value >= 0 ){
+            watt.innerHTML = `for lav vindstyrke til å produsere strøm`
+
+        }
+        else if (inpStyrke.value > 15) {
+            watt.innerHTML = `av sikkerhetsmessige årsaker stoppes mølla ved vindstyrker over 15 m/s`
+        }
+        else {
+            watt.innerHTML = ""
+        }
+
+    }
+
+
+</script>
+
+
+</body>
+</html>

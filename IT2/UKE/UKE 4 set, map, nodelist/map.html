@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>map</title>
+</head>
+<body>
+
+
+
+
+
+<script>
+    let telefonnummer = new Map();
+    telefonnummer.set("91733487", "Marie");
+    telefonnummer.set("47869950", "Pernille");
+    telefonnummer.set("97979700", "Anders");
+
+    telefonnummer.delete("47869950");
+    telefonnummer.delete("97979700");
+
+    for (telefonnr of telefonnummer){
+        document.write(telefonnr);
+    }
+
+
+</script>
+</body>
+</html>

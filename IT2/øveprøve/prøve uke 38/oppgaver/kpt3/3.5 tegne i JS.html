@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<canvas id="myCanvas" width="200" height="300"></canvas>
+
+
+
+<canvas id="nyttCanvas" width="600" height="700"></canvas>
+
+
+<script>
+
+    var myCanvas = document.getElementById("myCanvas");
+    var ctx = myCanvas.getContext("2d");
+    ctx.fillStyle = "pink";
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "green";
+    ctx.fillRect(40,20,400,300);
+    ctx.strokeRect(40,20,400,300);
+    ctx.strokeRect(440,320,400,300);
+
+
+
+    var nyttCanvas = document.getElementById("nyttCanvas");
+    var ctx1 = nyttCanvas.getContext("2d");
+    ctx1.strokeStyle = "red";
+    ctx1.lineWidth = 2;
+    ctx1.moveTo(300,300);
+    ctx1.lineTo(350,350);
+    ctx1.lineTo(250,350);
+    ctx1.lineTo(300,300);
+    ctx1.stroke();
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+</body>
+</html>

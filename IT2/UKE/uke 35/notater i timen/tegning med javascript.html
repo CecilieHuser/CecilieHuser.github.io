@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tegning med js</title>
+</head>
+<body>
+
+
+
+
+<canvas id="myCanvas" width="400" height="300">
+
+    <script>
+
+
+        var MyCanvas = document.getElementById("myCansvas");// oppretter en variabel som refererer til myCanvas
+
+        var ctx = myCanvas.getContext("2d");//oppretter en ny variabel som refererer til 2d innholdet på my canvas
+
+        ctx.fillStyle = "red"; //endrer farge til rød
+
+        ctx.fillRect(30,60,70,50); // tegner en firkant på myCAnvas som er 30px
+
+        ctx.fillRect(100,150,200,100)//tegner en ny firkant på myCanvas
+
+
+
+        ctx.strokeStyle = "blue";
+
+        ctx.moveTo(15,15); //flytter "pennen" til 15,15
+
+        ctx.lineTo(200,200); //lager en linje til 200,200 først
+
+        ctx.stroke();// tegner linjen
+
+
+
+    </script>
+</canvas>
+
+
+</body>
+</html>

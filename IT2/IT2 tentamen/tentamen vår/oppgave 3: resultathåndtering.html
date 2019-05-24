@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+
+
+
+
+    </style>
+
+
+</head>
+<body>
+
+<input id="deltaker">
+<button id="registrer">registrer</button>
+
+
+<div id="liste">
+
+
+</div>
+
+<h3 id="kast1">legg til kast runde 1</h3>
+<input class="kast1" id="lengde11" placeholder="kast 1" type="number">
+<input class="kast1" id="lengde12" placeholder="kast 2" type="number">
+<input class="kast1" id="lengde13" placeholder="kast 3" type="number">
+
+
+<button id="leggtilkast1">legg til</button>
+
+
+<h3>resultater runde 1</h3>
+
+<div id="res1">
+    <table id="tabell">
+        <tr>
+            <th>deltaker</th>
+            <th>runde 1</th>
+        </tr>
+    </table>
+
+    <button id="runde1ferdig">runde 1 ferdig</button>
+
+<h3 id="kast2">legg til kast runde 2</h3>
+<input class="kast1" id="lengde21" placeholder="kast 1" type="number">
+<input class="kast1" id="lengde22" placeholder="kast 2" type="number">
+<input class="kast1" id="lengde23" placeholder="kast 3" type="number">
+    <button id="leggtilkast2">legg til</button>
+
+
+
+    <h3>resultater runde 2</h3>
+
+    <div id="res2">
+        <table id="tabell">
+            <tr>
+                <th>deltaker</th>
+                <th>runde 2</th>
+            </tr>
+        </table>
+
+        <button id="runde2ferdig">runde 2 ferdig</button>
+
+
+
+</div>
+
+
+
+<script>
+    //referanser til HTML elementer
+    let deltaker = document.querySelector("#deltaker");
+    let registrer = document.querySelector("#registrer");
+    let liste = document.querySelector("#liste");
+    let leggtilkast1 = document.querySelector("#leggtilkast1");
+    let res1 = document.querySelector("#res1");
+    let tabell = document.querySelector("#tabell");
+    let runde1ferdig = document.querySelector("#runde1ferdig");
+
+    //globale variabler
+    let lengstelengder = []
+    let valg;
+    //deltakernummer på de som er videre ti runde to lagres i denen arrayen
+    let deltakeresomervidere = []
+
+    //lengdene runde 1
+    let lengde11 = document.querySelector("#lengde11");
+    let lengde12 = document.querySelector("#lengde12");
+    let lengde13 = document.querySelector("#lengde13");
+
+
+
+    //deltakerarray
+
+    let deltakere = [];
+
+
+    //deltakerne sine kast skal settes inn i disse arrayene. arrayene skal inneholde to arrayer, en for første runde og en for andre runde
+    let delt0 = []
+    let delt1 = []
+    let delt2 = []
+    let delt3 = []
+    let delt4 = []
+    let delt5 = []
+    let delt6 = []
+    let delt7 = []
+
+    //
+    let kast = [delt0 , delt1, delt2, delt3, delt4, delt5, delt6, delt7];
+
+
+
+
+    //hendelsesfunksjon som legger til deltakere
+    registrer.onclick = function () {
+
+        liste.innerHTML = "";
+
+        deltakere.push(deltaker.value);
+
+        for (let delt of deltakere){
+
+            liste.innerHTML += `<input name="velg" type="radio"><B>${delt}</B><br>`
+
+
+        }
+
+        valg = document.querySelectorAll(`input[name="velg"]`)
+
+
+    };
+
+
+    //hendelsesfunksjon som legger til et array med tre kast i kast runde 1 sin array
+    leggtilkast1.onclick = function () {
+
+        //
+        for (let i = 0; i < deltakere.length; i++){
+            if (valg[i].checked){
+                let lengder = [Number(lengde11.value), Number(lengde12.value), Number(lengde13.value)]
+                //sorterer lengdene slik at den lengste er først, til sammenlikning mellom deltakerne etterpå
+                lengder.sort(sortereTall);
+                // legger til kastene i array
+                kast[i].push(lengder);
+                //legger til resultater i tabell
+                tabell.innerHTML += `
+                <tr>
+                    <td>${deltakere[i]}</td>
+                    <td>${kast[i].join(", ")}</td>
+                </tr>
+                `
+
+
+            }
+
+        }
+    }
+    console.log(kast)
+
+//nå runde 1 er ferdig skal programmet finne ut av hvem som er videre
+    runde1ferdig.onclick = function () {
+        let l = 0;
+
+        //looper gjennom
+        for (let k of kast){
+            console.log(kast)
+            console.log(k)
+            console.log(k[0][0])
+            lengstelengder.push(k[0][0])
+
+            lengstelengder.sort(sortereTall);
+
+            //pusher deltkaernummerene hvis en av de fire første lengdene i lengstelengder som er sortert i synkende rekkefølge er lik den lengste lengden til kasteren man er på.
+            for (let j = 0; j<4; j++){
+                if (lengstelengder[j] === k[l][0]){
+                    deltakeresomervidere.push(l)
+                }
+            }
+            l++
+        }
+        console.log(lengstelengder)
+        console.log(deltakeresomervidere)
+
+
+
+    }
+
+
+    // rakk ikke mer, men dette var planen:
+    // bruker deltakeresomervidere arrayen til å skrive ut radio input felt med riktige deltakere.
+    //deretter repeterer jeg hele greia hvor man kan legge inn lengdene de kaster for hver deltaker, så vil den sortere kastene til hver deltaker i synkende rekkefølge
+    //etter det er sortert i alfabetisk rekkefølge vil jeg lage en array med de lengste lengdene til hver deltaker.
+    //deretter vil jeg sortere den i synkende rekkefølge og finne hvilken av deltakerne som vant med den lengste lengden.
+
+
+
+
+
+
+//funksjoner
+
+    //brukes til å sortere kastelengdene
+    function sortereTall(tall1, tall2) {
+        return tall2-tall1
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+
+
+</html>

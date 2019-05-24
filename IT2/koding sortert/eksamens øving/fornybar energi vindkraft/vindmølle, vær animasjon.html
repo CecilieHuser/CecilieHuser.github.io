@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #vindmøllestamme{
+            position: absolute;
+            width: 20px;
+            height: 300px;
+            background-color: #cccccc;
+            top: 300px;
+            left: 700px;
+        }
+        #rotor{
+            position: absolute;
+            top: 75px;
+            left: 531px;
+        }
+        #blader{
+            position: absolute;
+            width: 20px;
+            top: 250px;
+        }
+        .blad{
+            opacity: 0;
+
+        }
+        #tre{
+            transform-origin: bottom;
+        }
+        
+    </style>
+</head>
+<body>
+
+<select id="vindstyrke">
+    <option id="stille">stille</option>
+    <option id="lettbris">lett bris</option>
+    <option id="stivkuling">stiv kuling</option>
+</select>
+
+
+<div>
+    <img id="rotor" src="FilerV2017/rotere.png">
+    <div id="vindmøllestamme"></div>
+</div>
+
+<div>
+    <img id="tre" src="FilerV2017/Bjork.png">
+</div>
+
+<div id="blader">
+    <img class="blad" src="FilerV2017/blad.png" width="20px">
+    <img class="blad" src="FilerV2017/blad.png" width="20px">
+    <img class="blad" src="FilerV2017/blad.png" width="20px">
+    <img class="blad" src="FilerV2017/blad.png" width="20px">
+    <img class="blad" src="FilerV2017/blad.png" width="20px">
+</div>
+
+<audio id="lyd"></audio>
+
+
+<script>
+    let rotor = document.querySelector("#rotor");
+    let blader = document.querySelectorAll(".blad");
+    let vindstyrke = document.querySelector("#vindstyrke");
+    let tre = document.querySelector("#tre");
+    let lyd = document.querySelector("#lyd")
+
+
+//animere rotor
+
+        let rotereCSS = [
+            {
+                transform: "rotate(0deg)"
+            },
+            {
+                transform: "rotate(360deg)"
+            }
+        ]
+
+    let rotereEgenskaper = {
+        duration: 35000,
+        iterations: Infinity,
+
+    }
+
+    let rotere = rotor.animate(rotereCSS,rotereEgenskaper);
+
+//animere blad
+    let bladerCSS = [
+        {
+         transform: "translate(0px,250px)",
+            opacity: 1
+        },
+        {
+            transform: "translate(1500px,250px)",
+            opacity: 1
+        }
+    ]
+
+    let bladerEgenskaper = {
+        iterations: "Infinity",
+        duration: 3000
+    }
+
+    let bladani = [];
+
+
+    for (let blad of blader){
+
+        bladerEgenskaper.delay = Math.random()*1000;
+        bladani.push(blad.animate(bladerCSS,bladerEgenskaper))
+    }
+
+//animere tre
+
+    let treCSS = [
+        {
+         transform: "rotate(-2deg)"
+        },
+        {
+            transform: "rotate(2deg)"
+        }
+    ];
+
+    let treEgenskaper = {
+        iterations: "Infinity",
+        duration: 3000,
+        direction: "alternate"
+    };
+
+    let tresvaiing = tre.animate(treCSS,treEgenskaper);
+
+
+
+//hendelsesfunksjoner
+    vindstyrke.onchange = function () {
+
+        if (stille.selected){
+            animertlandskap(1,1,0)
+        }
+
+        else if (lettbris.selected){
+            animertlandskap(15,3,1)
+            lyd.src = "FilerV2017"
+
+        }
+        else if(stivkuling.selected){
+            animertlandskap(50,4,4)
+
+
+        }
+    }
+
+
+function animertlandskap(rotorfart, bladfart, tresvai) {
+
+    rotere.playbackRate = rotorfart;
+
+    for (let blad of bladani){
+        blad.playbackRate = bladfart
+    }
+
+    tresvaiing.playbackRate = tresvai;
+
+}
+
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tallvariabler</title>
+
+    <style>
+
+        #header{
+            font-family: "Courier New";
+            background-color: beige;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        nav{
+            display: grid;
+            width: 100%;
+            grid-template-columns: repeat(4,1fr);
+            display: grid;
+        }
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+        body{
+            text-align: left;
+            font-family: "Courier New";
+        }
+
+    </style>
+
+
+
+
+
+<head>
+<body>
+
+<header id="header">
+
+    <h1>Min nettside</h1>
+
+    <nav>
+
+        <a href="min%20nettside%20med%20javascript.html">
+            hjem
+        </a>
+
+        <a href="tallvariabler.html">
+            kule kalkulator
+        </a>
+
+        <a href="events.html">
+            events
+        </a>
+
+        <a href="reise.html">
+            reise
+        </a>
+
+
+
+    </nav>
+</header>
+
+
+
+<script>
+
+    var radius = prompt("skriv inn radius til kulen");
+
+    const PI = 3.14;
+
+    var omkrets = PI * 2 * radius;
+
+    var volum = (1/3) * 4 * PI * radius * radius;
+
+    var areal = 4 * PI * radius * radius;
+
+
+    document.write(`
+<p> omkrets av kula er lik ${omkrets.toFixed(2)} </p>
+ <p>volum er lik ${volum.toFixed(2)} </p>
+ <p>og areal av kuleoverflaten er lik ${areal.toFixed(2)}</p>`);
+
+
+</script>
+
+</body>
+</html>

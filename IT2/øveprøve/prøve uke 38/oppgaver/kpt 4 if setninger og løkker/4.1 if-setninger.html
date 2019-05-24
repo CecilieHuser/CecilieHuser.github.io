@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<img src="https://images.pexels.com/photos/459793/pexels-photo-459793.jpeg?auto=compress&cs=tinysrgb&h=350" id="test" >
+
+
+<script>
+
+    var spørsmål = prompt("Når ble grunnloven skrevet?");
+    var test = document.getElementById("test");
+
+    if (spørsmål === "1814" ){
+        document.write("riktig");
+
+            test.src = "https://images.pexels.com/photos/684385/pexels-photo-684385.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+            test.width = "400";
+    }
+    else {
+        document.write(spørsmål + "er dessverre feil, riktig svar er 1814");
+        test.src = "https://images.pexels.com/photos/944737/pexels-photo-944737.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260";
+        test.width = "500";
+    }
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

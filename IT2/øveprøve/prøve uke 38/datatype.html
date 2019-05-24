@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>datatyper</title>
+</head>
+<body>
+
+
+
+
+
+
+<script>
+
+    //datatyper
+
+    //string
+        var tekst = "hei"; //datatype: string
+
+    //number
+        var tall = 10; //datatype: number
+
+    //array
+        var frukter = ["banan", "eple", "pære", "appelsin"]; // datatype: array elementene i variablen får plassnummerering, starter på 0
+
+    //object
+        var deltaker = {navn: "Anne", alder: 37}; // datatype: object, flere elementer i en variabel. hvert element består av en egenskap og verdi.
+
+
+
+    //tester
+        console.log(frukter[0]); // tester arrayen ved å skrive ut i consol, skriver ut første element i arrayen
+        console.log(`${deltaker.navn} er ${deltaker.alder} år gammel`); //skriver ut begge verdiene til egenskapene i en setning til console
+
+
+
+    //tester datatypen
+        console.log(typeof frukter); //typeof tester hvilke datatype det er
+
+
+
+    //casting - endrer datatypen
+
+        var tall1 = "17"; // 17 defineres som en string
+        var tall2 = 3; // 2 defineres som number
+
+         //for å kunne legge disse sammen må 17 omgjøres til datatypen number slik:
+
+
+        console.log(Number(tall1) + tall2);
+
+         //dette er nyttig dersom bruker skal skrive inn et tall i prompt boks - fordi da blir den definert som en string, men vi må ha den som et NUmber skal den kunne brukes i regnestykker
+
+        var tall3 = Number(prompt("skriv inn et tall")); //prompt boks hvor bruker skriver inn tall, dette blir en string, men Number koden gjør brukerens svar om til datatypen Number.
+
+        console.log(typeof tall3); // sjekker typen til tallet fra prompt boksen i console. det ble Number
+
+
+        var sum = (tall3 + tall2 + Number(tall1)); // definerer summen av alle tallene som en variabel kalt sum
+
+        console.log(sum); //skriver ut sum i console
+
+        alert(`summen av tallene ${Number(tall1)}, ${tall2} og ${tall3} er lik ${sum}`); //skriver ut sum i alert boks
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

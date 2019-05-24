@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+
+
+<img src="po.png" id="po">
+<button id="play">play</button>
+<button id="pause">pause</button>
+<button id="reverse">reverse</button>
+<input type="range" min="0" max="5" id="inpFart">
+
+<script>
+    let po = document.querySelector("#po");
+    let play =  document.querySelector("#play");
+    let pause = document.querySelector("#pause");
+    let reverse = document.querySelector("#reverse");
+    let inpFart = document.querySelector("#inpFart")
+
+
+    po.style.width = `50px`;
+
+
+
+    poCSS =[
+        {
+            transform: "translate(0px,50px) rotate(0deg)"
+        },
+        {
+            transform: "translate(1000px,600px) rotate(350deg)"
+        }
+    ];
+
+    poEgenskaper = {
+        duration: 10000,
+        easing: "ease-in-out",
+        iterations: "Infinity",
+        direction: "alternate"
+    };
+
+    let poanimasjon = po.animate(poCSS, poEgenskaper);
+
+    play.onclick = function (){
+        poanimasjon.play()
+    };
+
+    pause.onclick = function (){
+        poanimasjon.pause();
+
+    };
+    reverse.onclick = function () {
+        poanimasjon.reverse();
+    };
+
+    inpFart.onchange = function () {
+        poanimasjon.playbackRate = inpFart.value
+    }
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

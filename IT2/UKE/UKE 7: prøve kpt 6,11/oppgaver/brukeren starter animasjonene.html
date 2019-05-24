@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        body{
+            transition: 0.5s;
+            text-align: center;
+        }
+
+
+
+    </style>
+</head>
+
+
+<body>
+
+
+<input placeholder="farge" id="farge">
+<h1 id="overskrift">overskrift</h1>
+
+
+<div id="boks"></div>
+
+
+<div>
+    <input placeholder="skriv inn grader" id="grader">
+    <div id="planke"></div>
+</div>
+
+<script>
+
+    let farge = document.querySelector("#farge");
+    let overskrift = document.querySelector("#overskrift");
+    let boks = document.querySelector("#boks");
+    let planke = document.querySelector("#planke");
+    let grader = document.querySelector("#grader");
+
+//endre sidefarge
+    farge.oninput = function () {//evt onchange istedenfor oninput
+
+        document.body.style.backgroundColor = farge.value;
+    };
+
+//endre overskriften
+    overskrift.onmouseover = function () {
+
+        overskrift.style.transition = "3s";
+        overskrift.style.transform = "scale(2)";
+
+    };
+
+//boks som flyttes med musa
+    boks.style.backgroundColor = "red";
+    boks.style.height = "20px";
+    boks.style.width = "20px";
+    boks.style.position = "absolute";
+    boks.style.transition = "0.5s";
+
+    window.onmousemove = function () {
+        boks.style.transform = `translateX(${event.clientX-15}px) translateY(${event.clientY-120}px)`;
+    };
+
+//planke som roteres ved input felt
+    planke.style.backgroundColor = "skyblue";
+    planke.style.height = "20px";
+    planke.style.width = "60px";
+    planke.style.transition = "0.5s";
+
+    grader.oninput = function () {
+        planke.style.transform = `rotate(${grader.value}deg)`
+    }
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+
+        #dyr{
+            position: absolute;
+        }
+        #ramme{
+            height: 115px;
+            width: 115px;
+            overflow: hidden;
+            position: relative;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+
+<div id="ramme">
+    <img src="vedlegg%202/dyr.png" id="dyr">
+</div>
+
+
+<script>
+
+    let dyr = document.querySelector("#dyr")
+
+    dyrCSS = [
+        {
+           left: "0px"
+        },
+        {
+            left: "-460px"
+        }
+    ]
+
+
+    dyrEgenskaper = {
+        duration: 1000,
+        easing: "steps(4)",
+        iterations: Infinity
+    }
+
+    dyr.animate(dyrCSS,dyrEgenskaper)
+
+
+
+
+
+
+</script>
+</body>
+</html>

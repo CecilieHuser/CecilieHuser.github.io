@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+
+<script>
+
+    //gamlemåten
+    let statsminister = {
+        fornavn: "Erna",
+        etternavn: "Solberg",
+        parti: "høyre",
+        interesser: ["sysselsetting", "nordmenn må få flere barn", "norske interesser i EU/EØS"], //array i objektet
+        fulltnavn: function () {
+            return this.fornavn + " " + this.etternavn//returnerer dette objektets fornavn og etternavn, funksjoner i objekter kalles metoder
+        }
+    };
+    let statsminister2 = {
+        fornavn: "Jens",
+        etternavn: "Stoltenberg",
+        parti: "Arbeiderpartiet",
+        interesser: ["lav sysselsetting", "nordmenn må få færre barn", "norske uinteresser i EU/EØS"], //array i objektet
+        fulltnavn: function () {
+            return this.fornavn + " " + this.etternavn//returnerer dette objektets fornavn og etternavn, funksjoner i objekter kalles metoder
+        }
+    };
+
+    console.log(statsminister.fornavn);//"Erna"
+
+
+    console.log(statsminister.interesser[1]);
+
+
+    console.log(statsminister.fulltnavn())
+
+
+
+    // klassedefinisjoner - oppskrift på objekter
+
+    class Statsminister {
+        constructor(fornavn, etternavn, parti) {
+            this.fornavn = fornavn;
+            this.etternavn = etternavn;
+            this.parti = parti;
+        }
+
+        fulltnavn(){ //funkjson i objektet
+            return this.fornavn + " " + this.etternavn
+        }
+        skrivFulltNavn(){
+            document.body.innerHTML += this.fulltnavn();
+        }
+    }
+
+    let kjellMagne = new Statsminister("Kjell Magne", "Bondevik", "Krf");
+    let groHarlem = new Statsminister("Gro", "Harlem Brundtland", "Arbeiderpartiet");
+
+
+    console.log(kjellMagne.fulltnavn);
+
+    kjellMagne.skrivFulltNavn();
+    groHarlem.skrivFulltNavn();
+
+
+
+
+
+
+</script>
+</body>
+</html>

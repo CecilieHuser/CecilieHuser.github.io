@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        #ramme{
+            width: 100px;
+            height: 175px;
+            overflow: hidden;
+            position: relative;
+        }
+        img{
+            position: absolute;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+
+
+
+
+<div id="ramme">
+    <img src="sprite-mario-png-6.png" id="mario">
+</div>
+
+
+<script>
+    const mario = document.querySelector("#mario");
+
+    let marioCSS = [
+        {
+            left: "0px"
+        },
+        {
+            left: "-500px"
+        }
+    ];
+
+    let marioEgenskaper = {
+        duration: 1500,
+        interations: Infinity,
+        easing: "steps(5)"
+    }
+
+    mario.animate(marioCSS, marioEgenskaper);
+
+
+
+</script>
+
+
+
+</body>
+</html>

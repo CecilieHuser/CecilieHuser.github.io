@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Nettbank</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        nav{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+        }
+        a{
+          background-color: lightgray;
+        }
+
+        #overfor{
+            display: none;
+        }
+        
+        #transaksjon{
+            display: none;
+        }
+        
+        #saldo{
+            display: none;
+        }
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<header>
+
+<h1>familiens nettbank</h1>
+
+    <nav>
+        <a id="mamma">mamma</a>
+        <a id="pappa">pappa</a>
+        <a id="meg">meg</a>
+    </nav>
+
+    <h2 id="velg">velg en konto</h2>
+
+
+</header>
+
+<!--saldo og eier div-->
+<div id="saldo">
+    <h1 id="saldo"></h1>
+</div>
+
+
+
+<!--overførings div-->
+<div id="overfor">
+    <h1>overfør</h1>
+
+    <!--send til options-->
+    <select id="select" class="send">
+        <option id="tilMamma">mamma</option>
+        <option id="tilPappa">pappa</option>
+        <option id="tilMeg">meg</option>
+    </select>
+
+    <!--input beløp og melding, samt overfør knapp-->
+    <input id="inpBelop" placeholder="beløp">
+    <input id="inpMelding" placeholder="melding">
+    <button id="btnOverfor">overfor</button>
+
+</div>
+
+
+<div id="transaksjon">
+
+    <h1>transaksjoner</h1>
+
+
+    <p id="transaksjoner"></p>
+    <table id="tabell"></table>
+
+
+
+</div>
+
+
+
+
+    <script>
+
+        const mamma = document.getElementById("mamma");
+        const pappa = document.getElementById("pappa");
+        const meg = document.getElementById("meg");
+        let velg = document.getElementById("velg");
+        let btnOverfor = document.getElementById("btnOverfor");
+        let saldo = document.getElementById("saldo");
+        let bankeier = document.getElementById("bankEier");
+        let tilMamma = document.getElementById("tilMamma");
+        let tilPappa = document.getElementById("tilPappa");
+        let tilMeg = document.getElementById("tilMeg");
+        let inpBelop = document.getElementById("inpBelop");
+        let inpMelding = document.getElementById("inpMelding");
+        const tabell = document.getElementById("tabell");
+        const transaksjoner = document.getElementById("transaksjoner");
+        const transaksjon = document.getElementById("transaksjon");
+
+
+        //objekter til kontoene
+
+        let kontoMamma = {
+            eier: "Mamma",
+            saldo: 10000,
+            transaksjoner: []
+        };
+
+        let kontoPappa = {
+            eier: "Pappa",
+            saldo: 50000,
+            transaksjoner:[]
+        };
+
+        let kontoMeg = {
+            eier: "Meg",
+            saldo: 100,
+            transaksjoner: []
+        };
+
+
+        //arrayer
+        let arrayKonto =[kontoMamma, kontoPappa, kontoMeg];
+        let arrayPersoner = [mamma, pappa, meg];
+        let arrayTil = [tilMamma, tilPappa, tilMeg];
+
+
+
+
+
+
+
+
+        for(let i = 0; i < arrayPersoner.length; i++){
+
+            //funskjon skjer når du trykker på kontoen du skal inn på.
+            arrayPersoner[i].onclick = function () {
+
+                //viser kontoeiers navn og saldo
+                saldo.innerHTML = arrayKonto[i].saldo;
+                velg.innerHTML = arrayKonto[i].eier;
+
+                saldo.style.display = "block";
+                overfor.style.display = "block";
+                transaksjon.style.display = "block";
+
+
+                if (arrayTil[i].selected === true){
+                    arrayTil[i].selected = false;
+                }
+
+                for (let p = 0; p < arrayPersoner.length; p++){
+                    arrayPersoner[p].style.backgroundColor = "lightgrey";
+                }
+
+                arrayPersoner[i].style.backgroundColor = "grey";
+
+
+
+                for (let o = 0;o < arrayTil.length; o++){
+
+                    arrayTil[o].style.display = "block";
+
+                }
+
+
+                //
+                arrayTil[i].style.display = "none";
+
+
+
+
+                //overføre penger funksjon
+                btnOverfor.onclick = function (){
+
+                    //trekker fra beløp fra avsender konto
+                    arrayKonto[i].saldo -= Number(inpBelop.value);
+                    saldo.innerHTML = arrayKonto[i].saldo;
+
+                    for (let u = 0; u < arrayTil.length; u++){
+
+                        //legger til beløpet på valgt konto
+                        if (arrayTil[u].selected === true) {
+                            arrayKonto[u].saldo += Number(inpBelop.value);
+                            saldo.innerHTML = arrayKonto[i].saldo;
+
+
+                            //legger til transaksjonene i eier konto (i)
+                            arrayKonto[i].transaksjoner.push({
+                                til: arrayKonto[u].eier,
+                                fra: arrayKonto[i].eier,
+                                belop: inpBelop.value,
+                                melding: inpMelding.value
+                                }
+                            );
+                            //legger til transaksjon i mottaker konto (u)
+                            arrayKonto[u].transaksjoner.push({
+                                    til: arrayKonto[u].eier,
+                                    fra: arrayKonto[i].eier,
+                                    belop: inpBelop.value,
+                                    melding: inpMelding.value
+                                }
+                            );
+
+
+
+                             }
+
+
+                        }
+
+                    skrivTabell();
+
+                    //fjerner det som står i melding og beløp input feltet ved klikk på overfør knappen
+                    inpBelop.value = "";
+                    inpMelding.value = "";
+
+
+                    }
+
+                    skrivTabell();
+
+
+
+
+                }
+
+                // funskjon som legger til en tabell i #tabell. legger først til headere (th) skrives inni i løkken da den bruker i.
+            function skrivTabell() {
+
+                tabell.innerHTML = `
+
+            <tr>
+                <th> til </th>
+                <th> fra </th>
+                <th> beløp </th>
+                <th> melding </th>
+            </tr>
+            `
+
+                //for løkke som legger til alle transaksjonene i transaksjonsarrayet til i konto i tabellen
+                for (n = 0; n < arrayKonto[i].transaksjoner.length; n++){
+                    tabell.innerHTML += `
+                <tr>
+                    <td>${arrayKonto[i].transaksjoner[n].til}</td>
+                    <td>${arrayKonto[i].transaksjoner[n].fra}</td>
+                    <td>${arrayKonto[i].transaksjoner[n].belop}</td>
+                    <td>${arrayKonto[i].transaksjoner[n].melding}</td>
+                </tr>`
+
+                }
+
+            }
+            }
+
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

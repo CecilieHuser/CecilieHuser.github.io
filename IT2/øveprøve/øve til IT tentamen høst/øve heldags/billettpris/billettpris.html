@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<h1 id="pris"></h1>
+
+
+
+
+
+<script>
+
+    let alder = Number(prompt("hvor gammel er du?"));
+    let pris = document.getElementById("pris");
+
+
+
+
+    if (alder < 5){
+        pris.innerHTML = "barn reiser gratis!";
+    }
+
+    else if (alder > 4 && alder < 18){
+
+
+        pris.innerHTML = "barnebillett: " + 30 + "kr"
+    }
+
+
+
+    else if (alder > 17 && alder < 55){
+
+        let student = prompt("er du student, skriv ja eller nei");
+
+        if (student === "ja" || student === "Ja" || student === "JA"){
+
+            pris.innerHTML = "studentbillett: " + 70*0.8 + " kr";
+
+        }
+        else {
+            pris.innerHTML = "voksenbillett: " + 70 + "kr";
+        }
+
+
+    }
+    else if (alder > 54){
+
+        let pensjonist = prompt("er du pensjonist? svar ja eller nei")
+        if (pensjonist === "ja" || pensjonist === "Ja" || pensjonist === "JA"){
+            pris.innerHTML = "pensjonistbillett: " + 70*0.4 + "kr"
+        }
+        else{
+            pris.innerHTML = "voksenbillett: " + 70 + "kr";
+        }
+
+
+    }
+
+
+
+
+</script>
+</body>
+</html>

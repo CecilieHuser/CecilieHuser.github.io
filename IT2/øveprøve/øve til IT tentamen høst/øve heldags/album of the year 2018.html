@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>oppgave 4</title>
+    <style>
+
+        body{
+            text-align: center;
+        }
+
+
+
+    </style>
+
+
+
+
+</head>
+<body>
+
+
+<h1>Grammys: Album of the year 2018</h1>
+
+<img id="Bruno" src="vedlegg/artister/brunomars.png" width="250">
+<img id="Gambino" src="vedlegg/artister/gambino.png" width="250">
+<img id="JayZ" src="vedlegg/artister/jayz.png" width="250">
+<img id="Kendrick" src="vedlegg/artister/kendrick.png" width="250">
+<img id="Lorde" src="vedlegg/artister/lorde.png" width="250">
+
+
+<p id="tekst"></p>
+
+
+<h1>albums</h1>
+
+
+<img width="400" id="slideImg">
+<br>
+<button id="tilbake"> < </button>
+<button id="fram"> > </button>
+
+
+
+
+
+
+
+<script>
+
+    let bruno = document.getElementById("Bruno");
+    let gambino = document.getElementById("Gambino");
+    let jayZ = document.getElementById("JayZ");
+    let kendrick = document.getElementById("Kendrick");
+    let lorde = document.getElementById("Lorde");
+    let tekst = document.getElementById("tekst");
+
+
+    bruno.onmouseover = function(){
+        tekst.innerHTML = "Bruno Mars is nominated in the Grammy category: album og the year 2018 with the album "
+    }
+
+    gambino.onmouseover = function(){
+        tekst.innerHTML = "Gambino is nominated in the Grammy category: album og the year 2018 with the album "
+    }
+
+    jayZ.onclick = function(){
+        tekst.innerHTML = "Jay Z is nominated in the Grammy category: album og the year 2018 with the album "
+    }
+
+    kendrick.onclick = function(){
+        tekst.innerHTML = "Kendrick is nominated in the Grammy category: album og the year 2018 with the album "
+    }
+
+    lorde.onclick = function() {
+        tekst.innerHTML = "Lorde is nominated in the Grammy category: album og the year 2018 with the album "
+    }
+
+    let albumCover = ["vedlegg/albumcover/24KMagic.jpg", "vedlegg/albumcover/444.jpg", "vedlegg/albumcover/awaken.jpg", "vedlegg/albumcover/damn.jpg", "vedlegg/albumcover/melodrama.jpg"]
+    let fram = document.getElementById("fram");
+    let tilbake = document.getElementById("tilbake");
+    let n = 0;
+    let slideImg = document.getElementById("slideImg");
+
+    slideImg.src = albumCover[n];
+
+
+    fram.onclick = function () {
+
+        n += 1;
+
+        if (n > 4){
+            n = 0
+        }
+        slideImg.src = albumCover[n];
+        console.log(n)
+
+
+    }
+
+    tilbake.onclick = function () {
+
+        n-=1;
+        if (n < 0){
+            n = 4;
+        }
+        console.log(n)
+
+        slideImg.src = albumCover[n];
+
+
+
+    }
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

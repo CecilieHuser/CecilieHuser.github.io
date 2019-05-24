@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+
+
+        body{
+            background-color: #2196F3;
+        }
+
+        #møllestamme{
+            background-color: antiquewhite;
+            height: 300px;
+            width: 50px;
+            margin-left: 300px;
+            margin-top: 300px;
+            position: absolute;
+        }
+
+        #rotor{
+            position: absolute;
+            margin-top: 105px;
+            margin-left: 145px;
+        }
+
+        .img{
+            width: 20px;
+            left: 20px;
+            top: 500px;
+            opacity: 0;
+
+        }
+        #bjork{
+            position: absolute;
+            transform-origin: center bottom;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+<div>
+    <h1>legg inn vindstyrke</h1>
+    <p id="vindstyrke"></p>
+    <select id="select" class="send">
+        <option id="stille" >stille</option>
+        <option id="lettbris" >lett bris</option>
+        <option id="stivkuling" >stiv kuling</option>
+    </select>
+
+    <button id="knapp">enter</button>
+
+</div>
+<img src="vedlegg%202/Bjork.png" id="bjork">
+<div>
+    <div id="møllestamme"></div>
+    <img src="vedlegg%202/rotere.png" id="rotor">
+</div>
+
+
+
+<div id="blader">
+    <img src="vedlegg%202/blad.png" class="img">
+    <img src="vedlegg%202/blad.png" class="img">
+
+    <br>
+    <img src="vedlegg%202/blad.png" class="img">
+    <img src="vedlegg%202/blad.png" class="img">
+    <br>
+    <img src="vedlegg%202/blad.png" class="img">
+    <img src="vedlegg%202/blad.png" class="img">
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    let vindstyrke = document.querySelector("#vindstyrke");
+    let rotor = document.querySelector("#rotor");
+    let stille = document.querySelector("#stille");
+    let lettbris = document.querySelector("#lettbris");
+    let stivkuling = document.querySelector("#stivkuling");
+    let knapp = document.querySelector("#knapp");
+    const bladArray = document.querySelectorAll(".img");
+    let bjork = document.querySelector("#bjork");
+
+
+
+
+
+    //animerer rotoren
+    let rotorCSS = [
+        {
+            transform: "rotate(0deg)"
+        },
+        {
+            transform: "rotate(360deg)"
+        }
+    ]
+
+    let rotorEgenskaper = {
+        duration: 3000,
+        iterations: "Infinity"
+    }
+
+    let rotere = rotor.animate(rotorCSS, rotorEgenskaper);
+
+
+    //animerer bladene
+    let bladCSS = [
+        {
+            transform: "translate(0px, 300px )", //trenger ikke bruke position: absolute her fordi translateY() eller translateX() funker uten
+            opacity: 1
+        },
+        {
+            transform: "translate(1500px,300px)",
+            opacity: 1
+        }
+    ];
+
+    let bladEgenskaper = {
+        duration: 1500,
+        iterations: Infinity,
+        easing: "ease-in-out"
+    };
+
+    let bladAnis = [];
+
+    for (blad of bladArray) {
+        bladEgenskaper.delay = Math.random()*1000;
+        bladAnis.push(blad.animate(bladCSS, bladEgenskaper))
+
+    }
+
+    //animerer bjørken
+
+    let bjorkCSS = [
+        {
+            transform: "rotate(-5deg)",
+        },
+        {
+            transform: "rotate(5deg)"
+        }
+    ]
+
+    let bjorkEgenskaper = {
+        duration: 1000,
+        iterations: "Infinity",
+        direction: "alternate"
+    }
+
+   let gyngeBjork = bjork.animate(bjorkCSS, bjorkEgenskaper);
+
+
+
+
+
+    knapp.onclick = function () {
+        if (stille.selected){
+            rotere.playbackRate = 1;
+            for (ani of bladAnis){
+                ani.playbackRate = 1
+            }
+            gyngeBjork.playbackRate = 1
+
+            vindstyrke.innerHTML = "stille: 0 - 0.2m/s"
+
+        }
+        else if (lettbris.selected){
+            rotere.playbackRate = 4
+            for (ani of bladAnis){
+                ani.playbackRate = 3
+            }
+            gyngeBjork.playbackRate = 2
+
+            vindstyrke.innerHTML = "lettbris: 3.4 - 4.5m/s"
+
+
+        }
+        else if (stivkuling.selected){
+            rotere.playbackRate = 8;
+            for (ani of bladAnis){
+                ani.playbackRate = 6
+            }
+            gyngeBjork.playbackRate = 3
+
+            vindstyrke.innerHTML = "stiv kuling: 13.9 - 17.1m/s"
+
+
+        }
+    }
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

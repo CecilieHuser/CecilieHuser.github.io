@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        a{
+            text-align: center;
+            grid-template-columns: repeat(11 ,1fr);
+            color: white;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+<input placeholder="gjett en bokstav" id="gjett">
+<button id="gjettKnapp">gjett</button>
+
+<br>
+
+<a class="bokstav">l</a>
+<a class="bokstav">u</a>
+<a class="bokstav">s</a>
+<a class="bokstav">s</a>
+<a class="bokstav">e</a>
+<a class="bokstav">k</a>
+<a class="bokstav">a</a>
+<a class="bokstav">t</a>
+<a class="bokstav">t</a>
+<a class="bokstav">e</a>
+<a class="bokstav">r</a>
+
+
+
+</body>
+<script>
+    const bokstav = document.querySelectorAll(".bokstav");
+    let gjett = document.getElementById("gjett");
+    let gjettKnapp = document.getElementById("gjettKnapp");
+
+    document.write(bokstav[0].is);
+
+
+
+    gjettKnapp.onclick = function () {
+
+        for (let i = 0; i < 11; i++){
+            if (gjett.value === bokstaver[i].value){
+
+                bokstaver[i].style.color = "black"
+
+
+            }
+    }
+
+
+
+    }
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nettbank</title>
+
+    <style>
+
+
+
+
+        body{
+            font-family: Avenir;
+            font-size: 20px;
+
+
+
+        }
+
+#saldoen{
+    background-color: #cccccc;
+    padding: 50px;
+}
+
+
+#transaksjonene{
+    background-color: #0d99a5;
+    padding: 50px;
+}
+
+#overforing{
+
+    background-color: #cccccc;
+    padding: 50px;
+
+}
+        #settInn{
+            background-color: #0d99a5;
+            padding: 50px;
+        }
+
+
+
+
+
+
+    </style>
+
+
+
+
+
+
+</head>
+<body>
+
+
+
+<h1>Nettbank1</h1>
+
+<div id="saldoen">
+
+    <h4>saldo</h4>
+
+    <h2 id="saldo"></h2>
+
+</div>
+
+<div id="transaksjonene">
+
+    <h4>transaksjoner</h4>
+
+    <p id="transaksjoner"></p>
+
+</div>
+
+
+<div id="overforing">
+
+    <h4>overfør</h4>
+
+    <input id="overforingUt" placeholder="overføre til">
+    <input id="meldingUt" placeholder="melding">
+    <input id="NOKUt" placeholder="NOK">
+    <button id="overforUt">overfør</button>
+</div>
+
+<div id="settInn">
+    <h4>Sett inn penger</h4>
+    <input id="overforingInn" placeholder="overføre fra">
+    <input id="meldingInn" placeholder="melding">
+    <input id="NOKInn" placeholder="NOK">
+    <button id="overforInn">overfør</button>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<script>
+
+    let saldo = document.getElementById("saldo");
+    let transaksjoner = document.getElementById("transaksjoner");
+    let overforingUt = document.getElementById("overforingUt");
+    let meldingUt = document.getElementById("meldingUt");
+    let NOKUt = document.getElementById("NOKUt");
+    let overforUt = document.getElementById("overforUt");
+    let overforingInn = document.getElementById("overforingInn");
+    let meldingInn = document.getElementById("meldingInn");
+    let NOKInn = document.getElementById("NOKInn");
+    let overforInn = document.getElementById("overforInn");
+
+    saldo.value = 100000;
+    saldo.innerHTML = saldo.value;
+
+
+
+    overforUt.onclick = function () {
+
+
+
+        saldo.value -= NOKUt.value;
+        console.log(NOKUt.value);
+        saldo.innerHTML = saldo.value;
+
+        transaksjoner.innerHTML += "<p>" + " øverført " + NOKUt.value + " kr til " + overforingUt.value + " melding: " + meldingUt.value + "</p>";
+
+        NOKUt.value = "";
+        overforingUt.value = "";
+        meldingUt.value = "";
+
+    }
+
+
+    overforInn.onclick = function () {
+
+        saldo.value += Number(NOKInn.value);
+        console.log(NOKInn.value);
+        saldo.innerHTML = saldo.value;
+
+        transaksjoner.innerHTML += "<p>" + " motatt " + NOKInn.value + " kr fra " + overforingInn.value + " melding: " + meldingInn.value + "</p>";
+
+        NOKInn.value = "";
+        overforingInn.value = "";
+        meldingInn.value = "";
+    }
+
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prøv selv 210</title>
+</head>
+<body>
+
+
+<!--oppretter liste element ol for tall ul for punkter-->
+<ol id="handleListe">
+
+</ol>
+
+
+
+
+
+<script>
+
+    let matVarer = ["ost", "brød", "paprika", "kaviar"];
+    let handleListe = document.querySelector("#handleListe");
+
+
+
+
+    /*
+
+    //for of - løkke
+
+    for (let vare of matVarer){
+
+        handleListe.innerHTML += `<li> ${vare} </li>`;
+
+    }
+
+    */
+
+    //for - løkke
+    for (let i = 0; i < 4; i++){
+
+        handleListe.innerHTML += `<li>${matVarer[i]}</li>`;
+
+    }
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<select id="select"></select>
+
+
+<div class="spmDiv"></div>
+<div class="spmDiv"></div>
+<div class="spmDiv"></div>
+
+
+
+<button id="sjekksvar">sjekk svar</button>
+
+<p id="tm"></p>
+
+
+<script>
+    let select = document.querySelector("#select");
+    let spmDiver = document.querySelectorAll(".spmDiv");
+    let sjekkSvar = document.querySelector("#sjekksvar")
+    let tm = document.querySelector("#tm");
+
+
+
+
+    //globale variabler
+    let spraakValg
+    let svarValg
+    let poeng = 0
+
+
+    //språktester
+
+    let amerikansk = [ "amerikansk",
+        {
+            spm:"Hva betyr ordet Where?",
+            svar: ["Hvor", "vi er", "var", "hvorfor"],
+
+        },
+        {
+            spm:"Hvilke(t) ord kan legges til her? How are...",
+            svar: ["you", "John doing?", "things","the house", "the wife"],
+
+        },
+        {
+            spm:"Spill av lydfilen «Oversetting.mp3» og velg riktig oversettelse: ",
+            svar: ["Hei, mitt navn er Tom", "Jeg er Tom", "Kjenner du Tom?","Når kommer Tom?"],
+
+        },
+        [0,4,6,11]
+    ]
+
+    let italiensk = [ "italiensk",
+        {
+            spm: "",
+            svar: [],
+            riktige: []
+        },
+        {
+            spm:"",
+            svar: [],
+            riktige: []
+        },
+        {
+            spm:"",
+            svar: [],
+            riktige: []
+        }
+    ]
+
+
+    let fransk = [ "fransk",
+        {
+            spm: "",
+            svar: [],
+            riktige: []
+        },
+        {
+            spm:"",
+            svar: [],
+            riktige: []
+        },
+        {
+            spm:"",
+            svar: [],
+            riktige: []
+        }
+    ]
+
+
+    //array med sprakteststene
+    let spraaktester = [amerikansk, italiensk, fransk]
+
+
+    //legger til språkene i selectmenyen
+
+    for (let h = 0; h < spraaktester.length ; h++){
+
+        //legger til språkene i selectmenyen
+        select.innerHTML += `<option class="spraakValg">${spraaktester[h][0]}</option>`
+        spraakValg = document.querySelectorAll(".spraakValg");
+        console.log(spraakValg);
+
+        //endrer til spm som hører til spraket som er valgt
+        if (spraakValg[h].selected){
+            for (let i = 1; i < spmDiver.length+1; i++){
+                //legger til spm
+                spmDiver[i-1].innerHTML = `
+                <B>${spraaktester[h][i].spm}</B>
+                `
+                //legger til svaralternativer
+                for (let j = 0; j<spraaktester[h][i].svar.length; j++){
+
+                        spmDiver[i-1].innerHTML += `<br>
+                        <label><input type="checkbox" name="svarAlt">${spraaktester[h][i].svar[j]}</label>
+                        `
+
+                }
+                //legger til alle svaralternativene
+                svarValg = document.querySelectorAll(`input[name="svarAlt"]`)
+                console.log(svarValg)
+
+
+                //
+                for (let k = 0; k < svarValg.length ;k++){
+                    if (svarValg[k].checked){
+                        for (let l = 0; l < svarValg.length;l++){
+                            if (Number(k) === Number(spraaktester[h][4][l])) {
+                                poeng++
+                                    console.log(poeng)
+                            }
+                            else if (Number(k) !== Number(spraaktester[h][4][l])) {
+                                poeng--
+                                console.log(poeng)
+
+                            }
+                        }
+
+
+
+                    }
+                }
+
+
+            }
+        }
+    }
+
+
+    sjekkSvar.onclick = function () {
+        tm.innerHTML = poeng
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

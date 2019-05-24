@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>huskeliste</title>
+</head>
+<body>
+
+
+
+
+<h1>Huskeliste</h1>
+
+
+
+<div>
+<input type="text" id="inpLeggTil" placeholder="ting jeg må huske">
+<button id="btnKnapp" > legg til </button>
+
+</div>
+
+<div id="divListe">
+
+    <ul id="ulListe">
+
+
+
+    </ul>
+
+</div>
+
+
+
+<script>
+
+    const input = document.getElementById("inpLeggTil");
+    const btnKnapp = document.getElementById("btnKnapp");
+    const ulListe = document.getElementById("ulListe");
+    const fjernKnapp = document.getElementById("fjernKnapp");
+
+    btnKnapp.onclick = function () {
+
+        if (input.value !== "") {
+            leggTilPunkt(input.value);
+            inpLeggTil.value = "";
+        }
+    }
+
+    function leggTilPunkt(tekst) {
+        ulListe.innerHTML += "<li>" + tekst + "  <button id='fjernKnapp'>x</button>"+ "</li>"
+
+    }
+
+
+    function fjernPunkt() {
+
+
+    }
+
+
+
+
+
+</script>
+
+</body>
+</html>
